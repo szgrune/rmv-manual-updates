@@ -191,6 +191,53 @@ function buildSummaryParagraph(text) {
   return p;
 }
 
+/**
+ * Scroll a chapter heading into view, reliably.
+ *
+ * Inline images are lazy-loaded and have no reserved height, so an unloaded
+ * figure collapses to ~0px. If we scroll before the images ABOVE the target
+ * have loaded, they expand afterward and push the heading away from where we
+ * landed — the drift grows with the number of images above it, which is why
+ * long pages (2007/2017) used to land in the wrong place. Fix: force every
+ * image above the target to its final height first, then scroll once.
+ */
+function scrollToHeading(targetId) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  const go = () => {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    target.classList.add('group-flash');
+    setTimeout(() => target.classList.remove('group-flash'), 1400);
+  };
+
+  // Images that precede the target in the document and are currently visible
+  // can still change the target's position once they finish loading.
+  const pending = [];
+  document.querySelectorAll('img').forEach(img => {
+    const precedesTarget =
+      !!(target.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_PRECEDING);
+    const visible = img.offsetParent !== null;
+    if (!precedesTarget || !visible || img.complete) return;
+    img.loading = 'eager';
+    pending.push(new Promise(resolve => {
+      img.addEventListener('load', resolve, { once: true });
+      img.addEventListener('error', resolve, { once: true });
+    }));
+  });
+
+  if (pending.length === 0) {
+    go();
+    return;
+  }
+
+  // Scroll once the above-images settle, but never block on a slow/missing one.
+  Promise.race([
+    Promise.all(pending),
+    new Promise(resolve => setTimeout(resolve, 1500)),
+  ]).then(go);
+}
+
 function buildTableOfContents(groups, idPrefix) {
   const nav = document.createElement('nav');
   nav.className = 'toc';
@@ -212,11 +259,7 @@ function buildTableOfContents(groups, idPrefix) {
     a.textContent = group.chapter;
     a.addEventListener('click', (e) => {
       e.preventDefault();
-      const target = document.getElementById(targetId);
-      if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      target.classList.add('group-flash');
-      setTimeout(() => target.classList.remove('group-flash'), 1400);
+      scrollToHeading(targetId);
     });
     li.appendChild(a);
     ul.appendChild(li);
