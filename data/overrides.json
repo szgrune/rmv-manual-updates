@@ -1,0 +1,233 @@
+{
+  "_README": "Manual corrections to the AI-generated change data. These edits are PERMANENT and always win over AI output — they are re-applied every time export_json.py runs, including after re-analyzing new PDFs. Entries are captured automatically from edits you make to web/data/changes_*.json, but you may also edit this file by hand. Keyed by from_year, then by each change's stable `id`. action: edit | delete | add.",
+  "version": 1,
+  "pairs": {
+    "2007": {
+      "changes": {
+        "out-of-state-insurance-limits": {
+          "action": "edit",
+          "fields": {
+            "bullets": [
+              "\"If your test vehicle is registered out of state, you must show the examiner proof of insurance coverage equal to Massachusetts minimum limits, which are $25,000/$50,000 for bodily injury and $30,000 for property damage.\" (2026 Massachusetts Driver's Manual)"
+            ]
+          }
+        },
+        "vulnerable-road-users-law": {
+          "action": "edit",
+          "fields": {
+            "images": [
+              {
+                "src": "images/2026/p056_img001.png",
+                "alt": "",
+                "caption": ""
+              }
+            ]
+          }
+        },
+        "bus-lanes-red-pavement": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "channelizing-islands": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "bus-stop-parking-fine": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "bicycle-lane-parking-prohibition": {
+          "action": "edit",
+          "fields": {
+            "bullets": [
+              "\"In Massachusetts, you may not park your vehicle in a bicycle lane\" (2026 Massachusetts Driver's Manual)"
+            ],
+            "images": []
+          }
+        },
+        "hp-dv-parking-fines": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "throwing-objects-from-window": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "bicyclist-regulations-chapter-525": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "motorist-bicycle-passing-distance": {
+          "action": "edit",
+          "fields": {
+            "images": [
+              {
+                "src": "images/2026/p056_img001.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img150.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img151.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img152.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img153.png",
+                "alt": "",
+                "caption": ""
+              }
+            ]
+          }
+        },
+        "vehicle-door-opening-bicyclist": {
+          "action": "edit",
+          "fields": {
+            "bullets": [
+              "\"Drivers and passengers can be fined up to $100 for opening a vehicle door into an oncoming bicycle. (Chap. 90, Sec 14)\" (2026 Massachusetts Driver's Manual)",
+              "\"When opening a vehicle door, drivers and passengers should do the following:\n1. Check your rear-view mirror.\n2. Check your side-view mirror.\n3. Open the door with your far hand (the hand farther from the door).\nThis is called the \"Dutch Reach\" method because it originated in the Netherlands.\" (2026 Massachusetts Driver's Manual)"
+            ],
+            "images": [
+              {
+                "src": "images/2026/p123_img148.png",
+                "alt": "",
+                "caption": ""
+              }
+            ]
+          }
+        },
+        "bicycle-boxes": {
+          "action": "edit",
+          "fields": {
+            "images": [
+              {
+                "src": "images/2026/p124_img149.png",
+                "alt": "",
+                "caption": ""
+              }
+            ]
+          }
+        },
+        "breakdown-safety-equipment": {
+          "action": "edit",
+          "fields": {
+            "description": "The 2026 manual expands breakdown instructions with detailed warning triangle/LED flare placement distances and safety vest use that were not in the 2007 manual.",
+            "bullets": [
+              "\"If you stop on a divided highway, place your warning triangles or LED flares: • 10 feet behind your vehicle • 100 feet behind your vehicle\" (2026 Massachusetts Driver's Manual)",
+              "\"If you stop on a two-lane road carrying traffic in both directions or on an undivided highway, place your warning triangles or LED flares: • 10 feet behind your vehicle • 100 feet behind your vehicle • 100 feet in front of your vehicle\" (2026 Massachusetts Driver's Manual)",
+              "\"Put your safety vest on while still inside the vehicle.\" (2026 Massachusetts Driver's Manual)"
+            ],
+            "images": [
+              {
+                "src": "images/2026/p133_img155.png",
+                "alt": "",
+                "caption": ""
+              }
+            ],
+            "title": "Safety Vests and Warning Triangle/LED Flare Placement for Breakdowns"
+          }
+        },
+        "driving-through-tunnels": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        }
+      }
+    },
+    "2017": {
+      "changes": {
+        "vulnerable-road-users": {
+          "action": "edit",
+          "fields": {
+            "images": [
+              {
+                "src": "images/2026/p056_img001.png",
+                "alt": "",
+                "caption": ""
+              }
+            ]
+          }
+        },
+        "bus-lanes": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "bicycle-passing-distance": {
+          "action": "edit",
+          "fields": {
+            "images": [
+              {
+                "src": "images/2026/p056_img001.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img150.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img151.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img152.png",
+                "alt": "",
+                "caption": ""
+              },
+              {
+                "src": "images/2026/p125_img153.png",
+                "alt": "",
+                "caption": ""
+              }
+            ]
+          }
+        },
+        "no-parking-bicycle-lane": {
+          "action": "edit",
+          "fields": {
+            "bullets": [
+              "\"In Massachusetts, you may not park your vehicle in a bicycle lane\" (2026 Massachusetts Driver's Manual)"
+            ],
+            "images": []
+          }
+        }
+      }
+    },
+    "2023": {
+      "changes": {
+        "bus-lanes-red-pavement": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        }
+      }
+    }
+  }
+}

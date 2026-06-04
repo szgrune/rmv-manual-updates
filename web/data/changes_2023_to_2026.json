@@ -1,0 +1,247 @@
+{
+  "from_year": 2023,
+  "to_year": 2026,
+  "overview": "The 2026 manual adds several new safety and vehicle-technology topics worth reviewing, such as Advanced Driver Assistance Systems, recommended car safety kits with winter equipment, proper backing-up technique, bus lanes marked with red pavement, and updated breakdown procedures involving safety vests and warning triangle placement. There are also changes to the road test process, including a parking brake test, higher out-of-state vehicle insurance minimums, verification that a driving school is RMV-certified, and a new process for requesting an ASL interpreter. Drivers should note the REAL ID requirement is now in effect, plus updated license restriction codes and a new Board of Appeals mailing address. Finally, a few penalties and following-distance rules have been clarified, including the lowest speeding fine, a ten-second gap behind heavy equipment, and continued ignition interlock use for two years after reinstatement.",
+  "sections": [
+    {
+      "id": "real-id-travel-in-effect",
+      "title": "REAL ID Travel Requirement Now In Effect",
+      "change_type": "updated",
+      "description": "The REAL ID requirement to fly domestically or enter federal buildings is now stated as current/in effect rather than beginning on a future date of May 7, 2025.",
+      "bullets": [
+        "\"You need a REAL ID, or other acceptable ID such as a valid passport, to fly within the United States or enter certain federal buildings.\" (2026 Massachusetts Driver's Manual)",
+        "\"However, it is NOT an acceptable form of identification for the federal purposes mentioned above.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1
+    },
+    {
+      "id": "expanded-restriction-codes",
+      "title": "Expanded List of License Restriction Codes",
+      "change_type": "expanded",
+      "description": "The 2026 list of license restrictions adds several new restriction codes not present in the 2023 list.",
+      "bullets": [
+        "\"A Use with Certified Driving Instructor Only\" (2026 Massachusetts Driver's Manual)",
+        "\"G Daylight Only\" (2026 Massachusetts Driver's Manual)",
+        "\"M CDL - Except Class A Bus\" (2026 Massachusetts Driver's Manual)",
+        "\"N CDL - Except Class A & B Bus\" (2026 Massachusetts Driver's Manual)",
+        "\"Q Class D Automatic Transmission\" (2026 Massachusetts Driver's Manual)",
+        "\"U 3 Wheeled Motorcycle\" (2026 Massachusetts Driver's Manual)",
+        "\"X CDL - No Cargo in CMV Tanker\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1
+    },
+    {
+      "id": "road-test-insurance-minimums",
+      "title": "Out-of-State Vehicle Insurance Minimums for Road Test",
+      "change_type": "updated",
+      "description": "The minimum insurance coverage limits required for out-of-state vehicles used in road tests were increased.",
+      "bullets": [
+        "\"If your test vehicle is registered out of state, you must show the examiner proof of insurance coverage equal to Massachusetts minimum limits, which are $25,000/$50,000 for bodily injury and $30,000 for property damage.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1
+    },
+    {
+      "id": "parking-brake-testing",
+      "title": "Parking Brake Testing Requirement",
+      "change_type": "new",
+      "description": "A new requirement specifies that parking brakes will be tested by the examiner under a specific regulation before the road test, including that electric parking brakes are acceptable.",
+      "bullets": [
+        "\"Parking brakes must work properly and will be tested by the examiner before the road test. Massachusetts regulation 540 CMR 4.04 (4) requires that parking brakes be tested by accelerating the motor to 1,200 to 1,300 RPMs with the vehicle in the lowest gear.\" (2026 Massachusetts Driver's Manual)",
+        "\"The parking brake can be manual or electric (push or pull button).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1
+    },
+    {
+      "id": "appeals-board-address",
+      "title": "Board of Appeals Address",
+      "change_type": "updated",
+      "description": "The mailing address for filing a formal appeal with the Board of Appeals was changed.",
+      "bullets": [
+        "\"One Federal St., Suite 700 • Boston, MA 02110\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1
+    },
+    {
+      "id": "driving-school-certification-sponsor",
+      "title": "Driving School Certification for Road Test Sponsorship",
+      "change_type": "new",
+      "description": "The 2026 edition adds a requirement to verify that a professional driving school is RMV-certified before instructors can sponsor a road test.",
+      "bullets": [
+        "\"If you schedule your road test through a professional driving school, please verify that the school is certified by the RMV. A list of certified driving schools can be found online at Mass.Gov/RMV. Driving instructors can only sponsor a road test if their school is certified.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1
+    },
+    {
+      "id": "deaf-hard-of-hearing-asl-accommodation",
+      "title": "Deaf and Hard of Hearing ASL Interpreter Accommodation",
+      "change_type": "new",
+      "description": "The 2026 edition adds a dedicated process for requesting an ASL interpreter for exams.",
+      "bullets": [
+        "\"To request an ASL interpreter, call 857-368-8105 and leave a message that includes your name, your telephone number, and the service center where you would like to take the exam. The RMV will contact you to schedule the exam and request the interpreter.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1
+    },
+    {
+      "id": "car-safety-kits",
+      "title": "Car Safety Kits",
+      "change_type": "new",
+      "description": "The 2026 manual adds a new section recommending essential emergency items to carry in the vehicle, including specific winter equipment.",
+      "bullets": [
+        "\"It is recommended to carry the following items in your vehicle: • Reflective Safety Vest • Reflective Warning Triangles or LED Flares • First Aid Kit • Glass Breaker Tool • White and red cloths to tie to your vehicle during a breakdown\" (2026 Massachusetts Driver's Manual)",
+        "\"Drivers should equip their vehicles with winter tires, an ice scraper, jumper cables, and extra warm clothing .\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2
+    },
+    {
+      "id": "seat-belt-fatality-stat",
+      "title": "Safety/Seat Belt Law Statistic",
+      "change_type": "updated",
+      "description": "The unbelted fatality statistic was updated from 2020 figures to 2023 figures.",
+      "bullets": [
+        "\"In 2023, nearly 11,000 people who were not wearing a safety belt were killed in crashes in the United States.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2
+    },
+    {
+      "id": "adas-systems",
+      "title": "Advanced Driver Assistance Systems",
+      "change_type": "new",
+      "description": "The 2026 manual adds a new topic on Advanced Driver Assistance Systems not present in the 2023 manual.",
+      "bullets": [
+        "\"Many cars and trucks now come with Advanced Driver Assistance Systems (ADAS). These can make driving safer, but only if used correctly. You must learn about your vehicle's systems before using them. Read the owner’s manual to start learning. And remember that the driver is still the most important safety feature in your car.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2
+    },
+    {
+      "id": "heavy-equipment-following-distance",
+      "title": "Space Behind Heavy Equipment",
+      "change_type": "updated",
+      "description": "The 2026 manual specifies a ten-second following distance for heavy equipment, whereas the 2023 manual gave no specific time.",
+      "bullets": [
+        "\"Keep more space (at least ten seconds) between your vehicle and heavy equipment (for example, dump trucks, tractors).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2
+    },
+    {
+      "id": "pedestrian-death-statistic",
+      "title": "Pedestrian Motor Vehicle Death Statistic",
+      "change_type": "updated",
+      "description": "The 2026 manual changes the pedestrian fatality ratio from one in five to one in four.",
+      "bullets": [
+        "\"One in four motor vehicle deaths involve a pedestrian.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2
+    },
+    {
+      "id": "speeding-base-fine",
+      "title": "Lowest Speeding Penalty",
+      "change_type": "updated",
+      "description": "The 2026 manual states the lowest speeding penalty as a $100 fine plus a $5 public safety surcharge, whereas the 2023 manual stated it as a $105 fine.",
+      "bullets": [
+        "\"The lowest penalty for driving above the speed limit is a $100 fine, plus an additional $5 public safety surcharge which is added to all speeding violations.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3
+    },
+    {
+      "id": "alcohol-highway-deaths-statistic",
+      "title": "Alcohol-Related Highway Death Statistic",
+      "change_type": "updated",
+      "description": "The stated percentage of highway deaths caused by alcohol was changed from nearly 40% to about 30%.",
+      "bullets": [
+        "\"Each year in the United States, alcohol causes about 30% of all highway deaths.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3
+    },
+    {
+      "id": "ignition-interlock-two-year-requirement",
+      "title": "Ignition Interlock Device Continued Use",
+      "change_type": "updated",
+      "description": "The 2026 manual specifies that the Ignition Interlock Device must be used for two more years after the license is reinstated.",
+      "bullets": [
+        "\"you have the hardship license. You must keep using the device for two more years after your license has been reinstated.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3
+    },
+    {
+      "id": "bus-lanes-red-pavement",
+      "title": "Bus Lanes",
+      "change_type": "new",
+      "description": "The 2026 manual adds a new topic describing red pavement used for public transit travel lanes and station stops.",
+      "bullets": [
+        "\"Red pavement is used for travel lanes or station stops used by public transit systems. This includes buses, streetcars, trolleys, light-rail trains, and rapid transit fleets.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4
+    },
+    {
+      "id": "backing-up-procedure",
+      "title": "Backing Up",
+      "change_type": "new",
+      "description": "A new dedicated 'Backing Up' procedure section was added with step-by-step instructions.",
+      "bullets": [
+        "\"Use the following steps when backing up: 1. Position yourself as close as possible to the right edge of the curb. 2. Check for traffic in both directions (including your blind spot). 3. Shift into reverse and start backing up, while looking over your right shoulder. Ensure a safe and smooth speed while maintaning your lane.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4
+    },
+    {
+      "id": "work-zone-fatality-statistic",
+      "title": "Work Zone Fatality Statistic",
+      "change_type": "updated",
+      "description": "The national work zone fatality figure was updated from the 2020 number to the 2023 number.",
+      "bullets": [
+        "\"Nationally in 2023, 898 people were killed in crashes that happened in work zones.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4
+    },
+    {
+      "id": "breakdown-safety-equipment-procedures",
+      "title": "Breakdown Safety Equipment and Warning Triangle Placement",
+      "change_type": "expanded",
+      "description": "The breakdown procedure now adds specific instructions for using a safety vest and placing warning triangles or LED flares at measured distances depending on road type.",
+      "bullets": [
+        "\"Locate your safety vest and warning triangles or LED flares (if you have them).\" (2026 Massachusetts Driver's Manual)",
+        "\"Put your safety vest on while still inside the vehicle.\" (2026 Massachusetts Driver's Manual)",
+        "\"If you stop on a divided highway, place your warning triangles or LED flares: • 10 feet behind your vehicle • 100 feet behind your vehicle\" (2026 Massachusetts Driver's Manual)",
+        "\"If you stop on a two-lane road carrying traffic in both directions or on an undivided highway, place your warning triangles or LED flares: • 10 feet behind your vehicle • 100 feet behind your vehicle • 100 feet in front of your vehicle\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5
+    }
+  ]
+}

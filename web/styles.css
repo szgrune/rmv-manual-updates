@@ -1,0 +1,398 @@
+/* ── Design tokens ───────────────────────────────────────── */
+:root {
+  --color-brand:        #14558F;
+  --color-brand-dark:   #0f3f6b;
+  --color-bg:           #ffffff;
+  --color-body:         #000000;
+  --color-accent-light: #e8f0f8;
+  --color-border:       #c8d8ea;
+
+  --font-heading: 'Poppins', sans-serif;
+  --font-body:    'IBM Plex Sans', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --max-width:  860px;
+  --spacing-xs: 0.4rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1.25rem;
+  --spacing-lg: 2rem;
+}
+
+/* ── Reset / base ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-body);
+  background: var(--color-bg);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+/* ── App container ───────────────────────────────────────── */
+#app {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+/* ── Typography ──────────────────────────────────────────── */
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--color-brand);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.25;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--color-brand);
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-brand);
+}
+
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-brand);
+}
+
+/* ── Year selector ───────────────────────────────────────── */
+#year-selector-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+#year-selector-section label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--color-brand);
+  pointer-events: none;
+}
+
+#year-select {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-body);
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.55rem 2.5rem 0.55rem 0.85rem;
+  cursor: pointer;
+  min-width: 180px;
+  transition: border-color 0.15s;
+}
+
+#year-select:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(20, 85, 143, 0.2);
+}
+
+#year-select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+#year-status {
+  margin-top: var(--spacing-sm);
+  font-size: 0.875rem;
+  color: #444;
+  min-height: 1.3em;
+}
+
+#year-status.error {
+  color: #c00;
+}
+
+/* ── Accordion ───────────────────────────────────────────── */
+#accordion-section {
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+#accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-md);
+  background: var(--color-accent-light);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-brand);
+  transition: background 0.15s;
+}
+
+#accordion-toggle:hover {
+  background: #d5e5f5;
+}
+
+#accordion-toggle:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: -3px;
+}
+
+.chevron {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-brand);
+  stroke-width: 2.5;
+  fill: none;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+#accordion-toggle[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+#accordion-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+#accordion-body:not([hidden]) {
+  max-height: 9999px;
+}
+
+#accordion-content {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Changes section ─────────────────────────────────────── */
+#changes-section {
+  margin-top: var(--spacing-lg);
+}
+
+/* ── Overview callout ────────────────────────────────────── */
+.overview-callout {
+  border-left: 4px solid var(--color-brand);
+  background: var(--color-accent-light);
+  padding: var(--spacing-md);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.overview-summary {
+  margin: 0;
+}
+
+/* ── Table of contents (inside the blue box) ─────────────── */
+.toc {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.toc-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-brand);
+  margin-bottom: var(--spacing-sm);
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  margin: 0;
+}
+
+.toc-list a {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  text-decoration: none;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.toc-list a:hover,
+.toc-list a:focus-visible {
+  background: var(--color-brand);
+  color: #fff;
+  border-color: var(--color-brand);
+  outline: none;
+}
+
+/* ── Chapter groups ──────────────────────────────────────── */
+.change-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.group-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-border);
+  scroll-margin-top: var(--spacing-md);
+}
+
+.group-flash {
+  animation: group-flash-anim 1.4s ease;
+}
+
+@keyframes group-flash-anim {
+  0%   { background: rgba(20, 85, 143, 0.16); }
+  100% { background: transparent; }
+}
+
+/* ── Section cards ───────────────────────────────────────── */
+.section-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-header h4 {
+  margin: 0;
+}
+
+/* ── Change-type badges ──────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  line-height: 1.5;
+}
+
+.badge-new      { background: #d4f4de; color: #1a5c2e; }
+.badge-updated  { background: #fef3d0; color: #7a4f00; }
+.badge-expanded { background: #dce9fb; color: #14558F; }
+.badge-removed  { background: #fde8e8; color: #8b1a1a; }
+
+/* ── Section description ─────────────────────────────────── */
+.section-description {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ── Bullet lists ────────────────────────────────────────── */
+.section-bullets {
+  padding-left: 1.4rem;
+  margin: 0;
+}
+
+.section-bullets li {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+/* ── Inline images ───────────────────────────────────────── */
+.section-figure {
+  margin: var(--spacing-md) 0 var(--spacing-sm);
+  display: block;
+}
+
+.section-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+  border: 1px solid var(--color-border);
+}
+
+.section-figure figcaption {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* ── Loading / status messages ───────────────────────────── */
+.loading-msg {
+  color: #666;
+  font-size: 0.9rem;
+  padding: var(--spacing-sm) 0;
+}
+
+.info-msg {
+  color: #444;
+  font-size: 0.95rem;
+  padding: var(--spacing-sm) 0;
+}
+
+.error-msg {
+  color: #c00;
+  font-size: 0.9rem;
+  padding: var(--spacing-sm) 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  h1 { font-size: 1.4rem; }
+  #app { padding: var(--spacing-md) var(--spacing-sm); }
+  .section-card { padding: var(--spacing-sm); }
+}

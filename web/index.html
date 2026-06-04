@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver's Manual Updates by Year</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+
+    <header>
+      <h1>Driver's Manual Updates by Year</h1>
+    </header>
+
+    <!-- Year selector -->
+    <section id="year-selector-section">
+      <label for="year-select">Select the year you got your driver's license:</label>
+      <div class="select-wrapper">
+        <select id="year-select" disabled>
+          <option value="" selected disabled>Loading years…</option>
+        </select>
+      </div>
+      <p id="year-status" aria-live="polite"></p>
+    </section>
+
+    <!-- Always-visible 2026 Updates accordion -->
+    <section id="accordion-section">
+      <button
+        id="accordion-toggle"
+        aria-expanded="false"
+        aria-controls="accordion-body"
+      >
+        <span id="accordion-label">2026 Updates</span>
+        <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div id="accordion-body" hidden role="region" aria-labelledby="accordion-toggle">
+        <div id="accordion-content">
+          <p class="loading-msg">Loading 2026 updates…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic "Changes since [year]" section -->
+    <section id="changes-section" hidden aria-live="polite">
+      <h2 id="changes-heading"></h2>
+      <div id="overview-block" class="overview-callout"></div>
+      <div id="sections-list"></div>
+    </section>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
