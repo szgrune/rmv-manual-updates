@@ -14,7 +14,17 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 14
+        },
+        {
+          "year": 2026,
+          "page": 14
+        }
+      ]
     },
     {
       "id": "state-to-state-program",
@@ -26,7 +36,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 13
+        }
+      ]
     },
     {
       "id": "out-of-country-criminal-penalty",
@@ -38,7 +54,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 10
+        }
+      ]
     },
     {
       "id": "license-restriction-codes",
@@ -52,7 +74,21 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 16
+        },
+        {
+          "year": 2026,
+          "page": 17
+        },
+        {
+          "year": 2026,
+          "page": 17
+        }
+      ]
     },
     {
       "id": "real-id-prorated-license-length",
@@ -65,7 +101,14 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 15
+        },
+        null
+      ]
     },
     {
       "id": "electronic-document-verification",
@@ -78,7 +121,17 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 21
+        },
+        {
+          "year": 2026,
+          "page": 21
+        }
+      ]
     },
     {
       "id": "ssn-affidavit-standard-license",
@@ -90,7 +143,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 22
+        }
+      ]
     },
     {
       "id": "online-permit-exam",
@@ -102,7 +161,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 24
+        }
+      ]
     },
     {
       "id": "road-test-retest-wait",
@@ -114,7 +179,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 28
+        }
+      ]
     },
     {
       "id": "road-test-rejection-criteria",
@@ -127,7 +198,17 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 29
+        },
+        {
+          "year": 2026,
+          "page": 29
+        }
+      ]
     },
     {
       "id": "sponsor-limit",
@@ -139,7 +220,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 31
+        }
+      ]
     },
     {
       "id": "insurance-minimum-limits",
@@ -151,7 +238,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 32
+        }
+      ]
     },
     {
       "id": "parking-brake-testing",
@@ -164,7 +257,14 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        null,
+        {
+          "year": 2026,
+          "page": 31
+        }
+      ]
     },
     {
       "id": "specialized-features-road-test",
@@ -176,7 +276,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 33
+        }
+      ]
     },
     {
       "id": "road-test-arrival-time",
@@ -188,7 +294,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 32
+        }
+      ]
     },
     {
       "id": "rental-vehicle-sponsor-authorization",
@@ -200,7 +312,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 32
+        }
+      ]
     },
     {
       "id": "temporary-license-validity",
@@ -213,7 +331,17 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 35
+        },
+        {
+          "year": 2026,
+          "page": 35
+        }
+      ]
     },
     {
       "id": "under-20-photo-service-center",
@@ -225,7 +353,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 35
+        }
+      ]
     },
     {
       "id": "permit-conversion-driving-record",
@@ -237,7 +371,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 36
+        }
+      ]
     },
     {
       "id": "permanent-license-mail-30-days",
@@ -250,7 +390,17 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 35
+        },
+        {
+          "year": 2026,
+          "page": 35
+        }
+      ]
     },
     {
       "id": "class-m-add-fee",
@@ -262,7 +412,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 40
+        }
+      ]
     },
     {
       "id": "prorated-license-fees",
@@ -274,7 +430,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 40
+        }
+      ]
     },
     {
       "id": "road-test-fee-prior-to-rebooking",
@@ -286,7 +448,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 40
+        }
+      ]
     },
     {
       "id": "emotional-support-animals",
@@ -298,7 +466,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 29
+        }
+      ]
     },
     {
       "id": "veteran-indicator-in-person",
@@ -310,7 +484,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 38
+        }
+      ]
     },
     {
       "id": "car-safety-kits",
@@ -323,7 +503,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 43
+        },
+        {
+          "year": 2026,
+          "page": 43
+        }
+      ]
     },
     {
       "id": "additional-vehicle-safety-equipment",
@@ -336,7 +526,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 42
+        },
+        {
+          "year": 2026,
+          "page": 42
+        }
+      ]
     },
     {
       "id": "headphones-restriction-expanded",
@@ -348,7 +548,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 47
+        }
+      ]
     },
     {
       "id": "loud-noise-restriction",
@@ -360,7 +566,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 47
+        }
+      ]
     },
     {
       "id": "deaf-road-test-scheduling",
@@ -372,7 +584,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 34
+        }
+      ]
     },
     {
       "id": "hands-free-law",
@@ -385,7 +603,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 47
+        },
+        {
+          "year": 2026,
+          "page": 47
+        }
+      ]
     },
     {
       "id": "hands-free-penalties",
@@ -399,7 +627,21 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 48
+        },
+        {
+          "year": 2026,
+          "page": 48
+        },
+        {
+          "year": 2026,
+          "page": 48
+        }
+      ]
     },
     {
       "id": "advanced-driver-assistance",
@@ -411,7 +653,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 54
+        }
+      ]
     },
     {
       "id": "drowsy-driving",
@@ -423,7 +671,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 54
+        }
+      ]
     },
     {
       "id": "vulnerable-road-users",
@@ -441,7 +695,13 @@
         }
       ],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 57
+        }
+      ]
     },
     {
       "id": "three-second-rule",
@@ -454,7 +714,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 51
+        },
+        {
+          "year": 2026,
+          "page": 51
+        }
+      ]
     },
     {
       "id": "motorcycle-heavy-equipment-distance",
@@ -467,7 +737,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 51
+        },
+        {
+          "year": 2026,
+          "page": 51
+        }
+      ]
     },
     {
       "id": "license-plate-visibility",
@@ -479,7 +759,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 51
+        }
+      ]
     },
     {
       "id": "winter-clear-vehicle",
@@ -492,7 +778,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 56
+        },
+        {
+          "year": 2026,
+          "page": 56
+        }
+      ]
     },
     {
       "id": "deaf-hard-of-hearing-awareness",
@@ -505,7 +801,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 49
+        },
+        {
+          "year": 2026,
+          "page": 58
+        }
+      ]
     },
     {
       "id": "at-fault-crash-threshold",
@@ -517,7 +823,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 67
+        }
+      ]
     },
     {
       "id": "unattested-driving-record-fee",
@@ -529,7 +841,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 69
+        }
+      ]
     },
     {
       "id": "hearing-filing-fee-refund",
@@ -541,7 +859,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 64
+        }
+      ]
     },
     {
       "id": "motorcycle-following-distance",
@@ -553,31 +877,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
-    },
-    {
-      "id": "alcohol-highway-deaths-stat",
-      "title": "Percentage of Highway Deaths Caused by Alcohol",
-      "change_type": "updated",
-      "description": "The stated percentage of highway deaths caused by alcohol was reduced from nearly 40% to about 30%.",
-      "bullets": [
-        "\"Each year in the United States, alcohol causes about 30% of all highway deaths.\" (2026 Massachusetts Driver's Manual)"
-      ],
-      "images": [],
-      "chapter": "Keeping Your License",
-      "chapter_num": 3
-    },
-    {
-      "id": "alcohol-marijuana-crash-risk",
-      "title": "Combined Alcohol and Marijuana Crash Risk",
-      "change_type": "new",
-      "description": "New statistics quantify the increased crash risk from alcohol use alone and combined with marijuana.",
-      "bullets": [
-        "\"Alchohol use makes the risk of a crash five times more likely. Alcohol use combined with marijuana use makes the risk of a crash twelve times more likely.\" (2026 Massachusetts Driver's Manual)"
-      ],
-      "images": [],
-      "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 59
+        }
+      ]
     },
     {
       "id": "designated-driver-options",
@@ -589,7 +895,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 80
+        }
+      ]
     },
     {
       "id": "ignition-interlock-road-test",
@@ -601,7 +913,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 81
+        }
+      ]
     },
     {
       "id": "oui-reinstatement-fees",
@@ -613,7 +931,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 74
+        }
+      ]
     },
     {
       "id": "graffiti-license-suspension",
@@ -625,19 +949,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
-    },
-    {
-      "id": "dangers-of-speeding-pedestrians",
-      "title": "Dangers of Speeding and Pedestrian Injury Rates",
-      "change_type": "new",
-      "description": "A new section quantifies how vehicle speed dramatically increases the likelihood of serious pedestrian injury or death.",
-      "bullets": [
-        "\"At a speed of 20 mph, 13% of pedestrians are seriously injured or killed in a crash. At 30 mph, that increases to 40% and at 40 mph it increases to 73%.\" (2026 Massachusetts Driver's Manual)"
-      ],
-      "images": [],
-      "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 74
+        }
+      ]
     },
     {
       "id": "thickly-settled-25mph-limit",
@@ -649,7 +967,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 88
+        }
+      ]
     },
     {
       "id": "license-reinstatement-hearing-by-phone",
@@ -661,7 +985,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 75
+        }
+      ]
     },
     {
       "id": "alcohol-safety-belt-speeding-effects",
@@ -673,7 +1003,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 79
+        }
+      ]
     },
     {
       "id": "rectangular-rapid-flashing-beacon",
@@ -685,7 +1021,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 90
+        }
+      ]
     },
     {
       "id": "bicycle-signals",
@@ -697,7 +1039,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 90
+        }
+      ]
     },
     {
       "id": "flashing-yellow-arrow-right-turn",
@@ -720,7 +1068,13 @@
         }
       ],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 89
+        }
+      ]
     },
     {
       "id": "advisory-bicycle-lanes",
@@ -732,7 +1086,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
     },
     {
       "id": "bus-lanes",
@@ -744,7 +1104,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
     },
     {
       "id": "bicycle-lane-width",
@@ -756,7 +1122,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
     },
     {
       "id": "courtesy-crashes",
@@ -769,7 +1141,17 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 110
+        },
+        {
+          "year": 2026,
+          "page": 110
+        }
+      ]
     },
     {
       "id": "backing-up",
@@ -782,7 +1164,17 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 107
+        },
+        {
+          "year": 2026,
+          "page": 107
+        }
+      ]
     },
     {
       "id": "passing-stopped-vehicles",
@@ -794,7 +1186,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 112
+        }
+      ]
     },
     {
       "id": "move-over-law-direction",
@@ -807,7 +1205,17 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 112
+        },
+        {
+          "year": 2026,
+          "page": 112
+        }
+      ]
     },
     {
       "id": "bicycle-passing-distance",
@@ -845,7 +1253,13 @@
         }
       ],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 123
+        }
+      ]
     },
     {
       "id": "no-parking-bicycle-lane",
@@ -857,7 +1271,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 118
+        }
+      ]
     },
     {
       "id": "no-parking-hp-dv-crosshatch",
@@ -869,7 +1289,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 119
+        }
+      ]
     },
     {
       "id": "police-stop-false-name-penalty",
@@ -881,7 +1307,13 @@
       ],
       "images": [],
       "chapter": "Special Driving Situations",
-      "chapter_num": 5
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 130
+        }
+      ]
     },
     {
       "id": "out-of-state-proof-of-insurance",
@@ -893,7 +1325,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 130
+        }
+      ]
     },
     {
       "id": "citation-signing-guidance",
@@ -905,7 +1343,13 @@
       ],
       "images": [],
       "chapter": "Special Driving Situations",
-      "chapter_num": 5
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 131
+        }
+      ]
     },
     {
       "id": "driver-removal-law",
@@ -917,7 +1361,13 @@
       ],
       "images": [],
       "chapter": "Special Driving Situations",
-      "chapter_num": 5
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 137
+        }
+      ]
     },
     {
       "id": "breakdown-safety-equipment-placement",
@@ -937,7 +1387,21 @@
         }
       ],
       "chapter": "Special Driving Situations",
-      "chapter_num": 5
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 134
+        },
+        {
+          "year": 2026,
+          "page": 134
+        },
+        {
+          "year": 2026,
+          "page": 134
+        }
+      ]
     },
     {
       "id": "specialty-license-plates-atlantic-white-shark-conservancy-basketball-hall-of-fame-etc",
@@ -949,7 +1413,13 @@
       ],
       "images": [],
       "chapter": "No Longer Included",
-      "chapter_num": 99
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2017,
+          "page": 139
+        }
+      ]
     },
     {
       "id": "specialty-license-plates-conquer-cancer-cure-breast-cancer-fallen-heroes-freemasonry",
@@ -961,7 +1431,13 @@
       ],
       "images": [],
       "chapter": "No Longer Included",
-      "chapter_num": 99
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2017,
+          "page": 139
+        }
+      ]
     },
     {
       "id": "salvage-repairable-title",
@@ -973,7 +1449,13 @@
       ],
       "images": [],
       "chapter": "No Longer Included",
-      "chapter_num": 99
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2017,
+          "page": 150
+        }
+      ]
     },
     {
       "id": "salvage-title-insurer-assignment-procedures",
@@ -985,7 +1467,13 @@
       ],
       "images": [],
       "chapter": "No Longer Included",
-      "chapter_num": 99
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2017,
+          "page": 150
+        }
+      ]
     },
     {
       "id": "nato-military-personnel-and-dependents-driving-privileges",
@@ -997,7 +1485,13 @@
       ],
       "images": [],
       "chapter": "No Longer Included",
-      "chapter_num": 99
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2017,
+          "page": 159
+        }
+      ]
     }
   ]
 }

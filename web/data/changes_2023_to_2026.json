@@ -14,7 +14,17 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 14
+        },
+        {
+          "year": 2026,
+          "page": 14
+        }
+      ]
     },
     {
       "id": "expanded-restriction-codes",
@@ -32,7 +42,37 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 16
+        },
+        {
+          "year": 2026,
+          "page": 16
+        },
+        {
+          "year": 2026,
+          "page": 16
+        },
+        {
+          "year": 2026,
+          "page": 16
+        },
+        {
+          "year": 2026,
+          "page": 16
+        },
+        {
+          "year": 2026,
+          "page": 17
+        },
+        {
+          "year": 2026,
+          "page": 17
+        }
+      ]
     },
     {
       "id": "road-test-insurance-minimums",
@@ -44,7 +84,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 32
+        }
+      ]
     },
     {
       "id": "parking-brake-testing",
@@ -57,7 +103,17 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 31
+        },
+        {
+          "year": 2026,
+          "page": 31
+        }
+      ]
     },
     {
       "id": "appeals-board-address",
@@ -69,7 +125,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 22
+        }
+      ]
     },
     {
       "id": "driving-school-certification-sponsor",
@@ -81,7 +143,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 28
+        }
+      ]
     },
     {
       "id": "deaf-hard-of-hearing-asl-accommodation",
@@ -93,7 +161,13 @@
       ],
       "images": [],
       "chapter": "Obtaining Your License",
-      "chapter_num": 1
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 26
+        }
+      ]
     },
     {
       "id": "car-safety-kits",
@@ -106,19 +180,17 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
-    },
-    {
-      "id": "seat-belt-fatality-stat",
-      "title": "Safety/Seat Belt Law Statistic",
-      "change_type": "updated",
-      "description": "The unbelted fatality statistic was updated from 2020 figures to 2023 figures.",
-      "bullets": [
-        "\"In 2023, nearly 11,000 people who were not wearing a safety belt were killed in crashes in the United States.\" (2026 Massachusetts Driver's Manual)"
-      ],
-      "images": [],
-      "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 43
+        },
+        {
+          "year": 2026,
+          "page": 43
+        }
+      ]
     },
     {
       "id": "adas-systems",
@@ -130,7 +202,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 54
+        }
+      ]
     },
     {
       "id": "heavy-equipment-following-distance",
@@ -142,19 +220,13 @@
       ],
       "images": [],
       "chapter": "Safety First",
-      "chapter_num": 2
-    },
-    {
-      "id": "pedestrian-death-statistic",
-      "title": "Pedestrian Motor Vehicle Death Statistic",
-      "change_type": "updated",
-      "description": "The 2026 manual changes the pedestrian fatality ratio from one in five to one in four.",
-      "bullets": [
-        "\"One in four motor vehicle deaths involve a pedestrian.\" (2026 Massachusetts Driver's Manual)"
-      ],
-      "images": [],
-      "chapter": "Safety First",
-      "chapter_num": 2
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 51
+        }
+      ]
     },
     {
       "id": "speeding-base-fine",
@@ -166,19 +238,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
-    },
-    {
-      "id": "alcohol-highway-deaths-statistic",
-      "title": "Alcohol-Related Highway Death Statistic",
-      "change_type": "updated",
-      "description": "The stated percentage of highway deaths caused by alcohol was changed from nearly 40% to about 30%.",
-      "bullets": [
-        "\"Each year in the United States, alcohol causes about 30% of all highway deaths.\" (2026 Massachusetts Driver's Manual)"
-      ],
-      "images": [],
-      "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 65
+        }
+      ]
     },
     {
       "id": "ignition-interlock-two-year-requirement",
@@ -190,7 +256,13 @@
       ],
       "images": [],
       "chapter": "Keeping Your License",
-      "chapter_num": 3
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 81
+        }
+      ]
     },
     {
       "id": "bus-lanes-red-pavement",
@@ -202,7 +274,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
     },
     {
       "id": "backing-up-procedure",
@@ -214,19 +292,13 @@
       ],
       "images": [],
       "chapter": "Rules of the Road",
-      "chapter_num": 4
-    },
-    {
-      "id": "work-zone-fatality-statistic",
-      "title": "Work Zone Fatality Statistic",
-      "change_type": "updated",
-      "description": "The national work zone fatality figure was updated from the 2020 number to the 2023 number.",
-      "bullets": [
-        "\"Nationally in 2023, 898 people were killed in crashes that happened in work zones.\" (2026 Massachusetts Driver's Manual)"
-      ],
-      "images": [],
-      "chapter": "Rules of the Road",
-      "chapter_num": 4
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 107
+        }
+      ]
     },
     {
       "id": "breakdown-safety-equipment-procedures",
@@ -241,7 +313,25 @@
       ],
       "images": [],
       "chapter": "Special Driving Situations",
-      "chapter_num": 5
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 134
+        },
+        {
+          "year": 2026,
+          "page": 134
+        },
+        {
+          "year": 2026,
+          "page": 134
+        },
+        {
+          "year": 2026,
+          "page": 134
+        }
+      ]
     }
   ]
 }

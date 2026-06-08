@@ -153,6 +153,18 @@
           "fields": {
             "images": []
           }
+        },
+        "alcohol-highway-death-stat": {
+          "action": "delete"
+        },
+        "pedestrian-speed-injury-stats": {
+          "action": "delete"
+        },
+        "work-zone-fatality-statistics": {
+          "action": "delete"
+        },
+        "alcohol-marijuana-crash-risk": {
+          "action": "delete"
         }
       }
     },
@@ -216,6 +228,15 @@
             ],
             "images": []
           }
+        },
+        "alcohol-highway-deaths-stat": {
+          "action": "delete"
+        },
+        "alcohol-marijuana-crash-risk": {
+          "action": "delete"
+        },
+        "dangers-of-speeding-pedestrians": {
+          "action": "delete"
         }
       }
     },
@@ -226,6 +247,18 @@
           "fields": {
             "images": []
           }
+        },
+        "seat-belt-fatality-stat": {
+          "action": "delete"
+        },
+        "pedestrian-death-statistic": {
+          "action": "delete"
+        },
+        "alcohol-highway-deaths-statistic": {
+          "action": "delete"
+        },
+        "work-zone-fatality-statistic": {
+          "action": "delete"
         }
       }
     }

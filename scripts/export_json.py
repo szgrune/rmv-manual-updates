@@ -20,6 +20,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from lib import db as database
 from lib import overrides as ov
+from lib import citations as cite
 
 WEB_DATA_DIR = PROJECT_ROOT / "web" / "data"
 
@@ -59,6 +60,10 @@ def export_all() -> None:
     overrides = ov.load_overrides()
     baseline = ov.load_baseline()
 
+    # Page index for deriving per-quote PDF citations (see lib/citations.py).
+    page_index = cite.build_page_index(years)
+    cite_hits = cite_total = 0
+
     # Write one JSON file per pairing
     exported = 0
     for from_year in prior_years:
@@ -90,6 +95,12 @@ def export_all() -> None:
         # 2. Apply all stored overrides on top of the fresh DB data.
         merged = ov.apply(from_year, fresh, overrides)
 
+        # 2b. Derive a page-level PDF citation for every quoted bullet. This is a
+        #     purely computed field (`citations`), ignored by override capture.
+        for section in merged["sections"]:
+            cite_hits += cite.enrich(section, page_index)
+            cite_total += len(section.get("bullets") or [])
+
         path.write_text(json.dumps(merged, indent=2, ensure_ascii=False))
 
         # 3. Remember what we wrote so future manual edits can be detected.
@@ -105,6 +116,10 @@ def export_all() -> None:
 
     ov.save_overrides(overrides)
     ov.save_baseline(baseline)
+
+    if cite_total:
+        print(f"\n✓ Page citations matched {cite_hits}/{cite_total} quotes "
+              f"({100 * cite_hits // cite_total}%)")
 
     print(f"\n✓ Exported {exported} change files + manifest to {WEB_DATA_DIR}")
     print(f"✓ Manual overrides stored in {ov.OVERRIDES_PATH.relative_to(PROJECT_ROOT)} "

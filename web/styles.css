@@ -7,8 +7,8 @@
   --color-accent-light: #e8f0f8;
   --color-border:       #c8d8ea;
 
-  --font-heading: 'Poppins', sans-serif;
-  --font-body:    'IBM Plex Sans', sans-serif;
+  --font-heading: "Noto Sans VF", "Noto Sans", "Helvetica", "Arial", sans-serif;
+  --font-body:    "Noto Sans VF", "Noto Sans", "Helvetica", "Arial", sans-serif;
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -70,7 +70,16 @@ h4 {
   color: var(--color-brand);
 }
 
-/* ── Year selector ───────────────────────────────────────── */
+/* ── Intro blurb ─────────────────────────────────────────── */
+.intro {
+  margin-top: calc(-1 * var(--spacing-md));
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
+  color: #333;
+  max-width: 65ch;
+}
+
+/* ── Year input ──────────────────────────────────────────── */
 #year-selector-section {
   margin-bottom: var(--spacing-lg);
 }
@@ -81,47 +90,25 @@ h4 {
   margin-bottom: var(--spacing-sm);
 }
 
-.select-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.select-wrapper::after {
-  content: '';
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 6px solid var(--color-brand);
-  pointer-events: none;
-}
-
-#year-select {
-  appearance: none;
-  -webkit-appearance: none;
+#year-input {
   font-family: var(--font-body);
   font-size: 1rem;
   color: var(--color-body);
   background: var(--color-bg);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 0.55rem 2.5rem 0.55rem 0.85rem;
-  cursor: pointer;
+  padding: 0.55rem 0.85rem;
   min-width: 180px;
   transition: border-color 0.15s;
 }
 
-#year-select:focus {
+#year-input:focus {
   outline: none;
   border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(20, 85, 143, 0.2);
 }
 
-#year-select:disabled {
+#year-input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
@@ -351,13 +338,23 @@ h4 {
 }
 
 /* ── Inline images ───────────────────────────────────────── */
-.section-figure {
+.section-figures {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--spacing-md);
   margin: var(--spacing-md) 0 var(--spacing-sm);
-  display: block;
+}
+
+.section-figure {
+  margin: 0;
+  max-width: 100%;
 }
 
 .section-figure img {
   max-width: 100%;
+  max-height: 40vh;
+  width: auto;
   height: auto;
   border-radius: var(--radius-sm);
   display: block;
@@ -390,9 +387,276 @@ h4 {
   padding: var(--spacing-sm) 0;
 }
 
+/* ── Citation links ──────────────────────────────────────── */
+.citation-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px dotted var(--color-brand);
+}
+
+.citation-link:hover,
+.citation-link:focus-visible {
+  color: var(--color-brand-dark);
+  border-bottom-style: solid;
+  outline: none;
+}
+
+/* ── Results controls (search / filters / share) ─────────── */
+#results-controls {
+  margin-bottom: var(--spacing-md);
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+#results-search {
+  flex: 1 1 240px;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-body);
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.85rem;
+  transition: border-color 0.15s;
+}
+
+#results-search:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(20, 85, 143, 0.2);
+}
+
+/* Filter chips: checkboxes styled like the TOC pills */
+#results-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter-chip input {
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--color-brand);
+}
+
+.filter-chip:hover { border-color: var(--color-brand); }
+
+.filter-chip:has(input:checked) {
+  background: var(--color-brand);
+  color: #fff;
+  border-color: var(--color-brand);
+}
+
+.filter-chip:has(input:focus-visible) {
+  box-shadow: 0 0 0 3px rgba(20, 85, 143, 0.25);
+}
+
+/* ── Share button + menu ─────────────────────────────────── */
+.share-wrapper {
+  position: relative;
+  margin-left: auto;
+}
+
+#share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  background: var(--color-brand);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#share-btn:hover { background: var(--color-brand-dark); }
+
+#share-btn:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.share-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#share-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 20;
+  min-width: 184px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 4px;
+}
+
+.share-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-body);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.7rem;
+  cursor: pointer;
+}
+
+.share-option:hover,
+.share-option:focus-visible {
+  background: var(--color-accent-light);
+  outline: none;
+}
+
+.share-option:disabled {
+  color: #888;
+  cursor: default;
+  background: none;
+}
+
+/* ── Back-to-top button ──────────────────────────────────── */
+#scroll-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-brand);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.15s, transform 0.15s;
+}
+
+/* Author display:flex above would defeat the [hidden] attribute — re-assert it. */
+#scroll-top[hidden] { display: none; }
+
+#scroll-top:hover {
+  background: var(--color-brand-dark);
+  transform: translateY(-2px);
+}
+
+#scroll-top:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+#scroll-top svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Filter visibility + a11y helpers ────────────────────── */
+.is-hidden { display: none !important; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Print / Save as PDF ─────────────────────────────────── */
+@media print {
+  /* Show only the results; drop the app chrome. */
+  header,
+  #year-selector-section,
+  #accordion-section,
+  #results-controls,
+  #results-empty,
+  #scroll-top { display: none !important; }
+
+  body { line-height: 1.5; }
+
+  #app { max-width: none; padding: 0; }
+
+  #changes-section { margin: 0; }
+
+  /* Keep brand colors in the printout. */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* vh-based image caps don't translate to paper — use a fixed cap. */
+  .section-figure img { max-height: 3.5in; }
+
+  /* Avoid splitting a card or heading across pages where possible. */
+  .section-card,
+  .change-group { break-inside: avoid; }
+
+  .group-heading { break-after: avoid; }
+
+  /* Citation links are dead on paper — show the URL target's page instead. */
+  .citation-link { border-bottom: none; }
+
+  a[href] { color: var(--color-body); }
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 600px) {
   h1 { font-size: 1.4rem; }
   #app { padding: var(--spacing-md) var(--spacing-sm); }
   .section-card { padding: var(--spacing-sm); }
+  .share-wrapper { margin-left: 0; }
+  #results-search { flex-basis: 100%; }
 }

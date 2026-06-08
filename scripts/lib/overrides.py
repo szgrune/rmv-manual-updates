@@ -37,6 +37,10 @@ _CHANGE_FIELDS = (
     "images", "chapter", "chapter_num",
 )
 
+# Keys excluded from manual-edit detection: `id` is identity; `citations` is a
+# field derived at export time (lib/citations.py), not a hand-editable value.
+_DERIVED_KEYS = frozenset({"id", "citations"})
+
 _README = (
     "Manual corrections to the AI-generated change data. These edits are "
     "PERMANENT and always win over AI output — they are re-applied every time "
@@ -115,14 +119,14 @@ def capture(from_year: int, fresh: dict, ondisk: dict | None,
             # Present on disk but never written by us → a hand-added change.
             ov_changes[cid] = {
                 "action": "add",
-                "fields": {k: dch[k] for k in dch if k != "id"},
+                "fields": {k: dch[k] for k in dch if k not in _DERIVED_KEYS},
             }
             summary.append(f"+ added '{cid}'")
             continue
 
         diff = {}
         for key in (set(dch) | set(bch)):
-            if key == "id":
+            if key in _DERIVED_KEYS:
                 continue
             if dch.get(key) != bch.get(key):
                 diff[key] = dch.get(key)

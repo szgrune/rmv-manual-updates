@@ -8,6 +8,10 @@
 
 const dataCache = {};
 
+// The year the user entered that produced the currently shown results — backs the
+// shareable URL, the email body, and the PDF filename.
+let currentYear = null;
+
 // ── Manifest / startup ────────────────────────────────────────────────────────
 
 async function loadManifest() {
@@ -17,7 +21,7 @@ async function loadManifest() {
 }
 
 async function init() {
-  const select = document.getElementById('year-select');
+  const input = document.getElementById('year-input');
   const accordionLabel = document.getElementById('accordion-label');
 
   let manifest;
@@ -25,7 +29,7 @@ async function init() {
     manifest = await loadManifest();
   } catch (err) {
     showYearStatus('Could not load year data. Please refresh the page.', 'error');
-    select.innerHTML = '<option value="" disabled selected>Unavailable</option>';
+    input.disabled = true;
     return;
   }
 
@@ -34,33 +38,37 @@ async function init() {
   // Update accordion label to use the actual latest year
   accordionLabel.textContent = `${latest} Updates`;
 
-  // Populate dropdown — exclude the latest year (that's the edition we compare against)
-  select.innerHTML = '<option value="" disabled selected>Select a year…</option>';
-  years.filter(year => year !== latest).forEach(year => {
-    const opt = document.createElement('option');
-    opt.value = year;
-    opt.textContent = year;
-    select.appendChild(opt);
-  });
-  select.disabled = false;
+  // Editions the user can compare against — exclude the latest (that's what we
+  // compare *to*). Sorted ascending so we can pick the most recent at-or-before.
+  const fromYears = years.filter(year => year !== latest).sort((a, b) => a - b);
 
   // Pre-fetch accordion data (second-latest → latest)
-  const priorYears = years.filter(y => y !== latest);
-  if (priorYears.length > 0) {
-    const secondLatest = priorYears[priorYears.length - 1];
+  if (fromYears.length > 0) {
+    const secondLatest = fromYears[fromYears.length - 1];
     loadChanges(secondLatest, latest).then(data => {
       if (data) renderAccordion(data);
     }).catch(() => {
       document.getElementById('accordion-content').innerHTML =
-        '<p class="error-msg">Could not load 2026 update data.</p>';
+        `<p class="error-msg">Could not load ${latest} update data.</p>`;
     });
   }
 
-  // Year selection handler
-  select.addEventListener('change', () => {
-    const selectedYear = parseInt(select.value, 10);
-    handleYearSelect(selectedYear, latest);
+  // Year input handler — evaluate on Enter or when the field loses focus
+  const handler = () => handleYearInput(input.value, fromYears, latest);
+  input.addEventListener('change', handler);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handler();
+    }
   });
+
+  // Reopen a shared view from the URL (?year=…).
+  const yearParam = new URLSearchParams(window.location.search).get('year');
+  if (yearParam) {
+    input.value = yearParam;
+    handleYearInput(yearParam, fromYears, latest);
+  }
 }
 
 // ── Data loading ──────────────────────────────────────────────────────────────
@@ -76,34 +84,51 @@ async function loadChanges(fromYear, toYear) {
   return data;
 }
 
-// ── Year selection ────────────────────────────────────────────────────────────
+// ── Year input ──────────────────────────────────────────────────────────────
 
-async function handleYearSelect(selectedYear, latestYear) {
-  const select = document.getElementById('year-select');
+async function handleYearInput(rawValue, fromYears, latestYear) {
   const changesSection = document.getElementById('changes-section');
+  const value = rawValue.trim();
 
-  if (selectedYear === latestYear) {
-    changesSection.hidden = false;
-    document.getElementById('changes-heading').textContent = `Changes Since ${selectedYear}`;
-    document.getElementById('overview-block').innerHTML =
-      '<p class="info-msg">You selected the most current manual year. No updates to display.</p>';
-    document.getElementById('sections-list').innerHTML = '';
-    showYearStatus('');
+  // Anything that isn't a four-digit year is rejected outright.
+  if (!/^\d{4}$/.test(value)) {
+    changesSection.hidden = true;
+    showYearStatus('Invalid Input', 'error');
     return;
   }
 
-  showYearStatus('Loading…');
-  select.disabled = true;
+  const enteredYear = parseInt(value, 10);
+
+  // Most recent edition at or before the entered year (e.g. 2009 → 2007).
+  let fromYear = null;
+  for (const y of fromYears) {
+    if (y <= enteredYear) fromYear = y;
+  }
+
+  // Years before our oldest edition: warn, but still show the oldest edition's
+  // updates as the closest available match.
+  const beforeOldest = fromYear === null;
+  if (beforeOldest) fromYear = fromYears[0];
+
+  showYearStatus(beforeOldest
+    ? `We only have manual data going back to ${fromYears[0]}.`
+    : 'Loading…',
+    beforeOldest ? 'error' : '');
 
   try {
-    const data = await loadChanges(selectedYear, latestYear);
-    renderChanges(data, selectedYear, latestYear);
-    showYearStatus('');
+    const data = await loadChanges(fromYear, latestYear);
+    renderChanges(data, fromYear, latestYear);
+    // Preserve the warning when we fell back to the oldest edition.
+    if (!beforeOldest) showYearStatus('');
+    // Reflect the view in the URL so it can be shared / reopened.
+    currentYear = enteredYear;
+    const url = new URL(window.location.href);
+    url.search = `?year=${enteredYear}`;
+    url.hash = '';
+    history.replaceState(null, '', url.toString());
   } catch (err) {
     showYearStatus('Could not load update data. Please try again.', 'error');
     changesSection.hidden = true;
-  } finally {
-    select.disabled = false;
   }
 }
 
@@ -125,6 +150,7 @@ function renderChanges(data, fromYear, toYear) {
   heading.textContent = `Changes Since ${fromYear}`;
   overviewBlock.innerHTML = '';
   sectionsList.innerHTML = '';
+  resetResultsControls();
 
   // Summary paragraph (paraphrased, no direct quotes)
   if (data.overview) {
@@ -176,7 +202,10 @@ function groupByChapter(sections) {
     }
     groups.get(chapter).items.push(sec);
   });
-  return [...groups.values()].sort((a, b) => a.chapter_num - b.chapter_num);
+  // "Rules of the Road" is highlighted by always sorting first; the rest keep
+  // their natural chapter order.
+  const rank = g => (g.chapter === 'Rules of the Road' ? -Infinity : g.chapter_num);
+  return [...groups.values()].sort((a, b) => rank(a) - rank(b));
 }
 
 function groupAnchorId(prefix, chapter) {
@@ -286,9 +315,25 @@ function buildChapterGroup(group, idPrefix) {
   return wrap;
 }
 
+function buildCitationLink({ year, page }) {
+  const a = document.createElement('a');
+  a.className = 'citation-link';
+  a.href = `manuals/Drivers_Manual_${year}.pdf#page=${page}`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.textContent = `(p. ${page})`;
+  a.title = `Open the ${year} Massachusetts Driver's Manual at page ${page}`;
+  return a;
+}
+
 function buildSectionCard(sec) {
   const card = document.createElement('div');
   card.className = 'section-card';
+
+  // Filterable metadata (used by applyFilters): change type + searchable text.
+  card.dataset.type = sec.change_type || '';
+  card.dataset.search = [sec.title, sec.description, ...(sec.bullets || [])]
+    .filter(Boolean).join(' ').toLowerCase();
 
   // Header: title + badge
   const header = document.createElement('div');
@@ -315,20 +360,29 @@ function buildSectionCard(sec) {
     card.appendChild(desc);
   }
 
-  // Bullets
+  // Bullets — each is a direct quote; append a page-level PDF citation when one
+  // was matched during the build (see scripts/lib/citations.py).
   if (sec.bullets && sec.bullets.length > 0) {
     const ul = document.createElement('ul');
     ul.className = 'section-bullets';
-    sec.bullets.forEach(bullet => {
+    sec.bullets.forEach((bullet, i) => {
       const li = document.createElement('li');
       li.textContent = bullet;
+      const citation = sec.citations && sec.citations[i];
+      if (citation) {
+        li.appendChild(document.createTextNode(' '));
+        li.appendChild(buildCitationLink(citation));
+      }
       ul.appendChild(li);
     });
     card.appendChild(ul);
   }
 
-  // Images
+  // Images — laid out in a wrapping flex row so multiple fit per line
   if (sec.images && sec.images.length > 0) {
+    const gallery = document.createElement('div');
+    gallery.className = 'section-figures';
+
     sec.images.forEach(img => {
       const figure = document.createElement('figure');
       figure.className = 'section-figure';
@@ -345,8 +399,10 @@ function buildSectionCard(sec) {
         figure.appendChild(caption);
       }
 
-      card.appendChild(figure);
+      gallery.appendChild(figure);
     });
+
+    card.appendChild(gallery);
   }
 
   return card;
@@ -382,6 +438,200 @@ function initAccordion() {
   });
 }
 
+// ── Search + filter controls ────────────────────────────────────────────────
+
+function initResultsControls() {
+  const search = document.getElementById('results-search');
+  if (search) search.addEventListener('input', applyFilters);
+  document.querySelectorAll('#results-filters input').forEach(cb =>
+    cb.addEventListener('change', applyFilters));
+  initShareMenu();
+}
+
+function resetResultsControls() {
+  const search = document.getElementById('results-search');
+  if (search) search.value = '';
+  document.querySelectorAll('#results-filters input:checked').forEach(cb => (cb.checked = false));
+  const empty = document.getElementById('results-empty');
+  if (empty) empty.hidden = true;
+  closeShareMenu();
+}
+
+/**
+ * Live ctrl+F-style filtering of the rendered results. Combines a text search
+ * (substring over each card's title/description/bullets) with the change-type
+ * checkboxes (OR among checked types; no checkboxes = show all). Chapter groups
+ * and their table-of-contents entries hide when none of their cards match.
+ */
+function applyFilters() {
+  const sectionsList = document.getElementById('sections-list');
+  if (!sectionsList) return;
+
+  const query = (document.getElementById('results-search').value || '').trim().toLowerCase();
+  const activeTypes = [...document.querySelectorAll('#results-filters input:checked')]
+    .map(cb => cb.value);
+
+  let anyVisible = false;
+  sectionsList.querySelectorAll('.section-card').forEach(card => {
+    const typeOk = activeTypes.length === 0 || activeTypes.includes(card.dataset.type);
+    const textOk = !query || (card.dataset.search || '').includes(query);
+    const visible = typeOk && textOk;
+    card.classList.toggle('is-hidden', !visible);
+    if (visible) anyVisible = true;
+  });
+
+  const toc = document.getElementById('overview-block');
+  sectionsList.querySelectorAll('.change-group').forEach(group => {
+    const groupVisible = group.querySelector('.section-card:not(.is-hidden)') !== null;
+    group.classList.toggle('is-hidden', !groupVisible);
+    const heading = group.querySelector('.group-heading');
+    if (heading && toc) {
+      const link = toc.querySelector(`.toc-list a[href="#${heading.id}"]`);
+      if (link) link.closest('li').classList.toggle('is-hidden', !groupVisible);
+    }
+  });
+
+  const empty = document.getElementById('results-empty');
+  if (empty) empty.hidden = anyVisible;
+}
+
+// ── Share menu ──────────────────────────────────────────────────────────────
+
+function initShareMenu() {
+  const btn = document.getElementById('share-btn');
+  const menu = document.getElementById('share-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.hidden ? openShareMenu() : closeShareMenu();
+  });
+  menu.querySelectorAll('.share-option').forEach(opt =>
+    opt.addEventListener('click', () => handleShareAction(opt)));
+
+  document.addEventListener('click', (e) => {
+    if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) closeShareMenu();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeShareMenu();
+  });
+}
+
+function openShareMenu() {
+  document.getElementById('share-menu').hidden = false;
+  document.getElementById('share-btn').setAttribute('aria-expanded', 'true');
+}
+
+function closeShareMenu() {
+  const menu = document.getElementById('share-menu');
+  const btn = document.getElementById('share-btn');
+  if (menu) menu.hidden = true;
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+async function handleShareAction(opt) {
+  switch (opt.dataset.action) {
+    case 'copy':
+      try {
+        await navigator.clipboard.writeText(buildShareUrl());
+        flashOption(opt, 'Copied!');
+      } catch {
+        flashOption(opt, 'Copy failed');
+      }
+      break;
+    case 'email':
+      emailResults();
+      closeShareMenu();
+      break;
+    case 'pdf':
+      printResults(opt);
+      break;
+  }
+}
+
+function flashOption(opt, msg) {
+  const original = opt.textContent;
+  opt.textContent = msg;
+  opt.disabled = true;
+  setTimeout(() => {
+    opt.textContent = original;
+    opt.disabled = false;
+    closeShareMenu();
+  }, 1200);
+}
+
+function buildShareUrl() {
+  const url = new URL(window.location.href);
+  url.search = currentYear ? `?year=${currentYear}` : '';
+  url.hash = '';
+  return url.toString();
+}
+
+function emailResults() {
+  const heading = document.getElementById('changes-heading').textContent || "Driver's Manual Updates";
+  const summaryEl = document.querySelector('#overview-block .overview-summary');
+  const summary = summaryEl ? summaryEl.textContent.trim() + '\n\n' : '';
+  const body = `${summary}View the full results here:\n${buildShareUrl()}`;
+  window.location.href =
+    `mailto:?subject=${encodeURIComponent("MA Driver's Manual — " + heading)}` +
+    `&body=${encodeURIComponent(body)}`;
+}
+
+// ── Print / Save as PDF ───────────────────────────────────────────────────────
+
+// Lazy images that haven't loaded yet print blank — force + await them first.
+function loadVisibleImages(root) {
+  const pending = [...root.querySelectorAll('.section-card:not(.is-hidden) img')]
+    .filter(img => !img.complete)
+    .map(img => {
+      img.loading = 'eager';
+      return new Promise(res => {
+        img.addEventListener('load', res, { once: true });
+        img.addEventListener('error', res, { once: true });
+      });
+    });
+  return Promise.race([
+    Promise.all(pending),
+    new Promise(res => setTimeout(res, 3000)),
+  ]);
+}
+
+async function printResults(opt) {
+  const section = document.getElementById('changes-section');
+  const original = opt.textContent;
+  opt.textContent = 'Preparing…';
+  opt.disabled = true;
+  try {
+    await loadVisibleImages(section);
+    closeShareMenu();
+    // A print stylesheet (@media print) hides everything but the results, then
+    // the browser's print dialog lets the user "Save as PDF".
+    window.print();
+  } finally {
+    opt.textContent = original;
+    opt.disabled = false;
+  }
+}
+
+// ── Back-to-top button ────────────────────────────────────────────────────────
+
+function initScrollTop() {
+  const btn = document.getElementById('scroll-top');
+  if (!btn) return;
+
+  const update = () => {
+    const heading = document.getElementById('changes-heading');
+    const section = document.getElementById('changes-section');
+    const show = section && !section.hidden && heading
+      && heading.getBoundingClientRect().bottom < 0;
+    btn.hidden = !show;
+  };
+
+  window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  window.addEventListener('resize', update);
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
 // ── Utility ───────────────────────────────────────────────────────────────────
 
 function escapeHtml(str) {
@@ -396,5 +646,7 @@ function escapeHtml(str) {
 
 document.addEventListener('DOMContentLoaded', () => {
   initAccordion();
+  initResultsControls();
+  initScrollTop();
   init();
 });

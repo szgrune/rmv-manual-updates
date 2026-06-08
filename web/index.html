@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Driver's Manual Updates by Year</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,21 +11,25 @@
 
     <header>
       <h1>Driver's Manual Updates by Year</h1>
+      <p class="intro">Use this tool to see what has changed in the Massachusetts Driver's Manual since you got your driver's license. Right now, only some years are included, so you will see the one closest to the year you enter.</p>
     </header>
 
-    <!-- Year selector -->
+    <!-- Year input -->
     <section id="year-selector-section">
-      <label for="year-select">Select the year you got your driver's license:</label>
-      <div class="select-wrapper">
-        <select id="year-select" disabled>
-          <option value="" selected disabled>Loading years…</option>
-        </select>
-      </div>
+      <label for="year-input">Enter the year you got your driver's license:</label>
+      <input
+        type="text"
+        id="year-input"
+        inputmode="numeric"
+        maxlength="4"
+        placeholder="e.g. 2015"
+        autocomplete="off"
+      >
       <p id="year-status" aria-live="polite"></p>
     </section>
 
-    <!-- Always-visible 2026 Updates accordion -->
-    <section id="accordion-section">
+    <!-- Always-visible 2026 Updates accordion (temporarily hidden) -->
+    <section id="accordion-section" hidden>
       <button
         id="accordion-toggle"
         aria-expanded="false"
@@ -49,11 +50,58 @@
     <!-- Dynamic "Changes since [year]" section -->
     <section id="changes-section" hidden aria-live="polite">
       <h2 id="changes-heading"></h2>
+
+      <!-- Search / filter / share toolbar -->
+      <div id="results-controls">
+        <div class="controls-row">
+          <input
+            type="search"
+            id="results-search"
+            placeholder="Search the updates…"
+            aria-label="Search the updates"
+            autocomplete="off"
+          >
+          <div class="share-wrapper">
+            <button id="share-btn" type="button" aria-haspopup="true" aria-expanded="false">
+              <svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.6" y1="10.7" x2="15.4" y2="6.3"></line>
+                <line x1="8.6" y1="13.3" x2="15.4" y2="17.7"></line>
+              </svg>
+              <span>Share</span>
+            </button>
+            <div id="share-menu" role="menu" hidden>
+              <button class="share-option" type="button" role="menuitem" data-action="pdf">Print / Save as PDF</button>
+              <button class="share-option" type="button" role="menuitem" data-action="email">Email the results</button>
+              <button class="share-option" type="button" role="menuitem" data-action="copy">Copy the link</button>
+            </div>
+          </div>
+        </div>
+        <fieldset id="results-filters">
+          <legend class="sr-only">Filter by change type</legend>
+          <label class="filter-chip"><input type="checkbox" value="new"><span>New</span></label>
+          <label class="filter-chip"><input type="checkbox" value="updated"><span>Updated</span></label>
+          <label class="filter-chip"><input type="checkbox" value="expanded"><span>Expanded</span></label>
+          <label class="filter-chip"><input type="checkbox" value="removed"><span>Removed</span></label>
+        </fieldset>
+      </div>
+
       <div id="overview-block" class="overview-callout"></div>
       <div id="sections-list"></div>
+      <p id="results-empty" class="info-msg" hidden>No matching updates. Try clearing the search or filters.</p>
     </section>
 
   </div>
+
+  <!-- Back-to-top button -->
+  <button id="scroll-top" type="button" aria-label="Scroll to top" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <polyline points="6 14 12 8 18 14"></polyline>
+    </svg>
+  </button>
+
   <script src="app.js"></script>
 </body>
 </html>
