@@ -73,9 +73,17 @@ h4 {
 /* ── Intro blurb ─────────────────────────────────────────── */
 .intro {
   margin-top: calc(-1 * var(--spacing-md));
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
   font-size: 1rem;
   color: #333;
+  max-width: 65ch;
+}
+
+.disclaimer {
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #555;
   max-width: 65ch;
 }
 
