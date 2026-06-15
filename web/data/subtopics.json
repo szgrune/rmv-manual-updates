@@ -1,0 +1,36 @@
+[
+  { "chapter_num": 1, "page": 10, "title": "Eligibility" },
+  { "chapter_num": 1, "page": 16, "title": "Junior Operators" },
+  { "chapter_num": 1, "page": 21, "title": "Permits & Exams" },
+  { "chapter_num": 1, "page": 27, "title": "Road Test" },
+  { "chapter_num": 1, "page": 36, "title": "Conversions & IDs" },
+  { "chapter_num": 1, "page": 40, "title": "Fees" },
+
+  { "chapter_num": 2, "page": 42, "title": "Safety Equipment" },
+  { "chapter_num": 2, "page": 47, "title": "Distracted Driving" },
+  { "chapter_num": 2, "page": 49, "title": "Defensive Driving" },
+  { "chapter_num": 2, "page": 56, "title": "Sharing the Road" },
+  { "chapter_num": 2, "page": 59, "title": "Motorcycles & Mopeds" },
+  { "chapter_num": 2, "page": 61, "title": "Bikes & Low-Speed" },
+
+  { "chapter_num": 3, "page": 64, "title": "Violations & Fees" },
+  { "chapter_num": 3, "page": 67, "title": "Crashes & Records" },
+  { "chapter_num": 3, "page": 71, "title": "License Suspension" },
+  { "chapter_num": 3, "page": 79, "title": "Alcohol & Drugs" },
+  { "chapter_num": 3, "page": 84, "title": "Toll Nonrenewal" },
+
+  { "chapter_num": 4, "page": 87, "title": "Speed Limits" },
+  { "chapter_num": 4, "page": 88, "title": "Traffic Signals" },
+  { "chapter_num": 4, "page": 96, "title": "Pavement Markings" },
+  { "chapter_num": 4, "page": 106, "title": "Turns & Maneuvers" },
+  { "chapter_num": 4, "page": 108, "title": "Sharing the Road" },
+  { "chapter_num": 4, "page": 115, "title": "Funeral Processions" },
+  { "chapter_num": 4, "page": 118, "title": "Parking Rules" },
+  { "chapter_num": 4, "page": 120, "title": "Bicycle Rules" },
+  { "chapter_num": 4, "page": 128, "title": "Emergency Vehicles" },
+
+  { "chapter_num": 5, "page": 130, "title": "Police Stops" },
+  { "chapter_num": 5, "page": 133, "title": "Breakdowns" },
+  { "chapter_num": 5, "page": 135, "title": "Traffic Crashes" },
+  { "chapter_num": 5, "page": 140, "title": "Crash Reports" }
+]

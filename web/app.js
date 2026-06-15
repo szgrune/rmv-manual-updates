@@ -8,9 +8,18 @@
 
 const dataCache = {};
 
+// Editable outline of subtopic headings (web/data/subtopics.json), loaded once at
+// startup. Each entry: { chapter_num, page, title }. Results are bucketed under the
+// nearest preceding heading by citation page. Empty → app degrades to chapter-only.
+let SUBTOPICS = [];
+
 // The year the user entered that produced the currently shown results — backs the
 // shareable URL, the email body, and the PDF filename.
 let currentYear = null;
+
+// True while a search query or change-type filter is active. When set, the
+// per-subtopic "first 3 results" cap is suspended so matches aren't hidden.
+let filterActive = false;
 
 // ── Manifest / startup ────────────────────────────────────────────────────────
 
@@ -18,6 +27,18 @@ async function loadManifest() {
   const resp = await fetch('data/manifest.json');
   if (!resp.ok) throw new Error(`manifest.json fetch failed: ${resp.status}`);
   return resp.json();
+}
+
+// Subtopic outline is optional — if it can't be loaded, results still render
+// grouped by chapter (every result falls into the "General" bucket).
+async function loadSubtopics() {
+  try {
+    const resp = await fetch('data/subtopics.json');
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    SUBTOPICS = await resp.json();
+  } catch {
+    SUBTOPICS = [];
+  }
 }
 
 async function init() {
@@ -32,6 +53,10 @@ async function init() {
     input.disabled = true;
     return;
   }
+
+  // Subtopic outline backs the nested TOC and the per-subtopic grouping — load it
+  // before any rendering so both the accordion and year views can use it.
+  await loadSubtopics();
 
   const { manual_years: years, latest_year: latest } = manifest;
 
@@ -165,12 +190,12 @@ function renderChanges(data, fromYear, toYear) {
 
   const groups = groupByChapter(data.sections);
 
-  // Table of contents inside the blue box
-  overviewBlock.appendChild(buildTableOfContents(groups, idPrefix));
+  // Table of contents inside the blue box (chapters + nested subtopics)
+  overviewBlock.appendChild(buildTableOfContents(groups, idPrefix, SUBTOPICS));
 
-  // Grouped change cards with anchored headings
+  // Grouped change cards, split into subtopic subsections with anchored headings
   groups.forEach(group => {
-    sectionsList.appendChild(buildChapterGroup(group, idPrefix));
+    sectionsList.appendChild(buildChapterGroup(group, idPrefix, SUBTOPICS));
   });
 
   changesSection.hidden = false;
@@ -186,7 +211,7 @@ function renderAccordion(data) {
   }
 
   groupByChapter(data.sections).forEach(group => {
-    content.appendChild(buildChapterGroup(group, 'accordion'));
+    content.appendChild(buildChapterGroup(group, 'accordion', SUBTOPICS));
   });
 }
 
@@ -211,6 +236,61 @@ function groupByChapter(sections) {
 function groupAnchorId(prefix, chapter) {
   const slug = chapter.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   return `${prefix}-group-${slug}`;
+}
+
+function subtopicAnchorId(prefix, chapter, subtopicTitle) {
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return `${prefix}-sub-${slug(chapter)}-${slug(subtopicTitle)}`;
+}
+
+// Lowest citation page for a change result, or null when it has no page citation.
+function resultPage(sec) {
+  const pages = (sec.citations || [])
+    .map(c => c && c.page)
+    .filter(p => typeof p === 'number');
+  return pages.length ? Math.min(...pages) : null;
+}
+
+/**
+ * Partition a chapter's results into ordered subtopic buckets. Each result is
+ * placed under the subtopic whose page is the greatest at-or-before its citation
+ * page. Results with no citation, or that fall before the chapter's first heading,
+ * collect in a leading "General" bucket (rendered without a subheading). Subtopics
+ * with no results are dropped. Returns [{ title, items }] in document order.
+ *
+ * Pure (config passed in) so it can be unit-tested in Node.
+ */
+function bucketBySubtopic(items, chapterNum, subtopics) {
+  const headings = (subtopics || [])
+    .filter(s => s.chapter_num === chapterNum)
+    .sort((a, b) => a.page - b.page);
+
+  const general = [];
+  const byTitle = new Map();   // title → items[], insertion-ordered by page
+
+  items.forEach(sec => {
+    const page = resultPage(sec);
+    let chosen = null;
+    if (page != null) {
+      for (const h of headings) {
+        if (h.page <= page) chosen = h; else break;
+      }
+    }
+    if (!chosen) {
+      general.push(sec);
+      return;
+    }
+    if (!byTitle.has(chosen.title)) byTitle.set(chosen.title, []);
+    byTitle.get(chosen.title).push(sec);
+  });
+
+  const buckets = [];
+  if (general.length) buckets.push({ title: 'General', items: general });
+  headings.forEach(h => {
+    const list = byTitle.get(h.title);
+    if (list && list.length) buckets.push({ title: h.title, items: list });
+  });
+  return buckets;
 }
 
 function buildSummaryParagraph(text) {
@@ -267,14 +347,33 @@ function scrollToHeading(targetId) {
   ]).then(go);
 }
 
-function buildTableOfContents(groups, idPrefix) {
+// A TOC jump link that autoscrolls (and flashes) its target heading.
+function buildTocLink(targetId, text, className) {
+  const a = document.createElement('a');
+  a.className = className;
+  a.href = `#${targetId}`;
+  a.textContent = text;
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollToHeading(targetId);
+  });
+  return a;
+}
+
+/**
+ * Outline-style table of contents inside the blue box: each chapter is a heading
+ * with a nested list of its subtopics. Both levels autoscroll to their anchored
+ * heading in the results. TOC entries are tagged so applyFilters can hide the ones
+ * whose results all filtered out.
+ */
+function buildTableOfContents(groups, idPrefix, subtopics) {
   const nav = document.createElement('nav');
   nav.className = 'toc';
   nav.setAttribute('aria-label', 'Topic areas');
 
   const label = document.createElement('p');
   label.className = 'toc-label';
-  label.textContent = 'Jump to a topic area:';
+  label.textContent = 'Jump to a section:';
   nav.appendChild(label);
 
   const ul = document.createElement('ul');
@@ -283,14 +382,24 @@ function buildTableOfContents(groups, idPrefix) {
   groups.forEach(group => {
     const targetId = groupAnchorId(idPrefix, group.chapter);
     const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = `#${targetId}`;
-    a.textContent = group.chapter;
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      scrollToHeading(targetId);
-    });
-    li.appendChild(a);
+    li.className = 'toc-chapter';
+    li.appendChild(buildTocLink(targetId, group.chapter, 'toc-chapter-link'));
+
+    // Nested subtopic links (skip the unnamed "General" bucket).
+    const named = bucketBySubtopic(group.items, group.chapter_num, subtopics)
+      .filter(b => b.title !== 'General' && b.items.length);
+    if (named.length) {
+      const subUl = document.createElement('ul');
+      subUl.className = 'toc-sublist';
+      named.forEach(bucket => {
+        const subId = subtopicAnchorId(idPrefix, group.chapter, bucket.title);
+        const subLi = document.createElement('li');
+        subLi.appendChild(buildTocLink(subId, bucket.title, 'toc-sub-link'));
+        subUl.appendChild(subLi);
+      });
+      li.appendChild(subUl);
+    }
+
     ul.appendChild(li);
   });
 
@@ -298,7 +407,10 @@ function buildTableOfContents(groups, idPrefix) {
   return nav;
 }
 
-function buildChapterGroup(group, idPrefix) {
+// Number of result pills shown per subtopic before "View All" is offered.
+const SUBTOPIC_VISIBLE_LIMIT = 3;
+
+function buildChapterGroup(group, idPrefix, subtopics) {
   const wrap = document.createElement('section');
   wrap.className = 'change-group';
 
@@ -308,11 +420,68 @@ function buildChapterGroup(group, idPrefix) {
   heading.textContent = group.chapter;
   wrap.appendChild(heading);
 
-  group.items.forEach(sec => {
-    wrap.appendChild(buildSectionCard(sec));
+  bucketBySubtopic(group.items, group.chapter_num, subtopics).forEach(bucket => {
+    const section = document.createElement('div');
+    section.className = 'subtopic-section';
+
+    if (bucket.title !== 'General') {
+      const sub = document.createElement('h4');
+      sub.className = 'subtopic-heading';
+      sub.id = subtopicAnchorId(idPrefix, group.chapter, bucket.title);
+      sub.textContent = bucket.title;
+      section.appendChild(sub);
+    }
+
+    bucket.items.forEach(sec => section.appendChild(buildSectionCard(sec)));
+
+    // "View All" / "Hide" toggle — only meaningful past the visible limit.
+    if (bucket.items.length > SUBTOPIC_VISIBLE_LIMIT) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'view-toggle';
+      btn.addEventListener('click', () => {
+        section.dataset.expanded = section.dataset.expanded === 'true' ? 'false' : 'true';
+        applySubtopicCollapse(section);
+      });
+      section.appendChild(btn);
+    }
+
+    wrap.appendChild(section);
+    applySubtopicCollapse(section);
   });
 
   return wrap;
+}
+
+/**
+ * Enforce the per-subtopic "first 3 results" rule on one subsection. The 4th
+ * visible pill gets a gradient teaser (.result-teaser); the rest hide
+ * (.result-overflow); a "View All" button reveals everything ("Hide" collapses
+ * back). When a search/filter is active the cap is suspended so matches aren't
+ * trapped behind the teaser. Re-run on render and whenever filters change.
+ */
+function applySubtopicCollapse(section) {
+  const cards = [...section.querySelectorAll('.section-card')]
+    .filter(c => !c.classList.contains('is-hidden'));
+  cards.forEach(c => c.classList.remove('result-teaser', 'result-overflow'));
+
+  const btn = section.querySelector('.view-toggle');
+  const expanded = section.dataset.expanded === 'true';
+  const capped = !filterActive && !expanded && cards.length > SUBTOPIC_VISIBLE_LIMIT;
+
+  if (capped) {
+    cards.forEach((c, i) => {
+      if (i === SUBTOPIC_VISIBLE_LIMIT) c.classList.add('result-teaser');
+      else if (i > SUBTOPIC_VISIBLE_LIMIT) c.classList.add('result-overflow');
+    });
+  }
+
+  if (btn) {
+    // Hide the button while filtering (all matches already shown) or when there's
+    // nothing past the limit; otherwise label it for the current state.
+    btn.hidden = filterActive || cards.length <= SUBTOPIC_VISIBLE_LIMIT;
+    btn.textContent = expanded ? 'Hide' : 'View All';
+  }
 }
 
 function buildCitationLink({ year, page }) {
@@ -326,6 +495,16 @@ function buildCitationLink({ year, page }) {
   return a;
 }
 
+// Unique id source for card-toggle ↔ card-body wiring (aria-controls).
+let cardSeq = 0;
+
+/**
+ * A single change result rendered as a collapsible pill. Collapsed by default it
+ * shows only the title, change-type badge, and subtitle (the description). Clicking
+ * the pill reveals the body: the direct quote(s) with PDF citations and any images.
+ * The body stays in the DOM while collapsed (hidden via CSS) so search and
+ * Print/Save-as-PDF still see its content.
+ */
 function buildSectionCard(sec) {
   const card = document.createElement('div');
   card.className = 'section-card';
@@ -335,30 +514,60 @@ function buildSectionCard(sec) {
   card.dataset.search = [sec.title, sec.description, ...(sec.bullets || [])]
     .filter(Boolean).join(' ').toLowerCase();
 
-  // Header: title + badge
-  const header = document.createElement('div');
-  header.className = 'card-header';
+  const bodyId = `card-body-${++cardSeq}`;
 
-  const title = document.createElement('h4');
+  // Clickable header (collapsed view): title + badge + subtitle + caret.
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'card-toggle';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', bodyId);
+
+  const main = document.createElement('span');
+  main.className = 'card-toggle-main';
+
+  const headLine = document.createElement('span');
+  headLine.className = 'card-toggle-head';
+
+  // A span (not a heading) — the title lives inside a <button>, whose content
+  // model only allows phrasing content.
+  const title = document.createElement('span');
+  title.className = 'card-title';
   title.textContent = sec.title || 'Update';
-  header.appendChild(title);
+  headLine.appendChild(title);
 
   if (sec.change_type) {
     const badge = document.createElement('span');
     badge.className = `badge badge-${sec.change_type}`;
     badge.textContent = sec.change_type;
-    header.appendChild(badge);
+    headLine.appendChild(badge);
   }
+  main.appendChild(headLine);
 
-  card.appendChild(header);
-
-  // Description
   if (sec.description) {
-    const desc = document.createElement('p');
-    desc.className = 'section-description';
-    desc.textContent = sec.description;
-    card.appendChild(desc);
+    const subtitle = document.createElement('span');
+    subtitle.className = 'card-subtitle';
+    subtitle.textContent = sec.description;
+    main.appendChild(subtitle);
   }
+  toggle.appendChild(main);
+
+  // Caret mirrors the accordion chevron; rotates via CSS on aria-expanded.
+  const caret = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  caret.setAttribute('class', 'card-caret');
+  caret.setAttribute('viewBox', '0 0 24 24');
+  caret.setAttribute('aria-hidden', 'true');
+  const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+  poly.setAttribute('points', '6 9 12 15 18 9');
+  caret.appendChild(poly);
+  toggle.appendChild(caret);
+
+  card.appendChild(toggle);
+
+  // Expandable body: direct quotes + images.
+  const body = document.createElement('div');
+  body.className = 'card-body';
+  body.id = bodyId;
 
   // Bullets — each is a direct quote; append a page-level PDF citation when one
   // was matched during the build (see scripts/lib/citations.py).
@@ -375,7 +584,7 @@ function buildSectionCard(sec) {
       }
       ul.appendChild(li);
     });
-    card.appendChild(ul);
+    body.appendChild(ul);
   }
 
   // Images — laid out in a wrapping flex row so multiple fit per line
@@ -402,8 +611,15 @@ function buildSectionCard(sec) {
       gallery.appendChild(figure);
     });
 
-    card.appendChild(gallery);
+    body.appendChild(gallery);
   }
+
+  card.appendChild(body);
+
+  toggle.addEventListener('click', () => {
+    const open = card.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
 
   return card;
 }
@@ -452,6 +668,7 @@ function resetResultsControls() {
   const search = document.getElementById('results-search');
   if (search) search.value = '';
   document.querySelectorAll('#results-filters input:checked').forEach(cb => (cb.checked = false));
+  filterActive = false;
   const empty = document.getElementById('results-empty');
   if (empty) empty.hidden = true;
   closeShareMenu();
@@ -460,8 +677,10 @@ function resetResultsControls() {
 /**
  * Live ctrl+F-style filtering of the rendered results. Combines a text search
  * (substring over each card's title/description/bullets) with the change-type
- * checkboxes (OR among checked types; no checkboxes = show all). Chapter groups
- * and their table-of-contents entries hide when none of their cards match.
+ * checkboxes (OR among checked types; no checkboxes = show all). Subtopic
+ * subsections, chapter groups, and their table-of-contents entries hide when none
+ * of their cards match. While any filter is active the per-subtopic "first 3" cap
+ * is suspended so every match shows.
  */
 function applyFilters() {
   const sectionsList = document.getElementById('sections-list');
@@ -470,6 +689,7 @@ function applyFilters() {
   const query = (document.getElementById('results-search').value || '').trim().toLowerCase();
   const activeTypes = [...document.querySelectorAll('#results-filters input:checked')]
     .map(cb => cb.value);
+  filterActive = query !== '' || activeTypes.length > 0;
 
   let anyVisible = false;
   sectionsList.querySelectorAll('.section-card').forEach(card => {
@@ -481,14 +701,25 @@ function applyFilters() {
   });
 
   const toc = document.getElementById('overview-block');
+  const tocLinkFor = id => (toc && id) ? toc.querySelector(`.toc a[href="#${id}"]`) : null;
+
+  // Subtopic subsections: hide when empty, re-apply the (possibly suspended) cap,
+  // and toggle the matching nested TOC link.
+  sectionsList.querySelectorAll('.subtopic-section').forEach(section => {
+    const visible = section.querySelector('.section-card:not(.is-hidden)') !== null;
+    section.classList.toggle('is-hidden', !visible);
+    const subHeading = section.querySelector('.subtopic-heading');
+    const link = subHeading && tocLinkFor(subHeading.id);
+    if (link) link.closest('li').classList.toggle('is-hidden', !visible);
+    if (visible) applySubtopicCollapse(section);
+  });
+
   sectionsList.querySelectorAll('.change-group').forEach(group => {
     const groupVisible = group.querySelector('.section-card:not(.is-hidden)') !== null;
     group.classList.toggle('is-hidden', !groupVisible);
     const heading = group.querySelector('.group-heading');
-    if (heading && toc) {
-      const link = toc.querySelector(`.toc-list a[href="#${heading.id}"]`);
-      if (link) link.closest('li').classList.toggle('is-hidden', !groupVisible);
-    }
+    const link = heading && tocLinkFor(heading.id);
+    if (link) link.closest('.toc-chapter').classList.toggle('is-hidden', !groupVisible);
   });
 
   const empty = document.getElementById('results-empty');
@@ -644,9 +875,17 @@ function escapeHtml(str) {
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 
-document.addEventListener('DOMContentLoaded', () => {
-  initAccordion();
-  initResultsControls();
-  initScrollTop();
-  init();
-});
+// Guarded so this module can be `require`d in Node (tests) without a DOM.
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initAccordion();
+    initResultsControls();
+    initScrollTop();
+    init();
+  });
+}
+
+// Export the pure helpers for unit testing under Node.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { resultPage, bucketBySubtopic, subtopicAnchorId, groupByChapter };
+}

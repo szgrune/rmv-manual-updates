@@ -1,19 +1,22 @@
 # MA Driver's Manual Updates — Project Brief, PRD & Tradeoffs Analysis
 
 **Status:** Working prototype (internal)
+
 **Audience:** RMV leadership and IT/web stakeholders
+
 **Purpose:** Decision-support for finishing and extending the tool
-**Prepared:** June 2026
+
+**Prepared:** June 2026 by Lab @ MassDOT Fellow Samuel Grunebaum
 
 ---
 
 ## Executive brief
 
 *One page for decision-makers. The full product requirements and cost analysis
-follow as backup (Sections 1–8).*
+follow as backup ([Sections 1–8](#1-executive-summary)).*
 
 > **See it live:** **https://szgrune.github.io/rmv-manual-updates/web/** — the
-> working app is the fastest way to grasp this. A two-minute look tells the whole story.
+> working app is the fastest way to grasp this.
 
 ### The problem
 
@@ -35,15 +38,13 @@ remains the source of truth.
 
 ### Why MassDOT, why now
 
-- **It serves people the RMV already serves** — including court-mandated
-  driver-education participants and newly relocated drivers — and routes them to
+- **It serves people the RMV already serves** — whether court-mandated
+  driver-education participants or newly relocated drivers — and routes them to
   official content faster.
 - **It's a low-risk, high-visibility example of responsible AI in state
   government:** built quickly with AI assistance, grounded in the official
-  document, with a citation on every claim.
-- **A working prototype already exists.** This is not a proposal to build
-  something speculative — it's a request to finish and adopt something that
-  already works.
+  document, with a citation on every claim, and designed intentionally to serve public interest.
+- **A working prototype already exists.** This prototype was built in the first week of the fellowship — a demonstration of what AI-assisted development makes possible. Production-quality work — security, accessibility, self-service tools for RMV staff, additional languages — is addressed in the subsequent sections of this brief.
 
 ### What it costs
 
@@ -52,19 +53,18 @@ remains the source of truth.
 - **To finish: one intern-summer**, with light in-house IT/web follow-up. No new
   budget of consequence.
 - **IT footprint: negligible.** The public site is static — no new server,
-  database, or software licenses required.
+  database, or software licenses required (it relies only on the existing MassDOT OpenAI license to stay operational).
 
 ### What we're asking
 
 Help move this from prototype to public service by:
 
 1. **Endorsing it to the RMV** and connecting us with the right digital/content owners;
-2. **Authorizing hosting** on Mass.gov / state web infrastructure under the RMV's banner; and
-3. **Blessing completion** of the remaining work through this summer's intern plus
+2. **Approve completion** of the remaining work through this summer's internship plus
    light in-house follow-up.
 
 *Questions of accuracy, equity, and legal exposure are real and have been thought
-through; they are addressed candidly in [Section 3](#3-concerns--counterarguments-candid)
+through; they are addressed candidly in [Section 3](#3-concerns--counterarguments)
 and the appendix.*
 
 ---
@@ -158,7 +158,7 @@ The system has two halves:
 
 ---
 
-## 3. Concerns & counterarguments (candid)
+## 3. Concerns & counterarguments
 
 This section anticipates the questions a careful reviewer should raise, with the
 mitigation for each.

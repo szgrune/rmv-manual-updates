@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RMV_manual_updates_app_brief.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="ma-drivers-manual-updates--project-brief-prd--tradeoffs-analysis">MA Driver's Manual Updates — Project Brief, PRD &amp; Tradeoffs Analysis</h1>
+<p><strong>Status:</strong> Working prototype (internal)</p>
+<p><strong>Audience:</strong> RMV leadership and IT/web stakeholders</p>
+<p><strong>Purpose:</strong> Decision-support for finishing and extending the tool</p>
+<p><strong>Prepared:</strong> June 2026 by Lab @ MassDOT Fellow Samuel Grunebaum</p>
+<hr>
+<h2 id="executive-brief">Executive brief</h2>
+<p><em>One page for decision-makers. The full product requirements and cost analysis
+follow as backup (<a href="#1-executive-summary">Sections 1–8</a>).</em></p>
+<blockquote>
+<p><strong>See it live:</strong> <strong>https://szgrune.github.io/rmv-manual-updates/web/</strong> — the
+working app is the fastest way to grasp this.</p>
+</blockquote>
+<h3 id="the-problem">The problem</h3>
+<p>Massachusetts has on the order of <strong>5 million licensed drivers</strong>. Most earned
+their license as teenagers and haven't opened the driver's manual since. Yet the
+rules keep changing — hands-free phone requirements, new protections for cyclists
+and other vulnerable road users, cannabis and impaired-driving guidance — and
+today there is <strong>no easy way for a driver to find out what changed since they learned to drive.</strong> The official manual is ~140 pages, republished as a whole, with the
+changes buried inside it.</p>
+<h3 id="the-solution">The solution</h3>
+<p>A simple public website answers one question: <em>&quot;What has changed in the driver's
+manual since I got my license?&quot;</em> A driver enters the year they were licensed and
+immediately sees a clear, organized summary of what's new, updated, or removed —
+with <strong>every item linked straight to the exact page of the official RMV manual.</strong>
+It is an access-and-orientation layer on top of the RMV's own content; the manual
+remains the source of truth.</p>
+<h3 id="why-massdot-why-now">Why MassDOT, why now</h3>
+<ul>
+<li><strong>It serves people the RMV already serves</strong> — whether court-mandated
+driver-education participants or newly relocated drivers — and routes them to
+official content faster.</li>
+<li><strong>It's a low-risk, high-visibility example of responsible AI in state
+government:</strong> built quickly with AI assistance, grounded in the official
+document, with a citation on every claim, and designed intentionally to serve public interest.</li>
+<li><strong>A working prototype already exists.</strong> This prototype was built in the first week of the fellowship — a demonstration of what AI-assisted development makes possible. Production-quality work — security, accessibility, self-service tools for RMV staff, additional languages — is addressed in the subsequent sections of this brief.</li>
+</ul>
+<h3 id="what-it-costs">What it costs</h3>
+<ul>
+<li><strong>To operate: under $100 a year.</strong> The only recurring cost is the AI analysis
+that runs when a new manual is released — a few dollars per run.</li>
+<li><strong>To finish: one intern-summer</strong>, with light in-house IT/web follow-up. No new
+budget of consequence.</li>
+<li><strong>IT footprint: negligible.</strong> The public site is static — no new server,
+database, or software licenses required (it relies only on the existing MassDOT OpenAI license to stay operational).</li>
+</ul>
+<h3 id="what-were-asking">What we're asking</h3>
+<p>Help move this from prototype to public service by:</p>
+<ol>
+<li><strong>Endorsing it to the RMV</strong> and connecting us with the right digital/content owners;</li>
+<li><strong>Approve completion</strong> of the remaining work through this summer's internship plus
+light in-house follow-up.</li>
+</ol>
+<p><em>Questions of accuracy, equity, and legal exposure are real and have been thought
+through; they are addressed candidly in <a href="#3-concerns--counterarguments">Section 3</a>
+and the appendix.</em></p>
+<hr>
+<p><em>Full PRD &amp; tradeoffs analysis follows.</em></p>
+<hr>
+<blockquote>
+<p><strong>Note on figures.</strong> Time and cost figures in this document are planning
+estimates, expressed as ranges. Labor rates reflect the assumptions confirmed
+for this project (see <a href="#4-cost--effort-model">Cost &amp; effort model</a>). LLM/API
+pricing is approximate and should be verified against current vendor rates
+before budgeting.</p>
+</blockquote>
+<hr>
+<h2 id="1-executive-summary">1. Executive summary</h2>
+<p>The <strong>Driver's Manual Updates by Year</strong> app answers a single, common question for
+Massachusetts drivers: <em>&quot;What has changed in the driver's manual since I got my
+license?&quot;</em> A user enters the year they were licensed, and the app shows a clear,
+organized summary of what is new, updated, expanded, or removed in the current
+manual compared to the edition closest to that year — with each quoted change
+linked back to the exact page of the official RMV PDF.</p>
+<p><strong>How it works (in brief).</strong> A small Python pipeline ingests each manual PDF,
+uses a large language model (LLM) to compare a newer edition against an older one
+and describe the substantive changes, and exports the result to a lightweight
+website. Every quoted change carries a <strong>page-level citation</strong> that deep-links to
+the official manual PDF, so the authoritative source is always one click away.</p>
+<p><strong>How it was built.</strong> The prototype was developed rapidly by co-developing with
+agentic AI coding tools (Claude Code / Codex). This is the same workflow proposed
+for finishing the product, and it is the primary reason the build estimates below
+are well under traditional software timelines.</p>
+<p><strong>Primary users.</strong> Newly relocated and returning drivers, driver-education
+students and instructors, citizens taking court mandated driving education, mature drivers or people who have had their licenses for a long time, and RMV content owners — see <a href="#key-user-typologies">user typologies</a>.</p>
+<p><strong>Current status.</strong> The English app is functional with four editions (2007, 2017,
+2023, 2026), search, change-type filters, share/print-to-PDF, page citations, and
+a curated content pass that removes low-value &quot;statistics changed&quot; noise. What
+remains is to make it <strong>operationally self-service</strong> (so RMV staff can add a new
+manual each year without a developer), to make the <strong>images and text content easily editable</strong>, and
+to <strong>broaden coverage</strong> (more editions, accessibility, and languages).</p>
+<hr>
+<h2 id="2-project-brief">2. Project brief</h2>
+<h3 id="overview">Overview</h3>
+<p>The tool turns a tedious, error-prone task — manually comparing a ~140-page legal
+document against a prior edition — into a guided, citable summary. It is designed
+to be <strong>informational</strong>, not authoritative: the official RMV manual remains the
+source of truth, and the app's job is to <em>route users to the relevant official
+content faster</em>, with citations on every claim.</p>
+<p>The system has two halves:</p>
+<ul>
+<li><strong>Build pipeline (back office).</strong> <code>extract_pdfs.py</code> → <code>analyze_changes.py</code> →
+<code>export_json.py</code> (~1,900 lines of Python) over a local SQLite database, plus a
+permanent <strong>manual-override layer</strong> so any human correction survives future
+re-runs, and a <strong>citation matcher</strong> that pins each quoted change to its physical
+PDF page (currently matching 296 of 300 quotes, ~98%).</li>
+<li><strong>Public website (front office).</strong> A fast, dependency-light static site
+(<code>index.html</code>, <code>app.js</code>, <code>styles.css</code>) — no server or database required to
+serve the public experience.</li>
+</ul>
+<h3 id="key-user-typologies">Key user typologies</h3>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>What they need</th>
+<th>How the app serves them</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Returning driver</strong> (licensed years ago, re-engaging)</td>
+<td>A quick read on what's changed during their time away</td>
+<td>Enter your license year → &quot;Changes Since {year}&quot;</td>
+</tr>
+<tr>
+<td><strong>Newly relocated driver</strong></td>
+<td>Orientation to MA-specific rules</td>
+<td>Closest-edition comparison + Rules of the Road surfaced first</td>
+</tr>
+<tr>
+<td><strong>Driver-education student / instructor</strong></td>
+<td>Teach to the <em>current</em> manual, flag what's new</td>
+<td>Filterable, search-able change list with citations</td>
+</tr>
+<tr>
+<td><strong>Court-mandated driving-education participant</strong></td>
+<td>Confirm the current rules they're required to learn</td>
+<td>Authoritative, citation-backed summary of what's current</td>
+</tr>
+<tr>
+<td><strong>Mature / long-licensed driver</strong></td>
+<td>Catch up on rules that changed over many years</td>
+<td>Earliest-edition comparison surfaces the most accumulated change</td>
+</tr>
+<tr>
+<td><strong>RMV content owner / staff</strong></td>
+<td>Add each new manual; fix misplaced images and text</td>
+<td>Self-service admin + image/content CMS (planned)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-it-works-pipeline-detail">How it works (pipeline detail)</h3>
+<ol>
+<li><strong>Extract</strong> — each manual PDF is parsed into structured sections, text, page
+numbers, and images.</li>
+<li><strong>Analyze</strong> — the newer manual is chunked and compared, chunk-by-chunk,
+against the <em>complete</em> text of the older manual; the LLM returns a structured
+list of substantive changes (new / updated / expanded / removed).</li>
+<li><strong>Curate</strong> — human corrections are captured permanently in an overrides layer;
+low-value items (e.g., refreshed statistics) are pruned.</li>
+<li><strong>Cite &amp; export</strong> — every quote is matched to its PDF page; results are written to a JSON file that the website reads.</li>
+</ol>
+<hr>
+<h2 id="3-concerns--counterarguments">3. Concerns &amp; counterarguments</h2>
+<p>This section anticipates the questions a careful reviewer should raise, with the
+mitigation for each.</p>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Assessment &amp; mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>It may not be exhaustive</strong> — could the AI miss a change?</td>
+<td>Correct — this is an <em>assistive summary</em>, not a substitute for the manual. Mitigations: (1) every claim links to the official PDF page; (2) a permanent human-override layer lets staff add, edit, or remove items; (3) a prominent &quot;informational only — consult the official manual&quot; disclaimer. The tool's value is <em>triage and access</em>.</td>
+</tr>
+<tr>
+<td><strong>AI accuracy / hallucination</strong></td>
+<td>The analysis quotes the manual directly and pins each quote to a page; reviewers can verify in one click. Quotes that cannot be matched to a page are shown without a (broken) link rather than with a guessed one. A human QA pass is built into the per-edition workflow.</td>
+</tr>
+<tr>
+<td><strong>English/Spanish-only — an equity issue?</strong></td>
+<td>Framed neutrally: language access is an accessibility and service-delivery question. The RMV already publishes the manual in multiple languages; the roadmap mirrors that. The tool is built so additional languages are incremental, without requiring rewrites (see Phase 2). Prioritization is a policy decision for RMV, not a technical constraint.</td>
+</tr>
+<tr>
+<td><strong>English/Spanish-only — a political issue?</strong></td>
+<td>The recommended posture is to follow the RMV's existing published-language set and official translations, so the tool inherits the agency's language policy rather than setting its own. Where no official translation exists, machine translation of legal content is <strong>not</strong> recommended without human review.</td>
+</tr>
+<tr>
+<td><strong>Content freshness</strong></td>
+<td>Updates are tied to manual releases (infrequent). The self-service admin (Phase 1) ensures a new edition can be added the same week it's published, without developer involvement.</td>
+</tr>
+<tr>
+<td><strong>Legal exposure</strong></td>
+<td>Mitigated by an explicit &quot;informational, not legal advice; the official RMV manual governs&quot; disclaimer and visible source citations.</td>
+</tr>
+<tr>
+<td><strong>Privacy</strong></td>
+<td>The public app collects no personal information and requires no login; a year typed into a box is not stored or transmitted with identity.</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>A dedicated Phase 1 work item brings the app to WCAG 2.1 AA (keyboard, screen-reader, contrast), appropriate for a public-sector service.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-cost--effort-model">4. Cost &amp; effort model</h2>
+<p><strong>Labor assumptions (confirmed):</strong></p>
+<ul>
+<li><strong>Intern:</strong> $22/hr → <strong>~$176 per 8-hour day</strong>. Availability this summer: ~8
+weeks ≈ <strong>320 hours ≈ ~40 developer-days</strong>.</li>
+<li><strong>In-house IT/web follow-on:</strong> ~$40/hr → <strong>~$320 per day</strong>.</li>
+<li><strong>1 &quot;dev-day&quot; = 8 focused hours.</strong> Ranges are low–high; &quot;expected&quot; is the
+planning midpoint.</li>
+</ul>
+<p><strong>AI acceleration.</strong> All effort estimates assume the developer co-develops with
+agentic AI (Claude Code / Codex), consistent with how the prototype was built. A
+<strong>traditional, no-AI baseline (~2–3×)</strong> is shown alongside to make the savings
+explicit.</p>
+<p><strong>The only required non-labor cost: annual LLM tokens.</strong> When a new manual is
+released, the comparison is re-run. Because each chunk of the new manual is
+compared against the <em>full</em> text of each older edition, a single comparison pair
+costs roughly <strong>0.7M–1.0M input tokens</strong>. Today's three pairs total ≈ <strong>2.5M
+input + ~0.4M output tokens</strong> per full re-run.</p>
+<table>
+<thead>
+<tr>
+<th>Model class (approx. pricing)</th>
+<th>Cost per full annual re-run (today, 3 pairs)</th>
+<th>At larger scale (~8 pairs)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Premium (Opus-class, ~$15/M in, ~$75/M out)</td>
+<td><strong>~$65–75</strong></td>
+<td>~$150–200</td>
+</tr>
+<tr>
+<td>Mid (Sonnet-class, ~$3/M in, ~$15/M out)</td>
+<td><strong>~$15</strong></td>
+<td>~$35–45</td>
+</tr>
+<tr>
+<td>Efficient (Haiku-class, ~$1/M in, ~$5/M out)</td>
+<td><strong>~$5</strong></td>
+<td>~$10–15</td>
+</tr>
+</tbody>
+</table>
+<p>The prototype currently defaults to the premium model. For production, a mid-tier
+model is recommended for this extraction task, cutting cost ~5×. <strong>Net: the
+recurring operating cost is on the order of $15–75/year now, and likely under a
+few hundred dollars/year even at full multi-edition scale</strong> — a rounding error
+compared to labor. A small one-time token budget during development (re-running the
+analysis while tuning) is similarly minor (~$15–75 total).</p>
+<p><strong>Hosting</strong> is negligible: the public site is static and can run on existing state
+web infrastructure or a static host; the admin backend (Phase 1) needs only a
+small server/runtime.</p>
+<hr>
+<h2 id="5-phase-1--finalize-the-existing-product">5. Phase 1 — Finalize the existing product</h2>
+<p>These items make the tool <strong>self-service, accurate, accessible, and bilingual</strong>.</p>
+<h3 id="51-self-service-admin-backend-upload-a-manual--run--publish">5.1 Self-service admin backend (upload a manual → run → publish)</h3>
+<p>Today, adding a manual requires a developer to run command-line scripts. This
+builds a simple, authenticated web admin where RMV staff <strong>upload a new manual
+PDF, kick off the extract→analyze→export pipeline as a background job, watch
+progress, review the results, and publish</strong> — wrapping the existing, proven
+scripts rather than rewriting them.</p>
+<h3 id="52-image-cms-easy-visual-image-editing">5.2 Image CMS (easy, visual image editing)</h3>
+<p>Extracted images frequently land in the wrong update or position. The override
+layer already supports image edits in data; this adds a <strong>friendly visual editor</strong>
+to drag images to the correct change, reorder, add, or remove them, with live
+preview — no JSON editing.</p>
+<h3 id="53-include-all-editions-20072026">5.3 Include all editions 2007–2026</h3>
+<p>Ingest and QA every available edition in the range so any driver lands on a
+genuinely close comparison. <em>Estimate is per-edition.</em></p>
+<h3 id="54-accessibility-improvements-wcag-21-aa">5.4 Accessibility improvements (WCAG 2.1 AA)</h3>
+<p>Keyboard navigation, ARIA roles/landmarks, focus management, color-contrast, and
+screen-reader testing — appropriate for a public-sector service.</p>
+<h3 id="55-more-accurate--streamlined-content">5.5 More accurate / streamlined content</h3>
+<p>Refine the analysis prompts and add a light relevance-curation step so results
+emphasize the <strong>most decision-relevant</strong> changes (rules and laws) and continue to
+suppress low-value noise (e.g., refreshed statistics), with a human review pass.</p>
+<h3 id="56-spanish-version">5.6 Spanish version</h3>
+<p>Ingest the official RMV Spanish manual(s), run the (reusable) pipeline, and add UI
+internationalization with a language toggle and Spanish-language QA. <strong>This item
+also builds the one-time i18n framework</strong> that makes every later language cheap.</p>
+<h3 id="phase-1-estimates">Phase 1 estimates</h3>
+<table>
+<thead>
+<tr>
+<th>Work item</th>
+<th>Effort w/ AI (days)</th>
+<th>Effort no-AI (days)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.1 Admin backend</td>
+<td>10–18</td>
+<td>25–45</td>
+</tr>
+<tr>
+<td>5.2 Image CMS</td>
+<td>8–15</td>
+<td>20–38</td>
+</tr>
+<tr>
+<td>5.3 All editions 2007–2026</td>
+<td>6–12</td>
+<td>12–24</td>
+</tr>
+<tr>
+<td>5.4 Accessibility (WCAG 2.1 AA)</td>
+<td>5–9</td>
+<td>10–18</td>
+</tr>
+<tr>
+<td>5.5 Streamlined content</td>
+<td>5–10</td>
+<td>10–20</td>
+</tr>
+<tr>
+<td>5.6 Spanish version (incl. i18n)</td>
+<td>8–14</td>
+<td>20–35</td>
+</tr>
+<tr>
+<td><strong>Phase 1 total</strong></td>
+<td><strong>42–78</strong> (≈59)</td>
+<td><strong>97–180</strong> (≈138)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reading the table.</strong> With AI, Phase 1 is roughly <strong>42–78 developer-days</strong> (≈59).
+The traditional, no-AI baseline is <strong>~97–180 days</strong>, so the AI workflow removes on
+the order of <strong>55–60% of the effort</strong>.</p>
+<hr>
+<h2 id="6-phase-2--potential-add-ons-optional">6. Phase 2 — Potential add-ons (optional)</h2>
+<p>These extend reach but are not required for a credible launch. They become
+inexpensive <em>because</em> Phase 1 builds the admin, image CMS, and i18n framework.</p>
+<h3 id="61-additional-languages">6.1 Additional languages</h3>
+<p>Mandarin, Arabic, Korean, Haitian Creole, Portuguese, French, Russian, etc. Once
+the Spanish work establishes the i18n framework, each language is mostly: ingest
+the official translated manual, run the pipeline, translate UI strings, and QA.</p>
+<ul>
+<li><strong>Per language: ~3–6 days.</strong> <strong>Arabic adds right-to-left (RTL) layout: ~5–9 days.</strong></li>
+<li><strong>Gating caveat:</strong> this assumes an <strong>official translated manual exists</strong> to ingest.
+Where one does not, machine-translating official legal content is <strong>not
+recommended</strong> without human review — that becomes a larger, policy-gated effort.</li>
+</ul>
+<h3 id="62-digitize-pre-2007-manuals-ocr">6.2 Digitize pre-2007 manuals (OCR)</h3>
+<p>Older editions may exist only as scanned images, requiring OCR plus heavier
+extraction QA before they can enter the pipeline.</p>
+<ul>
+<li><strong>Per manual: ~3–6 days</strong>, OCR-quality dependent.</li>
+<li><strong>Caveat:</strong> source availability and scan quality drive the range; old scans need
+more human QA than born-digital PDFs.</li>
+</ul>
+<h3 id="phase-2-estimates">Phase 2 estimates</h3>
+<table>
+<thead>
+<tr>
+<th>Work item</th>
+<th>Effort w/ AI (days)</th>
+<th>Effort no-AI (days)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.1 Languages (per language)</td>
+<td>3–6</td>
+<td>7–14</td>
+</tr>
+<tr>
+<td>6.1 Arabic (RTL premium)</td>
+<td>5–9</td>
+<td>11–20</td>
+</tr>
+<tr>
+<td>6.1 All 7 listed languages (sources permitting)</td>
+<td>30–40</td>
+<td>60–85</td>
+</tr>
+<tr>
+<td>6.2 Pre-2007 manuals (per manual)</td>
+<td>3–6</td>
+<td>6–12</td>
+</tr>
+<tr>
+<td>6.2 Pre-2007 (≈2–3 older editions)</td>
+<td>8–18</td>
+<td>16–36</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="7-roll-up--recommendation">7. Roll-up &amp; recommendation</h2>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Effort w/ AI (days)</th>
+<th>Effort no-AI (days)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 1 (committed)</strong></td>
+<td>42–78</td>
+<td>97–180</td>
+</tr>
+<tr>
+<td>Phase 2 — all 7 languages</td>
+<td>+30–40</td>
+<td>+60–85</td>
+</tr>
+<tr>
+<td>Phase 2 — pre-2007 (≈2–3)</td>
+<td>+8–18</td>
+<td>+16–36</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recurring (annual):</strong> ~$15–75/yr in LLM tokens (mid-tier model) — the only
+required non-labor operating cost.</p>
+<p><strong>What fits the internship.</strong> The intern's ~40 available days covers a large
+share of Phase 1 but not all of it. A practical split:</p>
+<ol>
+<li><strong>Intern (this summer, ~40 days):</strong> Admin backend (5.1), Image CMS (5.2), and
+the all-editions ingest (5.3) — the operational core that makes the tool
+self-sustaining.</li>
+<li><strong>In-house IT/web follow-on:</strong> finish accessibility (5.4), streamlined content
+(5.5), and the Spanish version + i18n framework (5.6).</li>
+<li><strong>Later / as prioritized:</strong> Phase 2 languages and pre-2007 digitization, each
+cheap once the framework exists.</li>
+</ol>
+<p><strong>Bottom line.</strong> Finishing the initial scope is roughly a <strong>one-summer-plus
+effort (~42–78 developer-days)</strong>, with a recurring cost measured in <strong>tens of
+dollars per year</strong>. The AI-co-development workflow roughly halves the labor versus
+a traditional build, and the architecture is deliberately structured so that
+breadth (more editions, more languages) is additive rather than a rebuild.</p>
+<hr>
+<h2 id="8-appendix">8. Appendix</h2>
+<h3 id="assumptions">Assumptions</h3>
+<ul>
+<li>1 dev-day = 8 focused hours. Intern $22/hr ($176/day); in-house $40/hr ($320/day).</li>
+<li>AI-accelerated effort assumes co-development with Claude Code / Codex; no-AI
+baseline ≈ 2–3×.</li>
+<li>&quot;All editions 2007–2026&quot; assumes that PDFs are obtainable from the RMV.</li>
+<li>Additional-language and pre-2007 estimates assume an <strong>official source document
+exists</strong>; absence of an official source materially changes scope and policy risk.</li>
+</ul>
+<h3 id="pricing--model-note">Pricing / model note</h3>
+<p>LLM token prices are approximate and tiered by model (premium / mid / efficient);
+<strong>verify current vendor rates before budgeting.</strong> The prototype defaults to a
+premium model; a mid-tier model is recommended for production extraction, reducing
+recurring cost ~5×.</p>
+<h3 id="grounded-reference-figures-current-build">Grounded reference figures (current build)</h3>
+<ul>
+<li>Editions: 2007 (159 pp), 2017 (166 pp), 2023 (120 pp), 2026 (140 pp).</li>
+<li>Per comparison pair: ~0.7M–1.0M input tokens; current 3 pairs ≈ 2.5M in + ~0.4M out/run.</li>
+<li>Citation match rate: 296/300 quotes (~98%).</li>
+<li>Codebase: ~1,900 lines of pipeline Python; static frontend; SQLite + JSON output.</li>
+</ul>
+<h3 id="glossary">Glossary</h3>
+<ul>
+<li><strong>Edition / pair</strong> — a manual year; a &quot;pair&quot; is one older→newer comparison.</li>
+<li><strong>Override layer</strong> — stored human corrections that always win over AI output and
+survive re-runs.</li>
+<li><strong>Citation</strong> — a quote's deep link to the exact page of the official RMV PDF.</li>
+<li><strong>i18n</strong> — internationalization; the one-time framework enabling multiple languages.</li>
+<li><strong>WCAG 2.1 AA</strong> — the accessibility standard targeted for the public service.</li>
+</ul>
+
+</body>
+</html>
