@@ -232,62 +232,38 @@ h4 {
   margin-bottom: var(--spacing-sm);
 }
 
-/* Outline-style list: chapters as headings, subtopics nested + indented. */
-.toc-list,
-.toc-sublist {
+.toc-list {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   padding: 0;
   margin: 0;
 }
 
-.toc-chapter {
-  margin-bottom: var(--spacing-sm);
+.toc-list li {
+  margin: 0;
 }
 
-.toc-chapter-link {
+.toc-list a {
   display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-brand);
-  text-decoration: none;
-}
-
-.toc-chapter-link:hover,
-.toc-chapter-link:focus-visible {
-  text-decoration: underline;
-  outline: none;
-}
-
-.toc-sublist {
-  margin: 0.3rem 0 0.6rem;
-  padding-left: 0.9rem;
-  border-left: 2px solid var(--color-border);
-  columns: 2;
-  column-gap: var(--spacing-md);
-}
-
-.toc-sublist li {
-  margin: 0 0 0.25rem;
-  break-inside: avoid;
-}
-
-.toc-sub-link {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-brand);
   text-decoration: none;
-  border-bottom: 1px dotted transparent;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.toc-sub-link:hover,
-.toc-sub-link:focus-visible {
-  border-bottom-color: var(--color-brand);
+.toc-list a:hover,
+.toc-list a:focus-visible {
+  background: var(--color-brand);
+  color: #fff;
+  border-color: var(--color-brand);
   outline: none;
-}
-
-@media (max-width: 600px) {
-  .toc-sublist { columns: 1; }
 }
 
 /* ── Chapter groups ──────────────────────────────────────── */
@@ -311,21 +287,6 @@ h4 {
 @keyframes group-flash-anim {
   0%   { background: rgba(20, 85, 143, 0.16); }
   100% { background: transparent; }
-}
-
-/* ── Subtopic subsections ────────────────────────────────── */
-.subtopic-section {
-  margin-bottom: var(--spacing-md);
-}
-
-.subtopic-heading {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-brand);
-  margin: var(--spacing-md) 0 var(--spacing-sm);
-  padding-bottom: 2px;
-  border-bottom: 1px solid var(--color-border);
-  scroll-margin-top: var(--spacing-md);
 }
 
 /* ── Section cards (collapsible result pills) ────────────── */
@@ -414,29 +375,45 @@ h4 {
   display: none;
 }
 
-/* ── Per-subtopic "first 3" collapse ─────────────────────── */
+/* ── Per-section "first 3" collapse ──────────────────────── */
+.results-section {
+  position: relative;
+}
+
 .result-overflow {
   display: none;
 }
 
-/* The 4th pill peeks through a gradient fade inviting "View All". */
+/* The 4th pill keeps its full size/layout but is faded out by a gradient at the
+   bottom, as though the list continues below. It is not itself clickable — only
+   the "View All" button on top of it responds. */
 .result-teaser {
   position: relative;
-  max-height: 2.6rem;
-  overflow: hidden;
+  margin-bottom: 0;
+  /* Let the gradient extend past the card edges to cover the border too. */
+  overflow: visible;
+}
+
+.result-teaser .card-toggle {
+  pointer-events: none;
 }
 
 .result-teaser::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, var(--color-bg) 92%);
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  height: calc(100% + 1px);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 1) 100%);
   pointer-events: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
 .view-toggle {
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 600;
@@ -444,10 +421,41 @@ h4 {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  padding: 0.3rem 0.9rem;
-  margin-top: 0.4rem;
+  padding: 0.35rem 0.95rem;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.vt-caret {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+/* Collapsed (capped): centered button floating on top of the gradient. */
+.results-section:not([data-expanded="true"]) .view-toggle {
+  position: absolute;
+  left: 50%;
+  bottom: 0.55rem;
+  transform: translateX(-50%);
+  z-index: 2;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
+}
+
+/* Expanded: centered in normal flow below the results, caret flips up. */
+.results-section[data-expanded="true"] .view-toggle {
+  display: flex;
+  width: max-content;
+  margin: 0.6rem auto 0;
+}
+
+.results-section[data-expanded="true"] .vt-caret {
+  transform: rotate(180deg);
 }
 
 .view-toggle:hover {
@@ -807,8 +815,7 @@ h4 {
   .section-card,
   .change-group { break-inside: avoid; }
 
-  .group-heading,
-  .subtopic-heading { break-after: avoid; }
+  .group-heading { break-after: avoid; }
 
   /* Collapsed pills / capped subtopics must print their full content. */
   .card-body { display: block !important; padding-top: 0; }

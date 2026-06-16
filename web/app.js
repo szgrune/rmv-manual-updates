@@ -190,12 +190,12 @@ function renderChanges(data, fromYear, toYear) {
 
   const groups = groupByChapter(data.sections);
 
-  // Table of contents inside the blue box (chapters + nested subtopics)
-  overviewBlock.appendChild(buildTableOfContents(groups, idPrefix, SUBTOPICS));
+  // Table of contents inside the blue box (chapter pills)
+  overviewBlock.appendChild(buildTableOfContents(groups, idPrefix));
 
-  // Grouped change cards, split into subtopic subsections with anchored headings
+  // Grouped change cards with anchored chapter headings
   groups.forEach(group => {
-    sectionsList.appendChild(buildChapterGroup(group, idPrefix, SUBTOPICS));
+    sectionsList.appendChild(buildChapterGroup(group, idPrefix));
   });
 
   changesSection.hidden = false;
@@ -211,7 +211,7 @@ function renderAccordion(data) {
   }
 
   groupByChapter(data.sections).forEach(group => {
-    content.appendChild(buildChapterGroup(group, 'accordion', SUBTOPICS));
+    content.appendChild(buildChapterGroup(group, 'accordion'));
   });
 }
 
@@ -361,12 +361,11 @@ function buildTocLink(targetId, text, className) {
 }
 
 /**
- * Outline-style table of contents inside the blue box: each chapter is a heading
- * with a nested list of its subtopics. Both levels autoscroll to their anchored
- * heading in the results. TOC entries are tagged so applyFilters can hide the ones
- * whose results all filtered out.
+ * Table of contents inside the blue box: one pill button per chapter (top-level
+ * taxonomy only). Each pill autoscrolls to its anchored chapter heading. Entries
+ * hide via applyFilters when all of a chapter's results are filtered out.
  */
-function buildTableOfContents(groups, idPrefix, subtopics) {
+function buildTableOfContents(groups, idPrefix) {
   const nav = document.createElement('nav');
   nav.className = 'toc';
   nav.setAttribute('aria-label', 'Topic areas');
@@ -382,24 +381,7 @@ function buildTableOfContents(groups, idPrefix, subtopics) {
   groups.forEach(group => {
     const targetId = groupAnchorId(idPrefix, group.chapter);
     const li = document.createElement('li');
-    li.className = 'toc-chapter';
-    li.appendChild(buildTocLink(targetId, group.chapter, 'toc-chapter-link'));
-
-    // Nested subtopic links (skip the unnamed "General" bucket).
-    const named = bucketBySubtopic(group.items, group.chapter_num, subtopics)
-      .filter(b => b.title !== 'General' && b.items.length);
-    if (named.length) {
-      const subUl = document.createElement('ul');
-      subUl.className = 'toc-sublist';
-      named.forEach(bucket => {
-        const subId = subtopicAnchorId(idPrefix, group.chapter, bucket.title);
-        const subLi = document.createElement('li');
-        subLi.appendChild(buildTocLink(subId, bucket.title, 'toc-sub-link'));
-        subUl.appendChild(subLi);
-      });
-      li.appendChild(subUl);
-    }
-
+    li.appendChild(buildTocLink(targetId, group.chapter, 'toc-pill'));
     ul.appendChild(li);
   });
 
@@ -407,10 +389,10 @@ function buildTableOfContents(groups, idPrefix, subtopics) {
   return nav;
 }
 
-// Number of result pills shown per subtopic before "View All" is offered.
-const SUBTOPIC_VISIBLE_LIMIT = 3;
+// Number of result pills shown per chapter before "View All" is offered.
+const SECTION_VISIBLE_LIMIT = 3;
 
-function buildChapterGroup(group, idPrefix, subtopics) {
+function buildChapterGroup(group, idPrefix) {
   const wrap = document.createElement('section');
   wrap.className = 'change-group';
 
@@ -420,67 +402,74 @@ function buildChapterGroup(group, idPrefix, subtopics) {
   heading.textContent = group.chapter;
   wrap.appendChild(heading);
 
-  bucketBySubtopic(group.items, group.chapter_num, subtopics).forEach(bucket => {
-    const section = document.createElement('div');
-    section.className = 'subtopic-section';
+  // All of a chapter's results render flat (no subtopic headings). The section
+  // wrapper backs the "first 3 + View All" collapse, now applied per chapter.
+  const section = document.createElement('div');
+  section.className = 'results-section';
 
-    if (bucket.title !== 'General') {
-      const sub = document.createElement('h4');
-      sub.className = 'subtopic-heading';
-      sub.id = subtopicAnchorId(idPrefix, group.chapter, bucket.title);
-      sub.textContent = bucket.title;
-      section.appendChild(sub);
-    }
+  group.items.forEach(sec => section.appendChild(buildSectionCard(sec)));
 
-    bucket.items.forEach(sec => section.appendChild(buildSectionCard(sec)));
+  // "View All" / "Hide" toggle — only meaningful past the visible limit.
+  if (group.items.length > SECTION_VISIBLE_LIMIT) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'view-toggle';
 
-    // "View All" / "Hide" toggle — only meaningful past the visible limit.
-    if (bucket.items.length > SUBTOPIC_VISIBLE_LIMIT) {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'view-toggle';
-      btn.addEventListener('click', () => {
-        section.dataset.expanded = section.dataset.expanded === 'true' ? 'false' : 'true';
-        applySubtopicCollapse(section);
-      });
-      section.appendChild(btn);
-    }
+    const label = document.createElement('span');
+    label.className = 'vt-label';
+    btn.appendChild(label);
 
-    wrap.appendChild(section);
-    applySubtopicCollapse(section);
-  });
+    const caret = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    caret.setAttribute('class', 'vt-caret');
+    caret.setAttribute('viewBox', '0 0 24 24');
+    caret.setAttribute('aria-hidden', 'true');
+    const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    poly.setAttribute('points', '6 9 12 15 18 9');
+    caret.appendChild(poly);
+    btn.appendChild(caret);
+
+    btn.addEventListener('click', () => {
+      section.dataset.expanded = section.dataset.expanded === 'true' ? 'false' : 'true';
+      applySectionCollapse(section);
+    });
+    section.appendChild(btn);
+  }
+
+  wrap.appendChild(section);
+  applySectionCollapse(section);
 
   return wrap;
 }
 
 /**
- * Enforce the per-subtopic "first 3 results" rule on one subsection. The 4th
- * visible pill gets a gradient teaser (.result-teaser); the rest hide
- * (.result-overflow); a "View All" button reveals everything ("Hide" collapses
- * back). When a search/filter is active the cap is suspended so matches aren't
- * trapped behind the teaser. Re-run on render and whenever filters change.
+ * Enforce the per-chapter "first 3 results" rule on one section. The 4th visible
+ * pill gets a gradient teaser (.result-teaser); the rest hide (.result-overflow);
+ * a "View All" button reveals everything ("Hide" collapses back). When a
+ * search/filter is active the cap is suspended so matches aren't trapped behind
+ * the teaser. Re-run on render and whenever filters change.
  */
-function applySubtopicCollapse(section) {
+function applySectionCollapse(section) {
   const cards = [...section.querySelectorAll('.section-card')]
     .filter(c => !c.classList.contains('is-hidden'));
   cards.forEach(c => c.classList.remove('result-teaser', 'result-overflow'));
 
   const btn = section.querySelector('.view-toggle');
   const expanded = section.dataset.expanded === 'true';
-  const capped = !filterActive && !expanded && cards.length > SUBTOPIC_VISIBLE_LIMIT;
+  const capped = !filterActive && !expanded && cards.length > SECTION_VISIBLE_LIMIT;
 
   if (capped) {
     cards.forEach((c, i) => {
-      if (i === SUBTOPIC_VISIBLE_LIMIT) c.classList.add('result-teaser');
-      else if (i > SUBTOPIC_VISIBLE_LIMIT) c.classList.add('result-overflow');
+      if (i === SECTION_VISIBLE_LIMIT) c.classList.add('result-teaser');
+      else if (i > SECTION_VISIBLE_LIMIT) c.classList.add('result-overflow');
     });
   }
 
   if (btn) {
     // Hide the button while filtering (all matches already shown) or when there's
     // nothing past the limit; otherwise label it for the current state.
-    btn.hidden = filterActive || cards.length <= SUBTOPIC_VISIBLE_LIMIT;
-    btn.textContent = expanded ? 'Hide' : 'View All';
+    btn.hidden = filterActive || cards.length <= SECTION_VISIBLE_LIMIT;
+    const label = btn.querySelector('.vt-label');
+    if (label) label.textContent = expanded ? 'Hide' : 'View All';
   }
 }
 
@@ -703,15 +692,9 @@ function applyFilters() {
   const toc = document.getElementById('overview-block');
   const tocLinkFor = id => (toc && id) ? toc.querySelector(`.toc a[href="#${id}"]`) : null;
 
-  // Subtopic subsections: hide when empty, re-apply the (possibly suspended) cap,
-  // and toggle the matching nested TOC link.
-  sectionsList.querySelectorAll('.subtopic-section').forEach(section => {
-    const visible = section.querySelector('.section-card:not(.is-hidden)') !== null;
-    section.classList.toggle('is-hidden', !visible);
-    const subHeading = section.querySelector('.subtopic-heading');
-    const link = subHeading && tocLinkFor(subHeading.id);
-    if (link) link.closest('li').classList.toggle('is-hidden', !visible);
-    if (visible) applySubtopicCollapse(section);
+  // Re-apply the (possibly suspended) per-chapter cap to each results section.
+  sectionsList.querySelectorAll('.results-section').forEach(section => {
+    if (section.querySelector('.section-card:not(.is-hidden)')) applySectionCollapse(section);
   });
 
   sectionsList.querySelectorAll('.change-group').forEach(group => {
@@ -719,7 +702,7 @@ function applyFilters() {
     group.classList.toggle('is-hidden', !groupVisible);
     const heading = group.querySelector('.group-heading');
     const link = heading && tocLinkFor(heading.id);
-    if (link) link.closest('.toc-chapter').classList.toggle('is-hidden', !groupVisible);
+    if (link) link.closest('li').classList.toggle('is-hidden', !groupVisible);
   });
 
   const empty = document.getElementById('results-empty');
