@@ -87,6 +87,8 @@ async function init() {
       handler();
     }
   });
+  const submitBtn = document.getElementById('year-submit-btn');
+  if (submitBtn) submitBtn.addEventListener('click', handler);
 
   // Reopen a shared view from the URL (?year=…).
   const yearParam = new URLSearchParams(window.location.search).get('year');

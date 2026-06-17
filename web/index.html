@@ -18,14 +18,22 @@
     <!-- Year input -->
     <section id="year-selector-section">
       <label for="year-input">Enter the year you got your driver's license:</label>
-      <input
-        type="text"
-        id="year-input"
-        inputmode="numeric"
-        maxlength="4"
-        placeholder="e.g. 2015"
-        autocomplete="off"
-      >
+      <div class="year-input-wrapper">
+        <input
+          type="text"
+          id="year-input"
+          inputmode="numeric"
+          maxlength="4"
+          placeholder="e.g. 2015"
+          autocomplete="off"
+        >
+        <button id="year-submit-btn" type="button" aria-label="Submit year">
+          <svg class="year-arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="13 6 19 12 13 18"></polyline>
+          </svg>
+        </button>
+      </div>
       <p id="year-status" aria-live="polite"></p>
     </section>
 
