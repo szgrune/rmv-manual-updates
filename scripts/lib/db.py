@@ -1,9 +1,15 @@
 import json
+import os
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent.parent.parent / "data" / "manuals.db"
+_DEFAULT_DB_PATH = Path(__file__).parent.parent.parent / "data" / "manuals.db"
+
+# The DB path can be overridden via the MANUALS_DB env var so a parallel build
+# (e.g. the Spanish edition) can use a separate store and avoid year collisions
+# with the English data. Defaults to the original English DB.
+DB_PATH = Path(os.environ["MANUALS_DB"]) if os.environ.get("MANUALS_DB") else _DEFAULT_DB_PATH
 
 
 def get_connection() -> sqlite3.Connection:
@@ -49,6 +55,17 @@ def init_db() -> None:
                 overview_text TEXT    NOT NULL,
                 sections_json TEXT    NOT NULL,
                 UNIQUE(from_year, to_year)
+            );
+
+            -- One row per individual analysis run for a pair. The canonical
+            -- change_analyses row is the MERGE of all runs (see lib/merge.py);
+            -- keeping the raw runs lets coverage accumulate across re-runs.
+            CREATE TABLE IF NOT EXISTS change_analysis_runs (
+                id            INTEGER PRIMARY KEY AUTOINCREMENT,
+                from_year     INTEGER NOT NULL,
+                to_year       INTEGER NOT NULL,
+                computed_at   TEXT    NOT NULL,
+                sections_json TEXT    NOT NULL
             );
         """)
 
@@ -124,6 +141,47 @@ def get_change_analysis(from_year: int, to_year: int) -> dict | None:
         "overview": row["overview_text"],
         "sections": json.loads(row["sections_json"]),
     }
+
+
+# ── Analysis runs (raw, pre-merge) ──────────────────────────────────────────────
+
+def insert_analysis_run(from_year: int, to_year: int, sections: list) -> None:
+    """Append one raw analysis run for a pair. Coverage accumulates across runs."""
+    with get_connection() as conn:
+        conn.execute(
+            """INSERT INTO change_analysis_runs
+               (from_year, to_year, computed_at, sections_json)
+               VALUES (?, ?, ?, ?)""",
+            (from_year, to_year, datetime.now(timezone.utc).isoformat(), json.dumps(sections)),
+        )
+
+
+def get_analysis_runs(from_year: int, to_year: int) -> list[list]:
+    """All raw runs for a pair, oldest first (so the earliest occurrence wins its id)."""
+    with get_connection() as conn:
+        rows = conn.execute(
+            "SELECT sections_json FROM change_analysis_runs "
+            "WHERE from_year=? AND to_year=? ORDER BY id",
+            (from_year, to_year),
+        ).fetchall()
+    return [json.loads(r["sections_json"]) for r in rows]
+
+
+def count_analysis_runs(from_year: int, to_year: int) -> int:
+    with get_connection() as conn:
+        row = conn.execute(
+            "SELECT COUNT(*) AS n FROM change_analysis_runs WHERE from_year=? AND to_year=?",
+            (from_year, to_year),
+        ).fetchone()
+    return row["n"]
+
+
+def clear_analysis_runs(from_year: int, to_year: int) -> None:
+    with get_connection() as conn:
+        conn.execute(
+            "DELETE FROM change_analysis_runs WHERE from_year=? AND to_year=?",
+            (from_year, to_year),
+        )
 
 
 def get_all_manual_years() -> list[int]:

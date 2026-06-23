@@ -37,7 +37,21 @@ def _read_existing(path: Path) -> dict | None:
         return None
 
 
-def export_all() -> None:
+def export_all(
+    suffix: str = "",
+    manifest_name: str = "manifest.json",
+    overrides_path=None,
+    baseline_path=None,
+    citation_manuals_dir=cite.MANUALS_DIR,
+    citation_filename_pattern: str = cite.DEFAULT_FILENAME_PATTERN,
+) -> None:
+    """
+    Export change files + manifest from the DB to web/data/.
+
+    All parameters default to the English build. A parallel build (e.g. Spanish)
+    passes a `suffix` ("_spanish"), a distinct `manifest_name`, separate
+    overrides/baseline paths, and the source-PDF location used for page citations.
+    """
     WEB_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     years = database.get_all_manual_years()
@@ -48,20 +62,20 @@ def export_all() -> None:
     latest = years[-1]
     prior_years = years[:-1]
 
-    # Write manifest.json
+    # Write manifest
     manifest = {
         "manual_years": years,
         "latest_year": latest,
     }
-    manifest_path = WEB_DATA_DIR / "manifest.json"
+    manifest_path = WEB_DATA_DIR / manifest_name
     manifest_path.write_text(json.dumps(manifest, indent=2))
-    print(f"  ✓ manifest.json  (years: {years}, latest: {latest})")
+    print(f"  ✓ {manifest_name}  (years: {years}, latest: {latest})")
 
-    overrides = ov.load_overrides()
-    baseline = ov.load_baseline()
+    overrides = ov.load_overrides(overrides_path)
+    baseline = ov.load_baseline(baseline_path)
 
     # Page index for deriving per-quote PDF citations (see lib/citations.py).
-    page_index = cite.build_page_index(years)
+    page_index = cite.build_page_index(years, citation_manuals_dir, citation_filename_pattern)
     cite_hits = cite_total = 0
 
     # Write one JSON file per pairing
@@ -79,7 +93,7 @@ def export_all() -> None:
             "sections": analysis["sections"],
         }
 
-        filename = f"changes_{from_year}_to_{latest}.json"
+        filename = f"changes_{from_year}_to_{latest}{suffix}.json"
         path = WEB_DATA_DIR / filename
 
         # 1. Capture any manual edits sitting in the file before we overwrite it.
@@ -114,15 +128,16 @@ def export_all() -> None:
         print(f"  ✓ {filename}{note}")
         exported += 1
 
-    ov.save_overrides(overrides)
-    ov.save_baseline(baseline)
+    ov.save_overrides(overrides, overrides_path)
+    ov.save_baseline(baseline, baseline_path)
 
     if cite_total:
         print(f"\n✓ Page citations matched {cite_hits}/{cite_total} quotes "
               f"({100 * cite_hits // cite_total}%)")
 
+    effective_overrides = (overrides_path or ov.OVERRIDES_PATH)
     print(f"\n✓ Exported {exported} change files + manifest to {WEB_DATA_DIR}")
-    print(f"✓ Manual overrides stored in {ov.OVERRIDES_PATH.relative_to(PROJECT_ROOT)} "
+    print(f"✓ Manual overrides stored in {effective_overrides.relative_to(PROJECT_ROOT)} "
           f"(edits here are permanent)")
 
 

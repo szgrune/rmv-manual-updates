@@ -10,14 +10,20 @@
   <div id="app">
 
     <header>
-      <h1>Driver's Manual Updates by Year</h1>
-      <p class="intro">Use this tool to see what has changed in the Massachusetts Driver's Manual since you got your driver's license. Click on a result to read the direct quote from the 2026 RMV Driver's Manual and click View All to expand subsections. Right now, only some years are included, so you will see the one closest to the year you enter.</p>
-      <p class="disclaimer">This tool is not intended to be exhaustive or authoritative: it is an informational tool that is meant to improve ease of access to the newest material included in the most recent Massachusetts Driver's Manual.</p>
+      <div class="title-row">
+        <h1 id="app-title">Driver's Manual Updates by Year</h1>
+        <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+          <button id="lang-en" class="lang-option is-active" type="button" aria-pressed="true">EN</button>
+          <button id="lang-es" class="lang-option" type="button" aria-pressed="false">ES</button>
+        </div>
+      </div>
+      <p class="intro" id="app-intro">Use this tool to see what has changed in the Massachusetts Driver's Manual since you got your driver's license. Click on a result to read the direct quote from the 2026 RMV Driver's Manual and click View All to expand subsections. Right now, only some years are included, so you will see the one closest to the year you enter.</p>
+      <p class="disclaimer" id="app-disclaimer">This tool is not intended to be exhaustive or authoritative: it is an informational tool that is meant to improve ease of access to the newest material included in the most recent Massachusetts Driver's Manual.</p>
     </header>
 
     <!-- Year input -->
     <section id="year-selector-section">
-      <label for="year-input">Enter the year you got your driver's license:</label>
+      <label for="year-input" id="year-label">Enter the year you got your driver's license:</label>
       <div class="year-input-wrapper">
         <input
           type="text"

@@ -53,35 +53,39 @@ _README = (
 
 # ── Persistence ────────────────────────────────────────────────────────────────
 
-def load_overrides() -> dict:
-    if OVERRIDES_PATH.exists():
+def load_overrides(path: Path | None = None) -> dict:
+    path = path or OVERRIDES_PATH
+    if path.exists():
         try:
-            data = json.loads(OVERRIDES_PATH.read_text())
+            data = json.loads(path.read_text())
             data.setdefault("pairs", {})
             return data
         except json.JSONDecodeError:
-            print(f"  WARNING: {OVERRIDES_PATH.name} is not valid JSON — ignoring it. "
+            print(f"  WARNING: {path.name} is not valid JSON — ignoring it. "
                   f"Fix the file to restore your overrides.")
     return {"_README": _README, "version": 1, "pairs": {}}
 
 
-def save_overrides(overrides: dict) -> None:
+def save_overrides(overrides: dict, path: Path | None = None) -> None:
+    path = path or OVERRIDES_PATH
     overrides["_README"] = _README
     overrides.setdefault("version", 1)
-    OVERRIDES_PATH.write_text(json.dumps(overrides, indent=2, ensure_ascii=False))
+    path.write_text(json.dumps(overrides, indent=2, ensure_ascii=False))
 
 
-def load_baseline() -> dict:
-    if BASELINE_PATH.exists():
+def load_baseline(path: Path | None = None) -> dict:
+    path = path or BASELINE_PATH
+    if path.exists():
         try:
-            return json.loads(BASELINE_PATH.read_text())
+            return json.loads(path.read_text())
         except json.JSONDecodeError:
             pass
     return {}
 
 
-def save_baseline(baseline: dict) -> None:
-    BASELINE_PATH.write_text(json.dumps(baseline, indent=2, ensure_ascii=False))
+def save_baseline(baseline: dict, path: Path | None = None) -> None:
+    path = path or BASELINE_PATH
+    path.write_text(json.dumps(baseline, indent=2, ensure_ascii=False))
 
 
 # ── Capture: detect manual edits on disk ────────────────────────────────────────

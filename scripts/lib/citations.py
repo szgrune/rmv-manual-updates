@@ -23,8 +23,16 @@ import fitz  # pymupdf
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 MANUALS_DIR = PROJECT_ROOT / "Manuals"
 
-# `"quote text" (2026 Massachusetts Driver's Manual)` — straight or curly quotes.
-_BULLET_RE = re.compile(r'^\s*["“](.*)["”]\s*\((\d{4})\s+Massachusetts', re.S)
+# Default source-PDF filename pattern; the Spanish build overrides this with
+# "Drivers_Manual_Spanish_{year}.pdf" and a different manuals directory.
+DEFAULT_FILENAME_PATTERN = "Drivers_Manual_{year}.pdf"
+
+# The attribution that ends every quoted bullet, e.g. "(2023 Massachusetts ...)".
+# Located anywhere in the bullet; the quote is whatever precedes it. The wrapping
+# quotation marks are optional because the model sometimes omits them when writing
+# the surrounding content in another language (e.g. Spanish), even though the
+# quoted text itself is still verbatim from the manual.
+_ATTR_RE = re.compile(r'\((\d{4})\s+Massachusetts', re.I)
 
 
 def _norm(text: str) -> str:
@@ -34,15 +42,17 @@ def _norm(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def _manual_path(year: int) -> Path:
-    return MANUALS_DIR / f"Drivers_Manual_{year}.pdf"
+def _manual_path(year: int, manuals_dir: Path = MANUALS_DIR,
+                 filename_pattern: str = DEFAULT_FILENAME_PATTERN) -> Path:
+    return manuals_dir / filename_pattern.format(year=year)
 
 
-def build_page_index(years) -> dict:
+def build_page_index(years, manuals_dir: Path = MANUALS_DIR,
+                     filename_pattern: str = DEFAULT_FILENAME_PATTERN) -> dict:
     """{year: [normalized_text_for_physical_page_0, page_1, ...]} for each PDF found."""
     index = {}
     for year in years:
-        path = _manual_path(year)
+        path = _manual_path(year, manuals_dir, filename_pattern)
         if not path.exists():
             continue
         doc = fitz.open(path)
@@ -78,10 +88,14 @@ def _find_page(index: dict, year: int, quote: str):
 
 def citation_for_bullet(index: dict, bullet: str):
     """Return {"year", "page"} for a quoted bullet, or None if unmatched."""
-    m = _BULLET_RE.match(bullet)
+    m = _ATTR_RE.search(bullet)
     if not m:
         return None
-    quote, year = m.group(1), int(m.group(2))
+    year = int(m.group(1))
+    # Everything before the attribution is the quote; drop any wrapping quotes.
+    quote = bullet[: m.start()].strip().strip('"“”').strip()
+    if len(quote) < 12:
+        return None
     page = _find_page(index, year, quote)
     if page is None:
         return None

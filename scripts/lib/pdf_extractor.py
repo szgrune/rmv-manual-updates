@@ -15,7 +15,15 @@ from PIL import Image
 import io
 
 
-CHAPTER_RE = re.compile(r"^CHAPTER\s+\d+", re.IGNORECASE)
+# Matches English "CHAPTER 1" and Spanish "CAPÍTULO 1" — including the OCR/typo
+# variant "CAPÍTILO" found in the 2023 Spanish manual.
+CHAPTER_RE = re.compile(r"^(CHAPTER|CAP[IÍ]T[UI]LO)\s+\d+", re.IGNORECASE)
+# Real chapter labels are display-sized (English >= 47.9pt, Spanish 47.9pt). The
+# size floor rejects inline body references like Spanish "capítulo 525 de las
+# Leyes de 2008)" (~13pt) that the broadened regex would otherwise match.
+CHAPTER_LABEL_MIN_SIZE = 30.0
+# Plausible chapter-number range — a second guard against stray matches.
+MAX_CHAPTER_NUM = 50
 # Minimum SOURCE pixel dimensions (from xref metadata) to keep real content images
 MIN_SRC_PX = 100
 # Maximum ON-PAGE aspect ratio to exclude tall/narrow column-border decorators
@@ -96,11 +104,17 @@ def _save_image_from_pixmap(page: fitz.Page, bbox: fitz.Rect, dest_path: Path) -
     pix.save(str(dest_path))
 
 
-def extract_manual(pdf_path: Path, images_dir: Path, year: int) -> list[ExtractedSection]:
+def extract_manual(
+    pdf_path: Path, images_dir: Path, year: int, url_prefix: str = "images"
+) -> list[ExtractedSection]:
     """
     Parse a single Driver's Manual PDF.
     Saves images to images_dir/p{NNN}_img{N}.png.
     Returns a flat list of ExtractedSection objects.
+
+    `url_prefix` is the web-relative folder the saved images live under
+    (`{url_prefix}/{year}/...`). Defaults to "images" (the English build); the
+    Spanish build passes "images_spanish" so the two don't collide on shared years.
     """
     images_dir.mkdir(parents=True, exist_ok=True)
     doc = fitz.open(str(pdf_path))
@@ -116,28 +130,43 @@ def extract_manual(pdf_path: Path, images_dir: Path, year: int) -> list[Extracte
     for page_idx in range(len(doc)):
         page = doc[page_idx]
         blocks = page.get_text("dict", flags=fitz.TEXT_PRESERVE_WHITESPACE)["blocks"]
+
+        # Pass 1: locate the chapter label (and its font size) anywhere on the page.
         chapter_num: int | None = None
         chapter_label_size = 0.0
-        title_parts: list[str] = []
         for block in blocks:
             if block["type"] != 0:
                 continue
             for line in block["lines"]:
                 for span in line["spans"]:
                     span_text = span["text"].strip()
-                    if not span_text:
-                        continue
-                    if CHAPTER_RE.match(span_text) and span["size"] > 12:
+                    if span_text and CHAPTER_RE.match(span_text) and span["size"] >= CHAPTER_LABEL_MIN_SIZE:
                         m = re.search(r"\d+", span_text)
-                        chapter_num = int(m.group()) if m else len(chapter_pages) + 1
+                        num = int(m.group()) if m else len(chapter_pages) + 1
+                        if num > MAX_CHAPTER_NUM:
+                            continue
+                        chapter_num = num
                         chapter_label_size = span["size"]
-                    elif (
-                        chapter_num is not None
-                        and span["size"] >= 24
-                        and span["size"] < chapter_label_size
-                    ):
-                        # Display-size title words that follow the CHAPTER label
-                        title_parts.append(span_text)
+
+        # Pass 2: on a chapter-start page, collect the display-size title words. This
+        # is order-independent — in some editions (e.g. the Spanish manual) the title
+        # appears BEFORE the "CHAPTER N" label in block order, so a single ordered
+        # pass would miss it and fall back to a generic "Chapter N".
+        title_parts: list[str] = []
+        if chapter_num is not None:
+            for block in blocks:
+                if block["type"] != 0:
+                    continue
+                for line in block["lines"]:
+                    for span in line["spans"]:
+                        span_text = span["text"].strip()
+                        if (
+                            span_text
+                            and 24 <= span["size"] < chapter_label_size
+                            and not CHAPTER_RE.match(span_text)
+                        ):
+                            title_parts.append(span_text)
+
         if chapter_num is not None:
             title = _clean_text(" ".join(title_parts)) if title_parts else f"Chapter {chapter_num}"
             chapter_pages.append((chapter_num, page_idx, title))
@@ -225,7 +254,7 @@ def extract_manual(pdf_path: Path, images_dir: Path, year: int) -> list[Extracte
                 filename = f"p{page_idx:03d}_img{img_counter[0]:03d}.png"
                 img_counter[0] += 1
                 dest = images_dir / filename
-                src_path = f"images/{year}/{filename}"
+                src_path = f"{url_prefix}/{year}/{filename}"
 
                 saved = _save_image(doc, xref, dest)
                 if not saved:
@@ -243,8 +272,11 @@ def extract_manual(pdf_path: Path, images_dir: Path, year: int) -> list[Extracte
                     if not line_text:
                         continue
 
-                    # Skip chapter headings
-                    if CHAPTER_RE.match(line_text) and any(s["size"] > 12 for s in line["spans"]):
+                    # Skip chapter headings (display-sized only — an inline body
+                    # reference like "capítulo 525 de las Leyes" must not be dropped)
+                    if CHAPTER_RE.match(line_text) and any(
+                        s["size"] >= CHAPTER_LABEL_MIN_SIZE for s in line["spans"]
+                    ):
                         continue
 
                     # Skip large display title words on chapter-start pages

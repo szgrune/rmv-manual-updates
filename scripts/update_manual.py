@@ -88,7 +88,7 @@ def main():
     print(f"  Analyzer: {type(analyzer).__name__}")
 
     for old_year in prior_years:
-        ac.analyze_pair(old_year, latest, analyzer, force=True)
+        ac.analyze_pair(old_year, latest, analyzer, runs=1, reset=True)
 
     # Step 3: Export
     print("\n[3/3] Exporting JSON files...")

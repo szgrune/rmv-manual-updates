@@ -28,37 +28,77 @@ ABSOLUTE RULES — violating these produces incorrect output:
 2. Section or topic reorganization (same content, different order or chapter) is NOT a change.
 3. Only flag: new laws/requirements not in the older edition, updated fines or penalties,
    new permitted or prohibited behaviors, newly added topics, or clearly removed topics.
-4. When reporting a change, bullets MUST be DIRECT VERBATIM QUOTES from the 2026 text.
-   Copy the text word for word. Do not paraphrase. Wrap the quote in double quotes and
-   follow it with a parenthetical citation: "exact quote" (2026 Massachusetts Driver's Manual).
-5. For removed content (exists in old, absent from 2026), quote from the older edition and
-   cite it the same way: "exact quote" ([year] Massachusetts Driver's Manual).
+4. When reporting a change, bullets MUST be DIRECT VERBATIM QUOTES from the NEWER edition text.
+   Copy the text word for word. Do not paraphrase or translate the quote. Wrap the quote in
+   double quotes and follow it with a parenthetical citation in this exact format:
+   "exact quote" (YEAR Massachusetts Driver's Manual), where YEAR is the newer edition's year.
+5. For removed content (exists in old, absent from the newer edition), quote from the older
+   edition and cite it the same way: "exact quote" ([year] Massachusetts Driver's Manual).
 6. Be conservative — when in doubt about whether something changed, do NOT flag it.
 7. Output ONLY valid JSON — no explanation, no markdown fences.\
 """
 
+
+def _inclusive_directive(inclusive: bool) -> str:
+    """
+    Extra instruction for a more exhaustive pass. The default (conservative) pass
+    only flags brand-new topics; inclusive mode also flags substantive expansions
+    and newly-dedicated sections, while still excluding pure rewording and statistics.
+    """
+    if not inclusive:
+        return ""
+    return (
+        "\n\nINCLUSIVE COVERAGE: In addition to brand-new topics, ALSO report a change "
+        "(change_type \"expanded\") when a topic that already existed in the older edition "
+        "is given a new dedicated section, is substantively expanded, or is restructured "
+        "with materially new guidance, specifics, requirements, or instructions in the newer "
+        "edition. However, still do NOT report: pure rewording, synonym or term/name changes, "
+        "reorganization, or translations that convey the SAME substance (for example, renaming "
+        "a method or feature without changing its steps or meaning); and do NOT report changes "
+        "that are only updated statistics, figures, data, dates of data, or numeric counts. "
+        "The goal is to capture every substantive legal, regulatory, structural, or "
+        "instructional change while excluding cosmetic rewording and statistics."
+    )
+
+
+def _language_directive(language: str) -> str:
+    """
+    Extra instruction appended for non-English builds. The bullets are always
+    verbatim quotes (never translated); only the model-generated fields
+    (chapter_overview, title, description, summaries) are written in `language`.
+    """
+    if not language or language.strip().lower() == "english":
+        return ""
+    return (
+        f"\n\nLANGUAGE REQUIREMENT: Write every generated field — chapter_overview, "
+        f"title, description, and any summary text — in {language}. The bullets must "
+        f"remain EXACT VERBATIM QUOTES copied from the manual (do NOT translate them). "
+        f"Keep change_type values in English (new/updated/expanded/removed) and keep the "
+        f"parenthetical citation format exactly as specified."
+    )
+
 CHAPTER_COMPARE_PROMPT = """\
-You are comparing a section of the 2026 Massachusetts Driver's Manual against the
+You are comparing a section of the {new_year} Massachusetts Driver's Manual against the
 COMPLETE {old_year} edition. Read BOTH texts fully before forming any judgments.
 
 ══════════════════ COMPLETE {old_year} MANUAL ══════════════════
 {old_text}
 
-══════════════════ 2026 MANUAL (this section only) ══════════════════
+══════════════════ {new_year} MANUAL (this section only) ══════════════════
 {new_text}
 
 ══════════════════ YOUR TASK ══════════════════
 
-For every topic in the 2026 text above, search the COMPLETE {old_year} manual to find
+For every topic in the {new_year} text above, search the COMPLETE {old_year} manual to find
 whether that topic existed. Report only genuine changes:
 
-(a) Topic appears in 2026 but NOT ANYWHERE in the {old_year} manual → change_type "new"
+(a) Topic appears in {new_year} but NOT ANYWHERE in the {old_year} manual → change_type "new"
 (b) Topic appears in BOTH but the requirements, fines, or rules are different → change_type "updated" or "expanded"
 
 Do NOT report:
 - Topics that exist in both editions (even if reworded, in a different chapter, or at a different page)
 - Minor clarifications or rewording that conveys the same rule
-- Any content from the 2026 text that already exists in the {old_year} manual
+- Any content from the {new_year} text that already exists in the {old_year} manual
 
 Return this exact JSON structure:
 {{
@@ -70,31 +110,31 @@ Return this exact JSON structure:
       "change_type": "new" | "updated" | "expanded",
       "description": "One sentence explaining what changed and why it matters.",
       "bullets": [
-        "\\"exact text copied from the 2026 manual\\" (2026 Massachusetts Driver's Manual)",
-        "\\"another exact quote\\" (2026 Massachusetts Driver's Manual)"
+        "\\"exact text copied from the {new_year} manual\\" ({new_year} Massachusetts Driver's Manual)",
+        "\\"another exact quote\\" ({new_year} Massachusetts Driver's Manual)"
       ],
       "images": []
     }}
   ]
 }}
 
-If there are no genuine changes in this section of the 2026 manual, return an empty changes array.\
+If there are no genuine changes in this section of the {new_year} manual, return an empty changes array.\
 """
 
 REMOVED_CONTENT_PROMPT = """\
 Below is a list of topics from the {old_year} Massachusetts Driver's Manual that do not
-appear to have a clear match in the 2026 edition.
+appear to have a clear match in the {new_year} edition.
 
-For each topic, determine: is this content GENUINELY ABSENT from the 2026 manual, or does
-it appear somewhere in the 2026 text shown below (possibly under a different heading)?
+For each topic, determine: is this content GENUINELY ABSENT from the {new_year} manual, or does
+it appear somewhere in the {new_year} text shown below (possibly under a different heading)?
 
 {old_year} TOPICS TO CHECK:
 {old_topics}
 
-2026 MANUAL FULL TEXT (search here):
+{new_year} MANUAL FULL TEXT (search here):
 {new_full_text}
 
-Return a JSON array. Include ONLY topics that are genuinely absent from the 2026 manual:
+Return a JSON array. Include ONLY topics that are genuinely absent from the {new_year} manual:
 [
   {{
     "title": "Topic title from {old_year} edition",
@@ -107,7 +147,7 @@ Return a JSON array. Include ONLY topics that are genuinely absent from the 2026
 """
 
 OVERVIEW_PROMPT = """\
-Based on the following changes identified between the {old_year} and 2026 Massachusetts
+Based on the following changes identified between the {old_year} and {new_year} Massachusetts
 Driver's Manual, write a SHORT 2-4 sentence plain-language summary that orients a driver
 to the key NEW areas worth reviewing.
 
@@ -142,9 +182,16 @@ class LLMAnalyzer(ABC):
         old_text: str,
         new_year: int,
         new_text: str,
+        language: str = "English",
+        inclusive: bool = False,
     ) -> dict:
         """
         Compare full chapter texts from two editions.
+
+        `language` controls the language of the model-generated fields
+        (chapter_overview, title, description). Bullets are always verbatim quotes.
+        `inclusive` widens coverage to substantive expansions/new sections (see
+        _inclusive_directive); default False preserves the conservative behavior.
 
         Returns:
         {
@@ -157,17 +204,21 @@ class LLMAnalyzer(ABC):
 
     @abstractmethod
     def find_removed_content(
-        self, old_topics: list[dict], new_full_text: str, old_year: int
+        self, old_topics: list[dict], new_full_text: str, old_year: int,
+        new_year: int = 2026, language: str = "English",
     ) -> list[dict]:
         """
-        Given a list of old-edition topics not matched to any 2026 content,
-        confirm which are genuinely absent from the 2026 manual.
+        Given a list of old-edition topics not matched to any newer-edition content,
+        confirm which are genuinely absent from the newer manual.
 
         Returns: [{ "title", "description", "bullets" }]
         """
 
     @abstractmethod
-    def generate_overview(self, changes: list[dict], old_year: int) -> str:
+    def generate_overview(
+        self, changes: list[dict], old_year: int,
+        new_year: int = 2026, language: str = "English",
+    ) -> str:
         """Generate a plain-language overview paragraph."""
 
 
@@ -203,9 +254,11 @@ class ClaudeAnalyzer(LLMAnalyzer):
         old_text: str,
         new_year: int,
         new_text: str,
+        language: str = "English",
+        inclusive: bool = False,
     ) -> dict:
         """
-        Compare a 2026 chunk against the complete old manual.
+        Compare a {new_year} chunk against the complete old manual.
         Uses Anthropic prompt caching on the old_text (stable across all chunks).
         """
         import anthropic
@@ -216,12 +269,12 @@ class ClaudeAnalyzer(LLMAnalyzer):
             f"{old_text}\n\n"
         )
         new_block = (
-            f"══════════════════ 2026 MANUAL (this section only) ══════════════════\n"
+            f"══════════════════ {new_year} MANUAL (this section only) ══════════════════\n"
             f"{new_text}\n\n"
             f"══════════════════ YOUR TASK ══════════════════\n\n"
-            "For every topic in the 2026 text above, search the COMPLETE "
+            f"For every topic in the {new_year} text above, search the COMPLETE "
             f"{old_year} manual to find whether that topic existed. Report only genuine changes:\n\n"
-            f"(a) Topic appears in 2026 but NOT ANYWHERE in the {old_year} manual → change_type \"new\"\n"
+            f"(a) Topic appears in {new_year} but NOT ANYWHERE in the {old_year} manual → change_type \"new\"\n"
             "(b) Topic appears in BOTH but requirements, fines, or rules are different → change_type \"updated\" or \"expanded\"\n\n"
             "Do NOT report:\n"
             "- Topics that exist in both editions (even if reworded, different chapter, or different page)\n"
@@ -231,7 +284,9 @@ class ClaudeAnalyzer(LLMAnalyzer):
             '"changes": [{"id": "kebab-case-id", "title": "Topic title", '
             '"change_type": "new"|"updated"|"expanded", '
             '"description": "One sentence.", '
-            '"bullets": ["\\"exact quote\\" (2026 Massachusetts Driver\'s Manual)"], "images": []}]}'
+            f'"bullets": ["\\"exact quote\\" ({new_year} Massachusetts Driver\'s Manual)"], "images": []}}]}}'
+            + _language_directive(language)
+            + _inclusive_directive(inclusive)
         )
 
         for attempt in range(3):
@@ -278,7 +333,8 @@ class ClaudeAnalyzer(LLMAnalyzer):
         return {"chapter_overview": "", "changes": []}
 
     def find_removed_content(
-        self, old_topics: list[dict], new_full_text: str, old_year: int
+        self, old_topics: list[dict], new_full_text: str, old_year: int,
+        new_year: int = 2026, language: str = "English",
     ) -> list[dict]:
         if not old_topics:
             return []
@@ -289,9 +345,10 @@ class ClaudeAnalyzer(LLMAnalyzer):
         )
         prompt = REMOVED_CONTENT_PROMPT.format(
             old_year=old_year,
+            new_year=new_year,
             old_topics=topics_text,
             new_full_text=new_full_text[:50000],
-        )
+        ) + _language_directive(language)
 
         for attempt in range(3):
             try:
@@ -307,10 +364,13 @@ class ClaudeAnalyzer(LLMAnalyzer):
                 time.sleep(3)
         return []
 
-    def generate_overview(self, changes: list[dict], old_year: int) -> str:
+    def generate_overview(
+        self, changes: list[dict], old_year: int,
+        new_year: int = 2026, language: str = "English",
+    ) -> str:
         if not changes:
             return (
-                f"The {old_year} and 2026 Massachusetts Driver's Manuals cover the same "
+                f"The {old_year} and {new_year} Massachusetts Driver's Manuals cover the same "
                 "core content. No significant legal or regulatory changes were identified."
             )
         summary = "\n".join(
@@ -318,12 +378,14 @@ class ClaudeAnalyzer(LLMAnalyzer):
         )
         try:
             raw = self._call(
-                OVERVIEW_PROMPT.format(old_year=old_year, changes_summary=summary),
+                OVERVIEW_PROMPT.format(
+                    old_year=old_year, new_year=new_year, changes_summary=summary
+                ) + _language_directive(language),
                 max_tokens=512,
             )
             return raw.strip()
         except Exception:
-            return f"The 2026 manual includes updates compared to the {old_year} edition."
+            return f"The {new_year} manual includes updates compared to the {old_year} edition."
 
 
 class OpenAIAnalyzer(LLMAnalyzer):
@@ -354,13 +416,15 @@ class OpenAIAnalyzer(LLMAnalyzer):
                     raise
                 time.sleep(5)
 
-    def compare_chapters(self, chapter_title, old_year, old_text, new_year, new_text):
+    def compare_chapters(self, chapter_title, old_year, old_text, new_year, new_text,
+                         language="English", inclusive=False):
         prompt = CHAPTER_COMPARE_PROMPT.format(
             chapter_title=chapter_title,
             old_year=old_year,
+            new_year=new_year,
             old_text=old_text,     # no truncation — full manual
             new_text=new_text,
-        )
+        ) + _language_directive(language) + _inclusive_directive(inclusive)
         try:
             raw = self._call(prompt)
             result = _parse_json(raw)
@@ -373,7 +437,8 @@ class OpenAIAnalyzer(LLMAnalyzer):
             print(f"    OpenAI compare_chapters error: {e}")
             return {"chapter_overview": "", "changes": []}
 
-    def find_removed_content(self, old_topics, new_full_text, old_year):
+    def find_removed_content(self, old_topics, new_full_text, old_year,
+                             new_year=2026, language="English"):
         if not old_topics:
             return []
         topics_text = "\n\n".join(
@@ -381,9 +446,10 @@ class OpenAIAnalyzer(LLMAnalyzer):
         )
         prompt = REMOVED_CONTENT_PROMPT.format(
             old_year=old_year,
+            new_year=new_year,
             old_topics=topics_text,
             new_full_text=new_full_text[:50000],
-        )
+        ) + _language_directive(language)
         try:
             raw = self._call(prompt, max_tokens=4096)
             result = _parse_json(raw)
@@ -392,18 +458,20 @@ class OpenAIAnalyzer(LLMAnalyzer):
             print(f"    OpenAI find_removed_content error: {e}")
             return []
 
-    def generate_overview(self, changes, old_year):
+    def generate_overview(self, changes, old_year, new_year=2026, language="English"):
         if not changes:
-            return f"No significant changes identified between the {old_year} and 2026 editions."
+            return f"No significant changes identified between the {old_year} and {new_year} editions."
         summary = "\n".join(f"- {c['title']}: {c.get('description', '')}" for c in changes)
         try:
             raw = self._call(
-                OVERVIEW_PROMPT.format(old_year=old_year, changes_summary=summary),
+                OVERVIEW_PROMPT.format(
+                    old_year=old_year, new_year=new_year, changes_summary=summary
+                ) + _language_directive(language),
                 max_tokens=400,
             )
             return raw.strip()
         except Exception:
-            return f"The 2026 manual includes updates compared to the {old_year} edition."
+            return f"The {new_year} manual includes updates compared to the {old_year} edition."
 
 
 class LocalAnalyzer(LLMAnalyzer):
@@ -412,13 +480,14 @@ class LocalAnalyzer(LLMAnalyzer):
     Install: pip install -r scripts/requirements-local.txt
     """
 
-    def compare_chapters(self, chapter_title, old_year, old_text, new_year, new_text):
+    def compare_chapters(self, chapter_title, old_year, old_text, new_year, new_text,
+                         language="English", inclusive=False):
         import difflib
         ratio = difflib.SequenceMatcher(None, old_text, new_text).ratio()
         if ratio > 0.90:
             return {"chapter_overview": "No significant changes in this chapter.", "changes": []}
         return {
-            "chapter_overview": f"Text differs between {old_year} and 2026 editions (similarity {ratio:.0%}).",
+            "chapter_overview": f"Text differs between {old_year} and {new_year} editions (similarity {ratio:.0%}).",
             "changes": [{
                 "id": f"ch-{chapter_title.lower().replace(' ', '-')}-changes",
                 "title": f"{chapter_title} (Local diff)",
@@ -429,7 +498,8 @@ class LocalAnalyzer(LLMAnalyzer):
             }],
         }
 
-    def find_removed_content(self, old_topics, new_full_text, old_year):
+    def find_removed_content(self, old_topics, new_full_text, old_year,
+                             new_year=2026, language="English"):
         import difflib
         removed = []
         for t in old_topics:
@@ -437,14 +507,14 @@ class LocalAnalyzer(LLMAnalyzer):
             if ratio < 0.15:
                 removed.append({
                     "title": t["title"],
-                    "description": f"Topic appears absent from 2026 edition.",
+                    "description": f"Topic appears absent from {new_year} edition.",
                     "bullets": [],
                 })
         return removed
 
-    def generate_overview(self, changes, old_year):
+    def generate_overview(self, changes, old_year, new_year=2026, language="English"):
         n = len(changes)
-        return f"Local diff identified {n} potential changes between the {old_year} and 2026 editions."
+        return f"Local diff identified {n} potential changes between the {old_year} and {new_year} editions."
 
 
 def get_analyzer() -> LLMAnalyzer:

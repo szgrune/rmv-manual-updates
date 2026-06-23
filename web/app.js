@@ -8,6 +8,145 @@
 
 const dataCache = {};
 
+// ── Internationalization (EN / ES) ─────────────────────────────────────────────
+//
+// The English build is the default and unchanged. Selecting ES translates every
+// static UI string and switches the data source to the Spanish dataset built from
+// the two Spanish manuals (see scripts/build_spanish.py). The dynamic content
+// (overview, titles, descriptions, quotes, chapter names) is already Spanish in
+// that dataset, so only the chrome below needs translating.
+
+const STRINGS = {
+  en: {
+    title: "Driver's Manual Updates by Year",
+    intro: "Use this tool to see what has changed in the Massachusetts Driver's Manual since you got your driver's license. Click on a result to read the direct quote from the 2026 RMV Driver's Manual and click View All to expand subsections. Right now, only some years are included, so you will see the one closest to the year you enter.",
+    disclaimer: "This tool is not intended to be exhaustive or authoritative: it is an informational tool that is meant to improve ease of access to the newest material included in the most recent Massachusetts Driver's Manual.",
+    yearLabel: "Enter the year you got your driver's license:",
+    yearPlaceholder: "e.g. 2015",
+    yearSubmitAria: "Submit year",
+    accordionLabel: (y) => `${y} Updates`,
+    accordionLoading: (y) => `Loading ${y} updates…`,
+    accordionError: (y) => `Could not load ${y} update data.`,
+    changesHeading: (y) => `Changes Since ${y}`,
+    searchPlaceholder: "Search the updates…",
+    searchAria: "Search the updates",
+    share: "Share",
+    sharePdf: "Print / Save as PDF",
+    shareEmail: "Email the results",
+    shareCopy: "Copy the link",
+    shareCopied: "Copied!",
+    shareCopyFailed: "Copy failed",
+    sharePreparing: "Preparing…",
+    filterNew: "New",
+    filterUpdated: "Updated",
+    filterExpanded: "Expanded",
+    filterRemoved: "Removed",
+    viewAll: "View All",
+    hide: "Hide",
+    jumpTo: "Jump to a section:",
+    resultsEmpty: "No matching updates. Try clearing the search or filters.",
+    noChangesEditions: "No significant changes identified between these editions.",
+    noChangesPeriod: "No significant changes identified for this period.",
+    statusYearDataError: "Could not load year data. Please refresh the page.",
+    statusInvalid: "Invalid Input",
+    statusLoading: "Loading…",
+    statusOnlyBackTo: (y) => `We only have manual data going back to ${y}.`,
+    statusUpdateError: "Could not load update data. Please try again.",
+    scrollTopAria: "Scroll to top",
+    citationTitle: (y, p) => `Open the ${y} Massachusetts Driver's Manual at page ${p}`,
+    emailSubjectPrefix: "MA Driver's Manual — ",
+    emailDefaultHeading: "Driver's Manual Updates",
+    emailViewFull: "View the full results here:",
+    // Change-type badge text — English keeps the raw lowercase value (unchanged).
+    badge: { new: "new", updated: "updated", expanded: "expanded", removed: "removed" },
+  },
+  es: {
+    title: "Actualizaciones del Manual del Conductor por Año",
+    intro: "Use esta herramienta para ver qué ha cambiado en el Manual del Conductor de Massachusetts desde que obtuvo su licencia de conducir. Haga clic en un resultado para leer la cita directa del Manual del Conductor del RMV de 2023 y haga clic en Ver todo para expandir las subsecciones. Por ahora, solo se incluyen algunos años, por lo que verá el más cercano al año que ingrese.",
+    disclaimer: "Esta herramienta no pretende ser exhaustiva ni autorizada: es una herramienta informativa destinada a facilitar el acceso al material más reciente incluido en el Manual del Conductor de Massachusetts más actual.",
+    yearLabel: "Ingrese el año en que obtuvo su licencia de conducir:",
+    yearPlaceholder: "p. ej. 2015",
+    yearSubmitAria: "Enviar año",
+    accordionLabel: (y) => `Actualizaciones de ${y}`,
+    accordionLoading: (y) => `Cargando actualizaciones de ${y}…`,
+    accordionError: (y) => `No se pudieron cargar los datos de actualización de ${y}.`,
+    changesHeading: (y) => `Cambios Desde ${y}`,
+    searchPlaceholder: "Buscar en las actualizaciones…",
+    searchAria: "Buscar en las actualizaciones",
+    share: "Compartir",
+    sharePdf: "Imprimir / Guardar como PDF",
+    shareEmail: "Enviar los resultados por correo",
+    shareCopy: "Copiar el enlace",
+    shareCopied: "¡Copiado!",
+    shareCopyFailed: "Error al copiar",
+    sharePreparing: "Preparando…",
+    filterNew: "Nuevo",
+    filterUpdated: "Actualizado",
+    filterExpanded: "Ampliado",
+    filterRemoved: "Eliminado",
+    viewAll: "Ver todo",
+    hide: "Ocultar",
+    jumpTo: "Saltar a una sección:",
+    resultsEmpty: "No hay actualizaciones coincidentes. Pruebe a borrar la búsqueda o los filtros.",
+    noChangesEditions: "No se identificaron cambios significativos entre estas ediciones.",
+    noChangesPeriod: "No se identificaron cambios significativos para este período.",
+    statusYearDataError: "No se pudieron cargar los datos de los años. Actualice la página.",
+    statusInvalid: "Entrada no válida",
+    statusLoading: "Cargando…",
+    statusOnlyBackTo: (y) => `Solo tenemos datos del manual desde ${y}.`,
+    statusUpdateError: "No se pudieron cargar los datos de actualización. Inténtelo de nuevo.",
+    scrollTopAria: "Volver arriba",
+    citationTitle: (y, p) => `Abrir el Manual del Conductor de Massachusetts de ${y} en la página ${p}`,
+    emailSubjectPrefix: "Manual del Conductor de MA — ",
+    emailDefaultHeading: "Actualizaciones del Manual del Conductor",
+    emailViewFull: "Vea los resultados completos aquí:",
+    badge: { new: "Nuevo", updated: "Actualizado", expanded: "Ampliado", removed: "Eliminado" },
+  },
+};
+
+// Per-language data sources. EN reads the original files; ES reads the *_spanish
+// variants and deep-links citations into the Spanish PDFs.
+const LANG_CONFIG = {
+  en: {
+    manifest: 'data/manifest.json',
+    subtopics: 'data/subtopics.json',
+    changesSuffix: '',
+    manualPath: (y) => `manuals/Drivers_Manual_${y}.pdf`,
+    // Chapter pinned to the top of the results, ahead of natural chapter order.
+    priorityChapter: 'Rules of the Road',
+  },
+  es: {
+    manifest: 'data/manifest_spanish.json',
+    subtopics: 'data/subtopics_spanish.json',
+    changesSuffix: '_spanish',
+    manualPath: (y) => `manuals_spanish/Drivers_Manual_Spanish_${y}.pdf`,
+    priorityChapter: 'Reglas de la carretera',
+  },
+};
+
+// Active language. Resolved at startup from ?lang= / localStorage (default 'en').
+let lang = 'en';
+
+// Translate a key for the active language; call the value if it's a formatter.
+function t(key, ...args) {
+  const v = STRINGS[lang][key];
+  return typeof v === 'function' ? v(...args) : v;
+}
+
+function cfg() {
+  return LANG_CONFIG[lang];
+}
+
+// Localized change-type badge text (falls back to the raw value if unmapped).
+function badgeLabel(type) {
+  return (STRINGS[lang].badge && STRINGS[lang].badge[type]) || type;
+}
+
+// Manifest-derived comparison years, kept at module scope so the year handler and
+// the language toggle can both read/refresh them.
+let FROM_YEARS = [];
+let LATEST = null;
+
 // Editable outline of subtopic headings (web/data/subtopics.json), loaded once at
 // startup. Each entry: { chapter_num, page, title }. Results are bucketed under the
 // nearest preceding heading by citation page. Empty → app degrades to chapter-only.
@@ -24,8 +163,8 @@ let filterActive = false;
 // ── Manifest / startup ────────────────────────────────────────────────────────
 
 async function loadManifest() {
-  const resp = await fetch('data/manifest.json');
-  if (!resp.ok) throw new Error(`manifest.json fetch failed: ${resp.status}`);
+  const resp = await fetch(cfg().manifest);
+  if (!resp.ok) throw new Error(`${cfg().manifest} fetch failed: ${resp.status}`);
   return resp.json();
 }
 
@@ -33,7 +172,7 @@ async function loadManifest() {
 // grouped by chapter (every result falls into the "General" bucket).
 async function loadSubtopics() {
   try {
-    const resp = await fetch('data/subtopics.json');
+    const resp = await fetch(cfg().subtopics);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     SUBTOPICS = await resp.json();
   } catch {
@@ -42,44 +181,22 @@ async function loadSubtopics() {
 }
 
 async function init() {
+  // Resolve initial language: ?lang= wins, else stored preference, else English.
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  let storedLang = null;
+  try { storedLang = localStorage.getItem('rmv_lang'); } catch { /* ignore */ }
+  if (urlLang === 'es' || urlLang === 'en') lang = urlLang;
+  else if (storedLang === 'es' || storedLang === 'en') lang = storedLang;
+  else lang = 'en';
+
+  initLangToggle();
+
   const input = document.getElementById('year-input');
-  const accordionLabel = document.getElementById('accordion-label');
 
-  let manifest;
-  try {
-    manifest = await loadManifest();
-  } catch (err) {
-    showYearStatus('Could not load year data. Please refresh the page.', 'error');
-    input.disabled = true;
-    return;
-  }
-
-  // Subtopic outline backs the nested TOC and the per-subtopic grouping — load it
-  // before any rendering so both the accordion and year views can use it.
-  await loadSubtopics();
-
-  const { manual_years: years, latest_year: latest } = manifest;
-
-  // Update accordion label to use the actual latest year
-  accordionLabel.textContent = `${latest} Updates`;
-
-  // Editions the user can compare against — exclude the latest (that's what we
-  // compare *to*). Sorted ascending so we can pick the most recent at-or-before.
-  const fromYears = years.filter(year => year !== latest).sort((a, b) => a - b);
-
-  // Pre-fetch accordion data (second-latest → latest)
-  if (fromYears.length > 0) {
-    const secondLatest = fromYears[fromYears.length - 1];
-    loadChanges(secondLatest, latest).then(data => {
-      if (data) renderAccordion(data);
-    }).catch(() => {
-      document.getElementById('accordion-content').innerHTML =
-        `<p class="error-msg">Could not load ${latest} update data.</p>`;
-    });
-  }
-
-  // Year input handler — evaluate on Enter or when the field loses focus
-  const handler = () => handleYearInput(input.value, fromYears, latest);
+  // Bind the year handlers once — they read FROM_YEARS / LATEST from module scope,
+  // which loadLanguageData() refreshes whenever the language changes.
+  const handler = () => handleYearInput(input.value);
   input.addEventListener('change', handler);
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -90,21 +207,164 @@ async function init() {
   const submitBtn = document.getElementById('year-submit-btn');
   if (submitBtn) submitBtn.addEventListener('click', handler);
 
+  applyStaticText();
+  await loadLanguageData();
+
   // Reopen a shared view from the URL (?year=…).
-  const yearParam = new URLSearchParams(window.location.search).get('year');
+  const yearParam = params.get('year');
   if (yearParam) {
     input.value = yearParam;
-    handleYearInput(yearParam, fromYears, latest);
+    handleYearInput(yearParam);
   }
+}
+
+// Load (or reload) all data for the active language and refresh the accordion.
+// Sets the module-level FROM_YEARS / LATEST the year handler depends on.
+async function loadLanguageData() {
+  const input = document.getElementById('year-input');
+  const accordionLabel = document.getElementById('accordion-label');
+
+  let manifest;
+  try {
+    manifest = await loadManifest();
+  } catch (err) {
+    showYearStatus(t('statusYearDataError'), 'error');
+    input.disabled = true;
+    return;
+  }
+  input.disabled = false;
+
+  // Subtopic outline backs the nested TOC and the per-subtopic grouping — load it
+  // before any rendering so both the accordion and year views can use it.
+  await loadSubtopics();
+
+  const { manual_years: years, latest_year: latest } = manifest;
+  LATEST = latest;
+  // Editions the user can compare against — exclude the latest (that's what we
+  // compare *to*). Sorted ascending so we can pick the most recent at-or-before.
+  FROM_YEARS = years.filter(year => year !== latest).sort((a, b) => a - b);
+
+  accordionLabel.textContent = t('accordionLabel', latest);
+
+  // Pre-fetch accordion data (second-latest → latest)
+  if (FROM_YEARS.length > 0) {
+    const secondLatest = FROM_YEARS[FROM_YEARS.length - 1];
+    loadChanges(secondLatest, latest).then(data => {
+      if (data) renderAccordion(data);
+    }).catch(() => {
+      document.getElementById('accordion-content').innerHTML =
+        `<p class="error-msg">${t('accordionError', latest)}</p>`;
+    });
+  }
+}
+
+// ── Language toggle ─────────────────────────────────────────────────────────────
+
+function initLangToggle() {
+  const enBtn = document.getElementById('lang-en');
+  const esBtn = document.getElementById('lang-es');
+  if (!enBtn || !esBtn) return;
+  enBtn.addEventListener('click', () => setLanguage('en'));
+  esBtn.addEventListener('click', () => setLanguage('es'));
+  reflectLangToggle();
+}
+
+function reflectLangToggle() {
+  const enBtn = document.getElementById('lang-en');
+  const esBtn = document.getElementById('lang-es');
+  if (!enBtn || !esBtn) return;
+  enBtn.classList.toggle('is-active', lang === 'en');
+  esBtn.classList.toggle('is-active', lang === 'es');
+  enBtn.setAttribute('aria-pressed', String(lang === 'en'));
+  esBtn.setAttribute('aria-pressed', String(lang === 'es'));
+}
+
+async function setLanguage(next) {
+  if (next === lang || (next !== 'en' && next !== 'es')) return;
+  lang = next;
+  try { localStorage.setItem('rmv_lang', lang); } catch { /* ignore */ }
+
+  reflectLangToggle();
+  applyStaticText();
+  showYearStatus('');               // drop any stale "before oldest" warning
+  syncUrl();
+
+  await loadLanguageData();          // refresh FROM_YEARS / LATEST + accordion
+
+  // Re-render the currently entered year against the new dataset, if any.
+  const input = document.getElementById('year-input');
+  if (currentYear != null && input.value.trim()) {
+    handleYearInput(input.value);
+  } else {
+    document.getElementById('changes-section').hidden = true;
+  }
+}
+
+// Translate every static (non-data) string for the active language.
+function applyStaticText() {
+  document.documentElement.lang = lang;
+  document.title = t('title');
+
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  set('app-title', t('title'));
+  set('app-intro', t('intro'));
+  set('app-disclaimer', t('disclaimer'));
+  set('year-label', t('yearLabel'));
+
+  const input = document.getElementById('year-input');
+  if (input) input.placeholder = t('yearPlaceholder');
+  const submitBtn = document.getElementById('year-submit-btn');
+  if (submitBtn) submitBtn.setAttribute('aria-label', t('yearSubmitAria'));
+
+  if (LATEST != null) set('accordion-label', t('accordionLabel', LATEST));
+
+  const search = document.getElementById('results-search');
+  if (search) {
+    search.placeholder = t('searchPlaceholder');
+    search.setAttribute('aria-label', t('searchAria'));
+  }
+
+  const shareSpan = document.querySelector('#share-btn span');
+  if (shareSpan) shareSpan.textContent = t('share');
+  const shareMap = { pdf: 'sharePdf', email: 'shareEmail', copy: 'shareCopy' };
+  document.querySelectorAll('.share-option').forEach(opt => {
+    const key = shareMap[opt.dataset.action];
+    if (key) opt.textContent = t(key);
+  });
+
+  const filterMap = { new: 'filterNew', updated: 'filterUpdated', expanded: 'filterExpanded', removed: 'filterRemoved' };
+  document.querySelectorAll('#results-filters .filter-chip').forEach(chip => {
+    const cb = chip.querySelector('input');
+    const span = chip.querySelector('span');
+    if (cb && span && filterMap[cb.value]) span.textContent = t(filterMap[cb.value]);
+  });
+
+  const empty = document.getElementById('results-empty');
+  if (empty) empty.textContent = t('resultsEmpty');
+  const scrollTop = document.getElementById('scroll-top');
+  if (scrollTop) scrollTop.setAttribute('aria-label', t('scrollTopAria'));
+}
+
+// Reflect the active language + current year in the URL so the view is shareable.
+function syncUrl() {
+  const url = new URL(window.location.href);
+  const params = new URLSearchParams();
+  if (lang !== 'en') params.set('lang', lang);
+  if (currentYear != null) params.set('year', currentYear);
+  const qs = params.toString();
+  url.search = qs ? `?${qs}` : '';
+  url.hash = '';
+  history.replaceState(null, '', url.toString());
 }
 
 // ── Data loading ──────────────────────────────────────────────────────────────
 
 async function loadChanges(fromYear, toYear) {
-  const key = `${fromYear}_${toYear}`;
+  // Cache is namespaced by language so EN and ES datasets never collide.
+  const key = `${lang}_${fromYear}_${toYear}`;
   if (dataCache[key]) return dataCache[key];
 
-  const resp = await fetch(`data/changes_${fromYear}_to_${toYear}.json`);
+  const resp = await fetch(`data/changes_${fromYear}_to_${toYear}${cfg().changesSuffix}.json`);
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   const data = await resp.json();
   dataCache[key] = data;
@@ -113,14 +373,14 @@ async function loadChanges(fromYear, toYear) {
 
 // ── Year input ──────────────────────────────────────────────────────────────
 
-async function handleYearInput(rawValue, fromYears, latestYear) {
+async function handleYearInput(rawValue) {
   const changesSection = document.getElementById('changes-section');
   const value = rawValue.trim();
 
   // Anything that isn't a four-digit year is rejected outright.
   if (!/^\d{4}$/.test(value)) {
     changesSection.hidden = true;
-    showYearStatus('Invalid Input', 'error');
+    showYearStatus(t('statusInvalid'), 'error');
     return;
   }
 
@@ -128,33 +388,30 @@ async function handleYearInput(rawValue, fromYears, latestYear) {
 
   // Most recent edition at or before the entered year (e.g. 2009 → 2007).
   let fromYear = null;
-  for (const y of fromYears) {
+  for (const y of FROM_YEARS) {
     if (y <= enteredYear) fromYear = y;
   }
 
   // Years before our oldest edition: warn, but still show the oldest edition's
   // updates as the closest available match.
   const beforeOldest = fromYear === null;
-  if (beforeOldest) fromYear = fromYears[0];
+  if (beforeOldest) fromYear = FROM_YEARS[0];
 
   showYearStatus(beforeOldest
-    ? `We only have manual data going back to ${fromYears[0]}.`
-    : 'Loading…',
+    ? t('statusOnlyBackTo', FROM_YEARS[0])
+    : t('statusLoading'),
     beforeOldest ? 'error' : '');
 
   try {
-    const data = await loadChanges(fromYear, latestYear);
-    renderChanges(data, fromYear, latestYear);
+    const data = await loadChanges(fromYear, LATEST);
+    renderChanges(data, fromYear, LATEST);
     // Preserve the warning when we fell back to the oldest edition.
     if (!beforeOldest) showYearStatus('');
     // Reflect the view in the URL so it can be shared / reopened.
     currentYear = enteredYear;
-    const url = new URL(window.location.href);
-    url.search = `?year=${enteredYear}`;
-    url.hash = '';
-    history.replaceState(null, '', url.toString());
+    syncUrl();
   } catch (err) {
-    showYearStatus('Could not load update data. Please try again.', 'error');
+    showYearStatus(t('statusUpdateError'), 'error');
     changesSection.hidden = true;
   }
 }
@@ -174,7 +431,7 @@ function renderChanges(data, fromYear, toYear) {
   const sectionsList = document.getElementById('sections-list');
   const idPrefix = `changes-${fromYear}`;
 
-  heading.textContent = `Changes Since ${fromYear}`;
+  heading.textContent = t('changesHeading', fromYear);
   overviewBlock.innerHTML = '';
   sectionsList.innerHTML = '';
   resetResultsControls();
@@ -185,7 +442,7 @@ function renderChanges(data, fromYear, toYear) {
   }
 
   if (!data.sections || data.sections.length === 0) {
-    sectionsList.innerHTML = '<p class="info-msg">No significant changes identified between these editions.</p>';
+    sectionsList.innerHTML = `<p class="info-msg">${t('noChangesEditions')}</p>`;
     changesSection.hidden = false;
     return;
   }
@@ -208,7 +465,7 @@ function renderAccordion(data) {
   content.innerHTML = '';
 
   if (!data.sections || data.sections.length === 0) {
-    content.innerHTML = '<p class="info-msg">No significant changes identified for this period.</p>';
+    content.innerHTML = `<p class="info-msg">${t('noChangesPeriod')}</p>`;
     return;
   }
 
@@ -229,9 +486,11 @@ function groupByChapter(sections) {
     }
     groups.get(chapter).items.push(sec);
   });
-  // "Rules of the Road" is highlighted by always sorting first; the rest keep
-  // their natural chapter order.
-  const rank = g => (g.chapter === 'Rules of the Road' ? -Infinity : g.chapter_num);
+  // The priority chapter (English "Rules of the Road" / Spanish "Reglas de la
+  // carretera") is highlighted by always sorting first; the rest keep their
+  // natural chapter order.
+  const priority = cfg().priorityChapter;
+  const rank = g => (g.chapter === priority ? -Infinity : g.chapter_num);
   return [...groups.values()].sort((a, b) => rank(a) - rank(b));
 }
 
@@ -374,7 +633,7 @@ function buildTableOfContents(groups, idPrefix) {
 
   const label = document.createElement('p');
   label.className = 'toc-label';
-  label.textContent = 'Jump to a section:';
+  label.textContent = t('jumpTo');
   nav.appendChild(label);
 
   const ul = document.createElement('ul');
@@ -471,18 +730,18 @@ function applySectionCollapse(section) {
     // nothing past the limit; otherwise label it for the current state.
     btn.hidden = filterActive || cards.length <= SECTION_VISIBLE_LIMIT;
     const label = btn.querySelector('.vt-label');
-    if (label) label.textContent = expanded ? 'Hide' : 'View All';
+    if (label) label.textContent = expanded ? t('hide') : t('viewAll');
   }
 }
 
 function buildCitationLink({ year, page }) {
   const a = document.createElement('a');
   a.className = 'citation-link';
-  a.href = `manuals/Drivers_Manual_${year}.pdf#page=${page}`;
+  a.href = `${cfg().manualPath(year)}#page=${page}`;
   a.target = '_blank';
   a.rel = 'noopener';
   a.textContent = `(p. ${page})`;
-  a.title = `Open the ${year} Massachusetts Driver's Manual at page ${page}`;
+  a.title = t('citationTitle', year, page);
   return a;
 }
 
@@ -530,7 +789,7 @@ function buildSectionCard(sec) {
   if (sec.change_type) {
     const badge = document.createElement('span');
     badge.className = `badge badge-${sec.change_type}`;
-    badge.textContent = sec.change_type;
+    badge.textContent = badgeLabel(sec.change_type);
     headLine.appendChild(badge);
   }
   main.appendChild(headLine);
@@ -750,9 +1009,9 @@ async function handleShareAction(opt) {
     case 'copy':
       try {
         await navigator.clipboard.writeText(buildShareUrl());
-        flashOption(opt, 'Copied!');
+        flashOption(opt, t('shareCopied'));
       } catch {
-        flashOption(opt, 'Copy failed');
+        flashOption(opt, t('shareCopyFailed'));
       }
       break;
     case 'email':
@@ -778,18 +1037,22 @@ function flashOption(opt, msg) {
 
 function buildShareUrl() {
   const url = new URL(window.location.href);
-  url.search = currentYear ? `?year=${currentYear}` : '';
+  const params = new URLSearchParams();
+  if (lang !== 'en') params.set('lang', lang);
+  if (currentYear != null) params.set('year', currentYear);
+  const qs = params.toString();
+  url.search = qs ? `?${qs}` : '';
   url.hash = '';
   return url.toString();
 }
 
 function emailResults() {
-  const heading = document.getElementById('changes-heading').textContent || "Driver's Manual Updates";
+  const heading = document.getElementById('changes-heading').textContent || t('emailDefaultHeading');
   const summaryEl = document.querySelector('#overview-block .overview-summary');
   const summary = summaryEl ? summaryEl.textContent.trim() + '\n\n' : '';
-  const body = `${summary}View the full results here:\n${buildShareUrl()}`;
+  const body = `${summary}${t('emailViewFull')}\n${buildShareUrl()}`;
   window.location.href =
-    `mailto:?subject=${encodeURIComponent("MA Driver's Manual — " + heading)}` +
+    `mailto:?subject=${encodeURIComponent(t('emailSubjectPrefix') + heading)}` +
     `&body=${encodeURIComponent(body)}`;
 }
 
@@ -815,7 +1078,7 @@ function loadVisibleImages(root) {
 async function printResults(opt) {
   const section = document.getElementById('changes-section');
   const original = opt.textContent;
-  opt.textContent = 'Preparing…';
+  opt.textContent = t('sharePreparing');
   opt.disabled = true;
   try {
     await loadVisibleImages(section);

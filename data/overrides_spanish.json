@@ -1,0 +1,48 @@
+{
+  "_README": "Manual corrections to the AI-generated change data. These edits are PERMANENT and always win over AI output — they are re-applied every time export_json.py runs, including after re-analyzing new PDFs. Entries are captured automatically from edits you make to web/data/changes_*.json, but you may also edit this file by hand. Keyed by from_year, then by each change's stable `id`. action: edit | delete | add.",
+  "version": 1,
+  "pairs": {
+    "2019": {
+      "changes": {
+        "fecha-real-id-2025": {
+          "action": "delete"
+        },
+        "limite-velocidad-25-mph-comunidades": {
+          "action": "edit",
+          "fields": {
+            "images": []
+          }
+        },
+        "lampara-cruce-peatonal-intermitencia-rapida": {
+          "action": "edit",
+          "fields": {
+            "images": [
+              {
+                "src": "images_spanish/2023/p074_img016.png",
+                "alt": "",
+                "caption": ""
+              }
+            ]
+          }
+        },
+        "cajas-de-bicicletas": {
+          "action": "add",
+          "fields": {
+            "title": "Cajas de bicicletas",
+            "change_type": "expanded",
+            "description": "El manual de 2023 agrega una sección dedicada que define las cajas de bicicletas como marcas verdes en el pavimento, instaladas en las intersecciones para que los ciclistas giren con seguridad ante un semáforo en rojo.",
+            "bullets": [
+              "\"Las cajas de bicicletas son marcas en el pavimento que se instalan en las intersecciones para permitir a los ciclistas una forma segura de girar cuando se acercan a un semáforo en rojo. Las cajas para bicicletas son verdes y tienen la imagen de un ciclista.\" (2023 Massachusetts Driver's Manual)"
+            ],
+            "images": [],
+            "chapter": "Reglas de la carretera",
+            "chapter_num": 4
+          }
+        },
+        "visibilidad-placas": {
+          "action": "delete"
+        }
+      }
+    }
+  }
+}

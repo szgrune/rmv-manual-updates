@@ -1,0 +1,1120 @@
+{
+  "from_year": 2019,
+  "to_year": 2023,
+  "overview": "La edición de 2023 introduce cambios importantes en materia de licencias, destacando la Ley de Movilidad Laboral y Familiar (WFMA) que elimina el requisito de presencia legal, la nueva fecha límite federal de REAL ID del 7 de mayo de 2025, la opción de hacer el examen del permiso en línea y la ampliación de idiomas disponibles. También conviene revisar las actualizaciones de seguridad vial, como la ley de manos libres para dispositivos móviles con sanciones escalonadas, la nueva ley de usuarios viales vulnerables con distancia de rebasamiento de cuatro pies, la regla de distancia segura de tres segundos y la mayor protección a ciclistas y peatones. Hay secciones nuevas sobre conducción somnolienta, peligros del exceso de velocidad, efectos combinados del alcohol y la marihuana, glorietas, choques de cortesía y señales y carriles específicos para bicicletas. Por último, presta atención a los procedimientos actualizados, incluyendo las audiencias de restablecimiento de licencia por teléfono, las nuevas instrucciones sobre cómo actuar durante una detención policial y los cambios en umbrales como la edad para la foto de licencia (de 21 a 20 años) y el monto de culpabilidad en accidentes (de $500 a $1000).",
+  "sections": [
+    {
+      "id": "wfma-presencia-legal",
+      "title": "Ley de Movilidad Laboral y Familiar (WFMA)",
+      "change_type": "new",
+      "description": "El manual de 2023 introduce la WFMA, que elimina el requisito de demostrar presencia legal para obtener una licencia de conducir estándar tipo D o M.",
+      "bullets": [
+        "\"A partir del 1 de julio de 2023, Massachusetts ya no requiere que los solicitantes proporcionen prueba de presencia legal para obtener una licencia de conducir estándar de tipo D o M.\" (2023 Massachusetts Driver's Manual)",
+        "\"Esto se debe a la Ley de Movilidad Laboral y Familiar de Massachusetts (Capítulo 81 de las Leyes de 2022).\" (2023 Massachusetts Driver's Manual)",
+        "Los clientes recibirán una licencia de conducir estándar de cinco años y el documento tendrá el mismo aspecto que cualquier otro documento estándar. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 14
+        },
+        {
+          "year": 2023,
+          "page": 14
+        },
+        {
+          "year": 2023,
+          "page": 14
+        }
+      ]
+    },
+    {
+      "id": "real-id-fecha-limite-2025",
+      "title": "Fecha límite federal de REAL ID del 7 de mayo de 2025",
+      "change_type": "updated",
+      "description": "La fecha límite federal para requerir una REAL ID u otra identificación aceptable cambió respecto a la fecha del 1 de octubre de 2020 indicada en el manual de 2019.",
+      "bullets": [
+        "\"A partir del 7 de mayo de 2025, necesitará una REAL ID u otra identificación aceptable, como un pasaporte válido, para volar dentro de los Estados Unidos o ingresar a ciertos edificios federales.\" (2023 Massachusetts Driver's Manual)",
+        "\"Si tiene un documento estándar de Massachusetts, deberá mostrar un pasaporte o una forma alternativa de identificación aceptable a nivel federal para abordar un vuelo nacional o acceder a ciertas instalaciones federales después del 7 de mayo de 2025.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 13
+        },
+        {
+          "year": 2023,
+          "page": 13
+        }
+      ]
+    },
+    {
+      "id": "residentes-fuera-pais-licencia-extranjera",
+      "title": "Conducción de residentes de fuera del país con licencia extranjera",
+      "change_type": "expanded",
+      "description": "El manual de 2023 añade detalles específicos sobre que el país emisor debe hacer cumplir estándares equivalentes y que violar la sección 10 es un delito penal con multa.",
+      "bullets": [
+        "\"El país que emitió la licencia debe hacer cumplir estándares para la operación de vehículos automotores equivalentes a Massachusetts (según lo determine el RMV).\" (2023 Massachusetts Driver's Manual)",
+        "\"Una violación de la sección 10 es una violación penal y la primera infracción está sujeta a una multa de $500.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 10
+        },
+        {
+          "year": 2023,
+          "page": 10
+        }
+      ]
+    },
+    {
+      "id": "duracion-licencias-prorrateadas",
+      "title": "Duración de las licencias y prorrateo de tasas",
+      "change_type": "expanded",
+      "description": "El manual de 2023 añade una sección dedicada que explica el prorrateo de tasas para licencias REAL ID de menos de cinco años basadas en la presencia legal autorizada.",
+      "bullets": [
+        "\"La tasa de la licencia será prorrateada si tiene menos de cinco años y la licencia no vencerá el día de su cumpleaños.\" (2023 Massachusetts Driver's Manual)",
+        "\"El período mínimo aceptable de presencia legal es de 12 meses.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 15
+        },
+        {
+          "year": 2023,
+          "page": 15
+        }
+      ]
+    },
+    {
+      "id": "examen-permiso-en-linea",
+      "title": "Examen del permiso de aprendiz disponible en línea",
+      "change_type": "new",
+      "description": "El manual de 2023 introduce la posibilidad de realizar el examen del permiso de aprendiz en línea después de enviar la solicitud, opción que no existía en la edición de 2019.",
+      "bullets": [
+        "Los exámenes de permiso de aprendiz se pueden tomar en el centro de servicio cuando envíe su solicitud. También están disponibles en línea en Mass.Gov/RMV después de enviar su solicitud. (2023 Massachusetts Driver's Manual)",
+        "Si aprueba el examen en línea pero no puede imprimir el permiso, puede llamar al Centro de Contacto del RMV al 857-368-8110. El RMV imprimirá el permiso y se lo enviará por correo en cinco a siete días hábiles. (2023 Massachusetts Driver's Manual)",
+        "También están disponibles en línea en Mass.Gov/RMV después de enviar su solicitud. Si aprueba el examen en línea pero no puede imprimir el permiso, puede llamar al Centro de Contacto del RMV al 857-368-8110. El RMV imprimirá el permiso y se lo enviará por correo en cinco a siete días hábiles. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 21
+        },
+        {
+          "year": 2023,
+          "page": 21
+        },
+        {
+          "year": 2023,
+          "page": 21
+        }
+      ]
+    },
+    {
+      "id": "declaracion-jurada-sin-ssn",
+      "title": "Declaración jurada sin número de seguro social",
+      "change_type": "new",
+      "description": "El manual de 2023 añade la opción de presentar una declaración jurada sin número de seguro social para ciertos clientes que solicitan una licencia de conducir estándar bajo la ley WFMA.",
+      "bullets": [
+        "Si no tiene un SSN y no puede solicitar uno, puede presentar una declaración jurada sin número de seguro social y solicitar una licencia de conducir estándar. Esta declaración jurada solo está permitida para ciertos tipos de documentos incluidos en la ley WFMA (para saber más, consulte Mass.Gov/WFMA). (2023 Massachusetts Driver's Manual)",
+        "Una declaración jurada sin número de seguro social - solo se permite para ciertos clientes que presentan tipos de documentos específicos y solo para licencias de conducir estándar (NO para documentos de ID de Massachusetts) (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 19
+        },
+        {
+          "year": 2023,
+          "page": 18
+        }
+      ]
+    },
+    {
+      "id": "idiomas-examen-ampliados",
+      "title": "Ampliación de idiomas para el examen del permiso de aprendiz",
+      "change_type": "expanded",
+      "description": "La lista de idiomas disponibles para los exámenes del permiso de aprendiz Tipo D y M se amplió en el manual de 2023, incluyendo nuevos idiomas como albanés, criollo caboverdiano, húngaro, kiswahili y pastún.",
+      "bullets": [
+        "Albanés • Árabe • Armenio • Birmano • Camboyano (Jemer) • Chino Criollo Caboverdiano (Simplificado) • Chino (Tradicional) • Farsi • Francés • Alemán • Griego • Gujarati Haitiano/Criollo • Hindi • Húngaro • Italiano • Japonés • Kiswahili • Coreano • Laosiano • Pastún (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 22
+        }
+      ]
+    },
+    {
+      "id": "pruebas-manejo-rechazadas",
+      "title": "Razones para rechazar pruebas de manejo",
+      "change_type": "new",
+      "description": "Se añade una nueva sección que detalla razones específicas por las cuales un examinador puede rechazar una prueba de manejo, incluyendo signos de consumo de alcohol o sustancias.",
+      "bullets": [
+        "Los examinadores de la prueba de manejo pueden rechazarlas por las siguientes razones: Usted o su patrocinador muestran signos de consumo de alcohol o sustancias Usted o su patrocinador emanan olor a alcohol o marihuana, incluso de la ropa o del interior del vehículo (2023 Massachusetts Driver's Manual)",
+        "\"Usted o su patrocinador muestran signos de consumo de alcohol o sustancias Usted o su patrocinador emanan olor a alcohol o marihuana, incluso de la ropa o del interior del vehículo Niños menores, bebés o animales están presentes en el vehículo y no pueden dejarse sin supervisión en el Centro de Servicio.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 25
+        },
+        {
+          "year": 2023,
+          "page": 25
+        }
+      ]
+    },
+    {
+      "id": "limite-patrocinadores",
+      "title": "Límite de patrocinios por operador",
+      "change_type": "new",
+      "description": "Se establece un nuevo límite que impide que un operador patrocine a más de tres solicitantes diferentes en un período de un año sin aprobación del RMV.",
+      "bullets": [
+        "Los operadores no pueden patrocinar a más de tres solicitantes diferentes dentro de un período de un año sin la aprobación del Programa de Prueba de Manejo del RMV. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 27
+        }
+      ]
+    },
+    {
+      "id": "videos-prueba-manejo",
+      "title": "Videos de prueba de manejo en línea",
+      "change_type": "new",
+      "description": "Se añade la disponibilidad de videos de pruebas de manejo en línea para ayudar a los solicitantes a prepararse para el examen.",
+      "bullets": [
+        "Los videos de pruebas de manejo están disponibles en línea en Mass.Gov/RMV en la sección de pruebas de manejo. Estos videos lo ayudarán a prepararse para la prueba y le mostrarán qué esperar durante el examen. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 28
+        }
+      ]
+    },
+    {
+      "id": "edad-foto-licencia",
+      "title": "Requisito de edad para foto de licencia",
+      "change_type": "updated",
+      "description": "El umbral de edad para requerir una nueva foto en persona cambió de 21 años a 20 años.",
+      "bullets": [
+        "Si tiene más de 20 años, pero todavía tiene una foto en el archivo de cuando tenía menos de 20 años, deberá hacer una reserva para visitar un centro de servicio para obtener su licencia. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 30
+        }
+      ]
+    },
+    {
+      "id": "patrocinador-licencia-vigente",
+      "title": "Patrocinador debe llevar licencia válida vigente",
+      "change_type": "expanded",
+      "description": "Se especifica explícitamente que los patrocinadores deben tener consigo su licencia válida vigente durante la prueba.",
+      "bullets": [
+        "Los patrocinadores debe tener su licencia válida vigente con ellos. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 26
+        }
+      ]
+    },
+    {
+      "id": "ley-manos-libres-dispositivos-moviles",
+      "title": "Ley de dispositivos electrónicos móviles manos libres",
+      "change_type": "updated",
+      "description": "La ley cambió de permitir que los conductores mayores de 18 años usaran teléfonos celulares con una mano en el volante a prohibir todo uso manual, exigiendo el modo manos libres.",
+      "bullets": [
+        "El uso de dispositivos electrónicos móviles manuales (incluidos los teléfonos celulares) mientras se conduce está prohibido en Massachusetts (capítulo 90, sección 13B y capítulo 122 de las Leyes de 2019).",
+        "Los conductores mayores de 18 años solo pueden usar dispositivos electrónicos móviles en modo \"manos libres\" mientras conducen."
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "sanciones-dispositivo-movil",
+      "title": "Sanciones por usar un dispositivo electrónico móvil de mano",
+      "change_type": "new",
+      "description": "Se establecieron sanciones escalonadas específicas por usar un dispositivo electrónico móvil de mano mientras se conduce, incluyendo programas educativos obligatorios.",
+      "bullets": [
+        "1ra infracción - multa de $100",
+        "2da infracción - multa de $250, más completar obligatoriamente un programa educativo de conducción distraída",
+        "Tercera y subsiguientes infracciones - multa de $500, más recargo de seguro y finalización obligatoria de un programa de conducción distraída"
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "consejos-evitar-telefono-conducir",
+      "title": "Consejos para evitar el uso del teléfono móvil mientras se conduce",
+      "change_type": "new",
+      "description": "Se agregó una nueva sección con consejos prácticos para evitar el uso del teléfono celular durante la conducción.",
+      "bullets": [
+        "Desactive las notificaciones de aplicaciones.",
+        "Ponga su teléfono en silencio.",
+        "Ponga su teléfono en el asiento trasero.",
+        "Deténgase en un lugar seguro (NO al lado de una carretera o autopista concurrida) si necesita usar su teléfono."
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "ruido-fuerte-vehiculo",
+      "title": "Ruido fuerte dentro del vehículo",
+      "change_type": "new",
+      "description": "Se agregó una nueva indicación para evitar niveles altos de ruido dentro del vehículo a fin de poder escuchar las sirenas de emergencia.",
+      "bullets": [
+        "Evite los niveles altos de ruido en su vehículo para que pueda escuchar las sirenas de los vehículos de emergencia."
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null
+      ]
+    },
+    {
+      "id": "requisitos-equipo-vehiculo-pasajeros",
+      "title": "Equipo de seguridad requerido en vehículos de pasajeros",
+      "change_type": "expanded",
+      "description": "La lista de equipo de seguridad obligatorio se amplió para incluir una ventana funcional del lado del conductor.",
+      "bullets": [
+        "Una ventana funcional del lado del conductor y que se mueve hacia arriba y hacia abajo"
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null
+      ]
+    },
+    {
+      "id": "regla-tres-segundos",
+      "title": "Regla de distancia segura de tres segundos",
+      "change_type": "updated",
+      "description": "La regla de distancia segura del vehículo de adelante cambió de dos segundos a tres segundos, y la distancia detrás de motocicletas aumentó.",
+      "bullets": [
+        "Utilice la regla de los \"tres segundos\" para mantener una distancia segura con el vehículo que tiene delante.",
+        "Mantenga más espacio (al menos cuatro segundos) detrás de una motocicleta, más de lo que haría con otro vehículo."
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "conduccion-con-somnolencia",
+      "title": "Conducción con somnolencia",
+      "change_type": "new",
+      "description": "Se agregó una nueva sección dedicada sobre los peligros de conducir cansado o somnoliento y cómo prevenirlo.",
+      "bullets": [
+        "Conducir cansado o somnoliento puede ser mortal.",
+        "La ÚNICA forma real de protegerse de conducir con sueño es dormir lo suficiente y no conducir cuando se sienta cansado.",
+        "\"Cuando sea posible, evite conducir entre la medianoche y las 6 a.m.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null,
+        null,
+        {
+          "year": 2023,
+          "page": 46
+        }
+      ]
+    },
+    {
+      "id": "ley-usuarios-viales-vulnerables",
+      "title": "Ley de usuarios viales vulnerables",
+      "change_type": "new",
+      "description": "Se agregó una nueva ley que define a los usuarios viales vulnerables y exige una distancia segura de rebasamiento de al menos cuatro pies.",
+      "bullets": [
+        "Cuando rebase a un usuario vial vulnerable, debe dejar una distancia segura de rebasamiento de al menos cuatro pies entre su vehículo y el usuario vial."
+      ],
+      "images": [
+        {
+          "src": "images_spanish/2023/p047_img001.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        null
+      ]
+    },
+    {
+      "id": "umbral-culpa-accidente",
+      "title": "Umbral monetario para determinar culpabilidad en accidentes",
+      "change_type": "updated",
+      "description": "El monto pagado por la compañía de seguros que determina más del 50 por ciento de culpa en un accidente aumentó de más de $500 a más de $1000.",
+      "bullets": [
+        "Ha pagado más de $1000 por colisión, colisión limitada o daño a la propiedad de otra persona o ha pagado más de $1000 por lesiones corporales (si no hay colisión ni daño a la propiedad de otra persona por más de $1000 por el mismo incidente). (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Conservación de su licencia",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 56
+        }
+      ]
+    },
+    {
+      "id": "restriccion-pasajeros-ciclomotor-permiso",
+      "title": "Restricción de pasajeros para ciclomotor con permiso de aprendiz",
+      "change_type": "new",
+      "description": "La edición de 2023 añade una restricción que prohíbe llevar pasajeros al operar un ciclomotor con un permiso de aprendiz.",
+      "bullets": [
+        "Cuando opere con un permiso de aprendiz, no lleve pasajeros. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 51
+        }
+      ]
+    },
+    {
+      "id": "audiencia-restablecimiento-telefonica",
+      "title": "Audiencias de restablecimiento de licencia por teléfono",
+      "change_type": "updated",
+      "description": "El procedimiento de audiencia para el restablecimiento de licencia cambió de audiencias presenciales por orden de llegada en ubicaciones específicas a audiencias programadas que se realizan por teléfono.",
+      "bullets": [
+        "Visite Mass.Gov/RMV para saber más sobre la audiencia y para programar una. El oficial de audiencias luego lo llamará y llevará a cabo la audiencia por teléfono. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Conservación de su licencia",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 63
+        }
+      ]
+    },
+    {
+      "id": "prueba-manejo-bloqueo-encendido",
+      "title": "Pruebas de manejo con dispositivo de bloqueo del encendido",
+      "change_type": "new",
+      "description": "Se agregó información detallada sobre cómo programar una prueba de manejo cuando se debe usar un dispositivo de bloqueo del encendido, incluyendo los requisitos del vehículo.",
+      "bullets": [
+        "Si debe usar un dispositivo de bloqueo del encendido y necesita programar una prueba de manejo, puede programarla en línea en Mass.Gov/RMV si puede proporcionar un vehículo que tenga el dispositivo instalado, un freno en la consola central y un asiento para el patrocinador. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Conservación de su licencia",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 68
+        }
+      ]
+    },
+    {
+      "id": "alcohol-marihuana-riesgo-combinado",
+      "title": "Efectos combinados del alcohol y la marihuana",
+      "change_type": "expanded",
+      "description": "Se agregó información sobre cómo el consumo de alcohol afecta el comportamiento del conductor y el riesgo de accidente cuando se combina con marihuana.",
+      "bullets": [
+        "El consumo de alcohol hace que el riesgo de un choque sea cinco veces más probable. El consumo de alcohol combinado con el consumo de marihuana hace que el riesgo de un accidente sea doce veces más probable. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Conservación de su licencia",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 65
+        }
+      ]
+    },
+    {
+      "id": "limite-velocidad-25-mph-comunidades",
+      "title": "Límite de velocidad de 25 mph en comunidades",
+      "change_type": "expanded",
+      "description": "La edición 2023 añade que ciertas comunidades pueden establecer un límite de velocidad de 25 mph a menos que se indique lo contrario.",
+      "bullets": [
+        "\"30 mph en un distrito comercial o muy poblado (a menos que haya señales que indiquen un límite de 25 mph)\" (2023 Massachusetts Driver's Manual)",
+        "\"Algunas comunidades tienen un límite de velocidad ampliamente establecido de 25 mph a menos que se indique lo contrario (según M.G.L. c90, sección 17c). Se colocan letreros en todas las entradas a estas ciudades y pueblos.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 73
+        },
+        {
+          "year": 2023,
+          "page": 73
+        }
+      ]
+    },
+    {
+      "id": "peligros-exceso-velocidad",
+      "title": "Peligros del exceso de velocidad",
+      "change_type": "expanded",
+      "description": "La edición 2023 añade una sección dedicada que detalla cómo la velocidad afecta la gravedad de los choques y el riesgo para los peatones.",
+      "bullets": [
+        "\"A una velocidad de 20 mph, el 13% de los peatones resultan gravemente heridos o mueren en un choque. A 30 mph, aumenta al 40% ya 40 mph aumenta al 73%.\" (2023 Massachusetts Driver's Manual)",
+        "\"La principal amenaza para la seguridad de los peatones es la velocidad de los vehículos. A una velocidad de 20 mph, el 13% de los peatones resultan gravemente heridos o mueren en un choque. A 30 mph, aumenta al 40% ya 40 mph aumenta al 73%.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images_spanish/2023/p071_img002.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 72
+        },
+        {
+          "year": 2023,
+          "page": 72
+        }
+      ]
+    },
+    {
+      "id": "lampara-cruce-peatonal-intermitencia-rapida",
+      "title": "Lámpara de cruce peatonal rectangular de intermitencia rápida",
+      "change_type": "new",
+      "description": "La edición 2023 introduce las lámparas de cruce peatonal rectangular de intermitencia rápida activadas por peatones.",
+      "bullets": [
+        "\"Las lámparas de cruce peatonal rectangular de intermitencia rápida son activadas por peatones manualmente mediante un botón o mediante un sistema de detección de peatones.\" (2023 Massachusetts Driver's Manual)",
+        "\"Debe detenerse para los peatones cuando la lámpara esté parpadeando.\" (2023 Massachusetts Driver's Manual)",
+        "\"Cuando se activa, las luces ámbar parpadean en un patrón irregular. Debe detenerse para los peatones cuando la lámpara esté parpadeando.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images_spanish/2023/p074_img016.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 75
+        },
+        {
+          "year": 2023,
+          "page": 75
+        },
+        {
+          "year": 2023,
+          "page": 75
+        }
+      ]
+    },
+    {
+      "id": "senales-bicicletas",
+      "title": "Señales de bicicletas",
+      "change_type": "new",
+      "description": "La edición 2023 introduce señales de tránsito diseñadas exclusivamente para ciclistas.",
+      "bullets": [
+        "\"Las señales de bicicleta son luces diseñadas solo para ciclistas. Se muestran símbolos de bicicleta rojos, amarillos y verdes fijos. Cuando el semáforo está en verde, los ciclistas pueden pasar por intersecciones concurridas mientras los vehículos automotores están detenidos, protegiéndolos de los vehículos que giran.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 78
+        }
+      ]
+    },
+    {
+      "id": "carriles-bicicletas-recomendados",
+      "title": "Carriles para bicicletas recomendados",
+      "change_type": "new",
+      "description": "La edición 2023 introduce una categoría de carriles para bicicletas recomendados con guías específicas sobre el uso compartido del espacio entre vehículos automotores y ciclistas.",
+      "bullets": [
+        "\"Los carriles para bicicletas recomendados se están volviendo comunes en calles que son demasiado angostas para un carril completo para bicicletas, pero que aún tienen mucho tráfico de bicicletas. Están punteadas en uno o ambos lados para indicar que los vehículos automotores pueden usar el espacio del carril cuando sea necesario, pero siempre deben ceder el paso a los ciclistas primero.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 84
+        }
+      ]
+    },
+    {
+      "id": "choques-de-cortesia",
+      "title": "Choques de cortesía",
+      "change_type": "new",
+      "description": "La edición 2023 agrega una sección dedicada que advierte sobre los peligros de hacer señas a otros conductores para que ingresen al tráfico, un concepto que no aparece en la edición 2019.",
+      "bullets": [
+        "\"A veces, los conductores que intentan ser amables pueden causar confusión y provocar \"choques de cortesía\". Hacer señas a las personas para que entren en medio del tráfico detenido o conducir en medio del tráfico cuando alguien lo hace señas crea una situación peligrosa y puede resultar fácilmente en un choque.\" (2023 Massachusetts Driver's Manual)",
+        "\"Tenga en cuenta que el tráfico que se aproxima tiene el derecho de paso, independientemente de si alguien lo está saludando.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 93
+        },
+        {
+          "year": 2023,
+          "page": 93
+        }
+      ]
+    },
+    {
+      "id": "distancia-rebasar-ciclistas",
+      "title": "Distancia mínima al rebasar a un ciclista en un carril angosto",
+      "change_type": "updated",
+      "description": "La distancia mínima que debe mantener un conductor al rebasar a un ciclista se incrementó de tres pies a cuatro pies.",
+      "bullets": [
+        "Debe mantenerse al menos a cuatro pies de distancia al rebasar. (2023 Massachusetts Driver's Manual)",
+        "No apriete las bicicletas en un carril angosto: Si un carril es demasiado angosto para rebasar una bicicleta a una distancia segura, sea PACIENTE hasta que pueda usar con seguridad un carril adyacente o ESPERE hasta que sea seguro rebasar en el carril que comparten. (Cap. 89, Sec. 2) Debe mantenerse al menos a cuatro pies de distancia al rebasar. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 104
+        },
+        {
+          "year": 2023,
+          "page": 104
+        }
+      ]
+    },
+    {
+      "id": "ley-eliminacion-conductores",
+      "title": "Ley de Eliminación de Conductores en accidentes",
+      "change_type": "new",
+      "description": "Se agrega un nuevo requisito legal de mover los vehículos fuera de los carriles de circulación tras un accidente sin lesiones.",
+      "bullets": [
+        "Si no hay lesiones, la Ley de Eliminación de Conductores requiere que los vehículos se muevan fuera de los carriles de circulación a un lugar seguro. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Situaciones especiales de conducción",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 117
+        }
+      ]
+    },
+    {
+      "id": "armas-en-vehiculo-detencion",
+      "title": "Respuesta sobre armas durante una detención policial",
+      "change_type": "expanded",
+      "description": "Se añaden nuevas instrucciones sobre cómo comportarse durante una detención, incluyendo responder sobre armas y no usar el teléfono celular.",
+      "bullets": [
+        "Responda apropiadamente si el oficial pregunta si hay armas en el vehículo. (2023 Massachusetts Driver's Manual)",
+        "Preste toda su atención al oficial y no use un teléfono celular durante la parada. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Situaciones especiales de conducción",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 112
+        },
+        {
+          "year": 2023,
+          "page": 112
+        }
+      ]
+    },
+    {
+      "id": "firma-citacion-detencion",
+      "title": "Firma de citación durante una detención",
+      "change_type": "expanded",
+      "description": "Se incorpora nueva orientación sobre la firma de citaciones y la diferencia respecto a otras jurisdicciones.",
+      "bullets": [
+        "Massachusetts no requiere que firme una citación, pero algunas otras jurisdicciones sí lo hacen. Lea una cita antes de firmar. Su firma solo debe confirmar el recibo de la citación, no prueba de una infracción. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Situaciones especiales de conducción",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 112
+        }
+      ]
+    },
+    {
+      "id": "conducta-inapropiada-oficial",
+      "title": "Reporte de conducta inapropiada del oficial",
+      "change_type": "expanded",
+      "description": "Se amplía el aviso de reporte para incluir conducta inapropiada del oficial durante la detención, no solo discriminación por raza o sexo.",
+      "bullets": [
+        "Si cree que un oficial de policía lo detuvo debido a su raza o género, o si cree que la conducta del oficial durante la detención fue inapropiada, puede informarlo comunicándose con el departamento de policía o la agencia de aplicación de la ley del oficial que te detuvo. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Situaciones especiales de conducción",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 113
+        }
+      ]
+    },
+    {
+      "id": "prueba-seguro-fuera-estado",
+      "title": "Prueba de seguro fuera de Massachusetts",
+      "change_type": "expanded",
+      "description": "Se agrega nueva orientación sobre la solicitud de prueba de seguro por oficiales fuera del estado.",
+      "bullets": [
+        "Fuera de Massachusetts, un oficial también puede solicitar \"prueba de seguro\" (según las leyes de esa jurisdicción). Su registro identifica a su compañía de seguros y explica que no se emite una tarjeta de seguro según la ley de Massachusetts. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Situaciones especiales de conducción",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 112
+        }
+      ]
+    },
+    {
+      "id": "replicas-de-vehiculos",
+      "title": "Réplicas de vehículos",
+      "change_type": "removed",
+      "description": "El contenido sobre el registro y titulación de réplicas de vehículos motorizados no aparece en el texto de la edición 2023 mostrado.",
+      "bullets": [
+        "\"Una réplica de vehículo motorizado es un vehículo motorizado construido o ensamblado por alguien que no es fabricante con piezas nuevas o usadas que, al quedar ensamblado, replica un vehículo de un año, marca y modelo anteriores.\" (2019 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Ya No Se Incluye",
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2019,
+          "page": 141
+        }
+      ]
+    },
+    {
+      "id": "vehiculos-de-construccion-especial",
+      "title": "Vehículos de construcción especial",
+      "change_type": "removed",
+      "description": "El contenido sobre el registro y titulación de vehículos de construcción especial no aparece en el texto de la edición 2023 mostrado.",
+      "bullets": [
+        "\"Un vehículo motorizado de construcción especial es un vehículo motorizado reconstruido o ensamblado por alguien que no es fabricante con piezas nuevas o usadas, que no replica ni se asemeja a otro vehículo fabricado.\" (2019 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Ya No Se Incluye",
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2019,
+          "page": 141
+        }
+      ]
+    },
+    {
+      "id": "placas-con-diseno-especial",
+      "title": "Placas con diseño especial",
+      "change_type": "removed",
+      "description": "El contenido sobre las placas con diseño especial y sus tarifas no aparece en el texto de la edición 2023 mostrado.",
+      "bullets": [
+        "\"El RMV ofrece las placas con diseño especial que figuran en esta sección. Además de la tarifa de registro inicial, las placas especiales requieren una tarifa por placas especiales en cada renovación.\" (2019 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Ya No Se Incluye",
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2019,
+          "page": 142
+        }
+      ]
+    },
+    {
+      "id": "renovacion-rapida",
+      "title": "Renovación rápida",
+      "change_type": "removed",
+      "description": "El contenido sobre las ubicaciones y horarios de renovación rápida no aparece en el texto de la edición 2023 mostrado.",
+      "bullets": [
+        "\"75 Park Street, Attleboro Massachusetts Turnpike Lun a vie, de 9 a. m. a 12 del mediodía, de 1 p. m. a 5 p. m.\" (2019 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Ya No Se Incluye",
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 2019,
+          "page": 166
+        }
+      ]
+    },
+    {
+      "id": "espera-examen-practico",
+      "title": "Período de espera tras no aprobar el examen práctico",
+      "change_type": "updated",
+      "description": "El período de espera para repetir el examen práctico cambió de dos semanas a al menos 14 días e incluye ahora el caso de no presentarse al examen.",
+      "bullets": [
+        "Si no pasa un examen práctico o no se presenta a su examen programado, debe esperar al menos 14 días antes de tomar otro examen. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 24
+        }
+      ]
+    },
+    {
+      "id": "conversion-educacion-vial-otro-estado",
+      "title": "Conversión de certificado de educación vial de otro estado",
+      "change_type": "updated",
+      "description": "El proceso de conversión de un certificado de educación vial de otro estado ahora requiere completar una solicitud específica en lugar de enviar el certificado original y un cheque de $15.",
+      "bullets": [
+        "debe completar una Solicitud para convertir un certificado de educación vial de otro estado (disponible en Mass.Gov/RMV) y seguir las instrucciones de la solicitud. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 24
+        }
+      ]
+    },
+    {
+      "id": "rejected-road-tests-substance-signs",
+      "title": "Pruebas de manejo rechazadas por señales de consumo de alcohol o sustancias",
+      "change_type": "new",
+      "description": "La edición 2023 agrega motivos explícitos por los cuales un examinador puede rechazar una prueba de manejo, incluidos signos u olor a alcohol o marihuana y la presencia de animales de apoyo emocional.",
+      "bullets": [
+        "\"Usted o su patrocinador muestran signos de consumo de alcohol o sustancias Usted o su patrocinador emanan olor a alcohol o marihuana, incluso de la ropa o del interior del vehículo\" (2023 Massachusetts Driver's Manual)",
+        "\"Se permiten animales de servicio entrenados en el vehículo, pero no los animales de apoyo emocional.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 25
+        },
+        {
+          "year": 2023,
+          "page": 25
+        }
+      ]
+    },
+    {
+      "id": "permit-conversion-driving-record",
+      "title": "Requisito de registro de manejo para conversión de permiso",
+      "change_type": "expanded",
+      "description": "La edición 2023 añade el requisito de presentar un registro de manejo certificado reciente para la conversión de permisos de otro estado.",
+      "bullets": [
+        "\"También debe proporcionar un registro de manejo certificado (que no tenga más de 30 días).\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La obtención de su licencia",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 31
+        }
+      ]
+    },
+    {
+      "id": "alcohol-marihuana-riesgo-combinado",
+      "title": "Riesgo combinado de alcohol y marihuana al conducir",
+      "change_type": "new",
+      "description": "La edición de 2023 agrega información específica sobre el aumento del riesgo de accidente al combinar el consumo de alcohol con marihuana.",
+      "bullets": [
+        "El consumo de alcohol combinado con el consumo de marihuana hace que el riesgo de un accidente sea doce veces más probable. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Conservación de su licencia",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 65
+        }
+      ]
+    },
+    {
+      "id": "opciones-transporte-seguro-alcohol",
+      "title": "Opciones de transporte seguro tras consumir alcohol",
+      "change_type": "new",
+      "description": "La edición de 2023 agrega recomendaciones concretas sobre cómo obtener un transporte seguro después de consumir alcohol.",
+      "bullets": [
+        "Si ha consumido o planea consumir alcohol, asegúrese de tener una opción segura para llegar a casa. Designe un conductor, tome un taxi, use una aplicación de viaje compartido como Uber o Lyft, o llame a un amigo o familiar para que lo lleve. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Conservación de su licencia",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 66
+        }
+      ]
+    },
+    {
+      "id": "flecha-amarilla-intermitente-derecha",
+      "title": "Flecha amarilla intermitente para giro a la derecha",
+      "change_type": "updated",
+      "description": "El manual de 2023 amplía la flecha amarilla intermitente para incluir el giro a la derecha además del giro a la izquierda.",
+      "bullets": [
+        "\"Una flecha amarilla intermitente le permite girar a la izquierda o a la derecha en la dirección de la flecha cuando el tráfico que se aproxima tiene una luz verde pero hay una interrupción en el tráfico.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 75
+        }
+      ]
+    },
+    {
+      "id": "rebasar-vehiculos-detenidos",
+      "title": "Rebasar vehículos detenidos",
+      "change_type": "new",
+      "description": "El manual de 2023 agrega una regla específica que prohíbe rebasar vehículos detenidos o que giran porque pueden ocultar peligros.",
+      "bullets": [
+        "\"No rebase vehículos detenidos o que estén girando (tanto en las intersecciones como fuera de las intersecciones). Pueden ser detenidos por otro vehículo, una persona o un animal que no puede ver.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 95
+        }
+      ]
+    },
+    {
+      "id": "cinturon-seguridad-funcional-no-danado",
+      "title": "Cinturón de seguridad funcional y no dañado",
+      "change_type": "expanded",
+      "description": "El requisito de cinturón de seguridad se especificó para exigir que funcione y no esté dañado.",
+      "bullets": [
+        "Un cinturón de seguridad que funcione y no esté dañado para el conductor y los pasajeros (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 36
+        }
+      ]
+    },
+    {
+      "id": "alcohol-efectos-conduccion",
+      "title": "Efectos del alcohol en comportamientos de conducción",
+      "change_type": "expanded",
+      "description": "La edición 2023 amplía la descripción de cómo el alcohol afecta comportamientos específicos de conducción como el uso del cinturón, la velocidad y el mantenerse en el carril.",
+      "bullets": [
+        "El consumo de alcohol también hace que sea menos probable que recuerde usar su cinturón de seguridad, más probable que acelere y menos capaz de permanecer en su carril. (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Conservación de su licencia",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 65
+        }
+      ]
+    },
+    {
+      "id": "abanderados-civiles-zonas-trabajo",
+      "title": "Abanderados civiles en zonas de trabajo",
+      "change_type": "expanded",
+      "description": "El manual de 2023 incorpora guía específica sobre el uso de abanderados civiles en zonas de trabajo de baja velocidad y volumen.",
+      "bullets": [
+        "\"En general, los bandereros civiles se usan en vías de baja velocidad y volumen, y así manejar la circulación cerca del área de trabajo, y ayudar a otros usuarios de la carretera a navegar por el área.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 80
+        }
+      ]
+    },
+    {
+      "id": "glorietas",
+      "title": "Glorietas",
+      "change_type": "new",
+      "description": "La edición de 2023 agrega una sección dedicada a las glorietas como un tipo de intersección más pequeña que las rotondas con guías específicas.",
+      "bullets": [
+        "\"Las glorietas son similares a las rotondas. Por lo general, son mucho más pequeñas que las rotondas y tienen una barrera central más pequeña. La mayoría de las glorietas tienen líneas de ceda el paso en el pavimento y pasos peatonales. Las glorietas se utilizan en calles muy transitadas y su pequeño tamaño requiere que los vehículos reduzcan la velocidad a 25 millas por hora o menos.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 93
+        }
+      ]
+    },
+    {
+      "id": "placas-visibilidad",
+      "title": "Requisitos de visibilidad de placas",
+      "change_type": "new",
+      "description": "Se agregó una sección con requisitos específicos sobre la limpieza y visibilidad de las placas de matrícula.",
+      "bullets": [
+        "\"Su número de placa debe ser visible desde 60 pies por la noche.\" (2023 Massachusetts Driver's Manual)",
+        "\"Las calcomanías de registro solo deben colocarse en la esquina superior derecha de la placa.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "La seguridad ante todo",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 43
+        },
+        {
+          "year": 2023,
+          "page": 43
+        }
+      ]
+    },
+    {
+      "id": "carriles-bicicletas-ancho",
+      "title": "Especificación del ancho de los carriles para bicicletas",
+      "change_type": "expanded",
+      "description": "La edición de 2023 agrega especificaciones concretas sobre el ancho y el marcado de los carriles para bicicletas que no aparecían en la edición de 2019.",
+      "bullets": [
+        "\"Los carriles para bicicletas son partes de la calzada destinadas a ciclistas y, por lo general, están marcadas con líneas blancas continuas, junto con marcas y señales en el pavimento. Miden cinco pies de ancho.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 84
+        }
+      ]
+    },
+    {
+      "id": "cajas-de-bicicletas",
+      "title": "Cajas de bicicletas",
+      "change_type": "expanded",
+      "description": "El manual de 2023 agrega una sección dedicada que define las cajas de bicicletas como marcas verdes en el pavimento, instaladas en las intersecciones para que los ciclistas giren con seguridad ante un semáforo en rojo.",
+      "bullets": [
+        "\"Las cajas de bicicletas son marcas en el pavimento que se instalan en las intersecciones para permitir a los ciclistas una forma segura de girar cuando se acercan a un semáforo en rojo. Las cajas para bicicletas son verdes y tienen la imagen de un ciclista.\" (2023 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Reglas de la carretera",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2023,
+          "page": 106
+        }
+      ]
+    }
+  ]
+}
