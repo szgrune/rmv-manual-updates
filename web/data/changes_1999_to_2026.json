@@ -1,0 +1,2738 @@
+{
+  "from_year": 1999,
+  "to_year": 2026,
+  "overview": "The 2026 manual adds major new rules and stricter penalties you should review, including the REAL ID versus Standard card choice, a hands-free mobile device law that bans hand-held use entirely (and any device use for drivers under 18), tougher Junior Operator requirements like 40 hours of supervised driving and parent participation, and updated fines for speeding, tailgating, and school bus violations. It also introduces many new road-sharing and safety topics, such as the Vulnerable Road Users four-foot passing law, roundabouts, the Move-Over Law, bicycle lanes and signals, the Dutch Reach, drowsy driving, and Advanced Driver Assistance Systems. Watch for new vehicle categories like motorized scooters and low-speed vehicles, plus added guidance on three-point turns, backing up, tunnel driving, breakdown safety setup, and how to conduct yourself during a police stop. Finally, expect higher fees, new surcharges, ignition interlock requirements for repeat OUI offenders, and expanded reasons for license suspension and nonrenewal.",
+  "sections": [
+    {
+      "id": "real-id",
+      "title": "REAL ID and Standard Massachusetts Cards",
+      "change_type": "new",
+      "description": "The 2026 manual introduces the choice between a REAL ID card and a Standard Massachusetts card, a requirement that did not exist in 1999.",
+      "bullets": [
+        "\"You need a REAL ID, or other acceptable ID such as a valid passport, to fly within the United States or enter certain federal buildings. A REAL ID Card issued by Massachusetts is compliant with the federal REAL ID Act of 2005.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 14
+        }
+      ]
+    },
+    {
+      "id": "state-to-state",
+      "title": "State-to-State Program",
+      "change_type": "new",
+      "description": "The 2026 manual adds the State-to-State program for verifying and canceling licenses across participating states, which did not exist in 1999.",
+      "bullets": [
+        "\"Massachusetts is part of the State-to-State program, which checks valid driver licenses and state issued ID cards issued by other participating states. State-to-State will cancel any driver’s license or state issued ID card issued by the other participating state when a Massachusetts license or ID Card (excluding a Liquor ID) is issued.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 13
+        }
+      ]
+    },
+    {
+      "id": "facial-image-policy",
+      "title": "Facial Image Policy",
+      "change_type": "new",
+      "description": "The 2026 manual adds a detailed Facial Image Policy specifying requirements for photo capture, which did not exist in the 1999 edition.",
+      "bullets": [
+        "\"A solid or transparent facial cover (scarf, veil, eyeglasses/sunglasses, goggles, surgical or dust mask, etc.) is not acceptable. Eyeglasses, including reading or prescription glasses, are not allowed, even if the applicant normally wears them.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 12
+        }
+      ]
+    },
+    {
+      "id": "jol-in-car-training-hours",
+      "title": "JOL Driver Education In-Car Training Hours",
+      "change_type": "updated",
+      "description": "The required in-car behind-the-wheel training increased from 6 hours in 1999 to 12 hours in 2026.",
+      "bullets": [
+        "\"Successfully complete an RMV-approved driver education and training program, which includes 30 hours of classroom instruction; 12 hours of in-car, behind-the-wheel training; and six hours of in-car experience observing other student drivers.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 18
+        }
+      ]
+    },
+    {
+      "id": "jol-supervised-driving-hours",
+      "title": "JOL Supervised Behind-the-Wheel Hours",
+      "change_type": "updated",
+      "description": "The required additional supervised behind-the-wheel driving increased from 12 hours in 1999 to 40 hours in 2026.",
+      "bullets": [
+        "\"Complete at least an additional 40 hours of supervised, behind-the- wheel driving as shown by a certified statement provided by a parent or guardian. The RMV will accept 30 hours of driving supervised by a parent or guardian if the applicant completed a driver skills development program.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 18
+        }
+      ]
+    },
+    {
+      "id": "jol-parent-instruction",
+      "title": "JOL Parent/Guardian Instruction Requirement",
+      "change_type": "new",
+      "description": "The 2026 manual adds a requirement that a parent or guardian participate in two hours of driver's education instruction, which was not in the 1999 edition.",
+      "bullets": [
+        "\"A parent or guardian must participate in two hours of instruction on the driver’s education curriculum (unless they have participated within the past five years).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 18
+        }
+      ]
+    },
+    {
+      "id": "jol-night-curfew",
+      "title": "JOL Night Driving Restriction Hours",
+      "change_type": "updated",
+      "description": "The night driving curfew start time changed from 12:00 a.m. in 1999 to 12:30 a.m. in 2026.",
+      "bullets": [
+        "\"As the holder of a JOL, you may not operate a motor vehicle between 12:30 a.m. and 5:00 a.m. unless you are accompanied by one of your parents or your legal guardian.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 18
+        }
+      ]
+    },
+    {
+      "id": "jol-restriction-penalties",
+      "title": "JOL Passenger/Night Restriction Penalties",
+      "change_type": "updated",
+      "description": "The suspension penalties for violating the passenger or night restriction increased from 30/60/90 days in 1999 to 60/180 days/one year in 2026, with an added retraining course requirement.",
+      "bullets": [
+        "\"If you violate the passenger restriction or the night restriction, you will be subject to a license suspension of 60 days for a first offense, 180 days for a second offense, and one year for subsequent offenses. For a second or subsequent offense, you will also be required to complete a Driver Attitudinal Retraining course.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 19
+        }
+      ]
+    },
+    {
+      "id": "jol-drag-racing-speeding",
+      "title": "JOL Drag Racing and Speeding Suspension Periods",
+      "change_type": "updated",
+      "description": "The 2026 manual specifies updated suspension periods for drag racing and speeding offenses by Junior Operators, differing from the 1999 second/third-offense framework.",
+      "bullets": [
+        "\"You will face additional suspension periods of one year for a first drag racing offense and three years for a subsequent offense. For a first speeding offense, you will be suspended for 90 days; for a subsequent offense, you will be suspended for one year.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 19
+        }
+      ]
+    },
+    {
+      "id": "jol-mobile-device-ban",
+      "title": "JOL Mobile Electronic Device Ban",
+      "change_type": "new",
+      "description": "The 2026 manual prohibits drivers under 18 from using any mobile electronic device while driving, a rule that did not exist in 1999.",
+      "bullets": [
+        "\"Drivers under 18 may not use any mobile electronic device for any reason while operating a motor vehicle. The only exception is for reporting an emergency.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 19
+        }
+      ]
+    },
+    {
+      "id": "expanded-license-restrictions-list",
+      "title": "List of License Restrictions",
+      "change_type": "expanded",
+      "description": "The 2026 manual provides a greatly expanded list of license restriction codes including ignition interlock, bioptic telescoping lens, and various CDL restrictions not detailed in 1999.",
+      "bullets": [
+        "\"T Ignition Interlock U 3 Wheeled Motorcycle V Medical Variance W Intrastate Medical Waiver X CDL - No Cargo in CMV Tanker Y Restrict to 14 Passenger Capacity Z CDL - Air Over Hydraulic\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 17
+        }
+      ]
+    },
+    {
+      "id": "out-of-country-criminal-penalty",
+      "title": "Out-of-Country Driver Criminal Penalty",
+      "change_type": "new",
+      "description": "The 2026 manual specifies a criminal penalty for violating Section 10 regarding out-of-country driving, which was not stated in the 1999 edition.",
+      "bullets": [
+        "\"A violation of Section 10 is a criminal violation and a first offense is subject to a fine of $500.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 10
+        }
+      ]
+    },
+    {
+      "id": "electronic-document-verification",
+      "title": "Electronic Document Verification",
+      "change_type": "new",
+      "description": "The 2026 manual describes electronic checks of identification documents against national and state databases, a process not present in 1999.",
+      "bullets": [
+        "\"The Registry will initiate electronic checks for most identification documents with national and state databases. This process provides validity responses back to the RMV within seconds for the vast majority.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 21
+        }
+      ]
+    },
+    {
+      "id": "vertical-under-21-license",
+      "title": "Vertical License/ID for Under 21",
+      "change_type": "new",
+      "description": "The 2026 manual adds that applicants under 21 receive a vertically oriented license or ID card, a feature not in the 1999 edition.",
+      "bullets": [
+        "\"If you renew your license or ID card before your 21st birthday, you will receive a vertical license or ID card.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 16
+        }
+      ]
+    },
+    {
+      "id": "permit-validity-period",
+      "title": "Learner's Permit Validity Period",
+      "change_type": "updated",
+      "description": "The learner's permit validity period was extended from one year to two years.",
+      "bullets": [
+        "\"A permit is valid up to two years.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 23
+        }
+      ]
+    },
+    {
+      "id": "learner-permit-exam-format",
+      "title": "Learner's Permit Exam Format",
+      "change_type": "updated",
+      "description": "The exam increased from 20 questions requiring 14 correct in 20 minutes to 25 questions requiring 18 correct in 25 minutes.",
+      "bullets": [
+        "\"Each learner’s permit exam has 25 multiple-choice questions.\" (2026 Massachusetts Driver's Manual)",
+        "\"To pass the exam, you must answer 18 questions correctly within the allotted time of 25 minutes.\" (2026 Massachusetts Driver's Manual)",
+        "\"Pay a $30 learner’s permit exam fee, which covers the cost of your exam.\" (2026 Massachusetts Driver's Manual)",
+        "\"Learner’s permit exam fee - $30.00\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 24
+        },
+        {
+          "year": 2026,
+          "page": 24
+        },
+        {
+          "year": 2026,
+          "page": 23
+        },
+        {
+          "year": 2026,
+          "page": 39
+        }
+      ]
+    },
+    {
+      "id": "supervised-driving-hours",
+      "title": "Supervised Driving Hours for Driver's Education",
+      "change_type": "updated",
+      "description": "Required supervised driving for under-18 applicants increased from 12 hours to 40 hours (30 if a driver skills development program is completed), and a parent/guardian must participate in two hours of curriculum.",
+      "bullets": [
+        "\"You must also complete 40 hours of supervised driving (30 hours if you completed a driver skills development program), and your parent or guardian must participate in two hours of the driver’s education curriculum (unless he/she already attended in the past five years).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 27
+        }
+      ]
+    },
+    {
+      "id": "insurance-minimum-limits",
+      "title": "Out-of-State Vehicle Insurance Minimums for Road Test",
+      "change_type": "updated",
+      "description": "Minimum required insurance limits increased from $20,000/$40,000 bodily injury and $5,000 property damage to $25,000/$50,000 and $30,000.",
+      "bullets": [
+        "\"you must show the examiner proof of insurance coverage equal to Massachusetts minimum limits, which are $25,000/$50,000 for bodily injury and $30,000 for property damage.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 32
+        }
+      ]
+    },
+    {
+      "id": "road-test-cancellation-window",
+      "title": "Road Test Cancellation/Reschedule Notice",
+      "change_type": "updated",
+      "description": "The notice required to cancel or reschedule a road test without fee changed from more than 24 hours to more than 72 hours.",
+      "bullets": [
+        "\"There is no additional fee if you cancel or reschedule with more than 72 hours notice.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 28
+        }
+      ]
+    },
+    {
+      "id": "road-test-retake-wait",
+      "title": "Waiting Period After Failed Road Test",
+      "change_type": "new",
+      "description": "A new 14-day waiting period was added before retaking a road test after a failure or no-show.",
+      "bullets": [
+        "\"If you fail a road test or do not appear for your scheduled test, you must wait at least 14 days before taking another test.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 28
+        }
+      ]
+    },
+    {
+      "id": "appeal-fee-increase",
+      "title": "Appeal Fee to Board of Appeals",
+      "change_type": "updated",
+      "description": "The appeal filing fee increased from $25 to $50.",
+      "bullets": [
+        "\"A formal appeal may be filed only with the Board of Appeals on Liability Policies and Bonds at the address below with a check or money order for $50.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 22
+        }
+      ]
+    },
+    {
+      "id": "testing-accommodations",
+      "title": "Testing Accommodations for Disabilities",
+      "change_type": "new",
+      "description": "A formal reasonable accommodation process for cognitive or physical disabilities, including extended time and a reader, was added.",
+      "bullets": [
+        "\"If you have a cognitive or physical disability that would prevent you from taking a standard exam, you may request a reasonable accommodation, which could include: • Extended time • Reader\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 25
+        }
+      ]
+    },
+    {
+      "id": "audio-exams",
+      "title": "Audio Exams",
+      "change_type": "new",
+      "description": "Audio exams allowing an automated voice to read questions through headphones were newly added.",
+      "bullets": [
+        "\"Audio exams are available through the ATS and for online exams. This feature allows you to hear an automated voice read the test questions and possible answers through headphones.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 25
+        }
+      ]
+    },
+    {
+      "id": "online-permit-exam",
+      "title": "Online Learner's Permit Exam",
+      "change_type": "new",
+      "description": "Learner's permit exams can now be taken online after submitting an application, a capability not available in 1999.",
+      "bullets": [
+        "\"They are also available online at Mass.Gov/RMV after you submit your application.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 24
+        }
+      ]
+    },
+    {
+      "id": "repair-dealer-plate-restrictions",
+      "title": "Repair, Dealer, and Farm Plate Road Test Restrictions",
+      "change_type": "new",
+      "description": "New rules prohibit taking road tests in vehicles with repair plates and restrict use of dealer and farm plates.",
+      "bullets": [
+        "\"You will not be allowed to take a road test in a vehicle with a repair plate.\" (2026 Massachusetts Driver's Manual)",
+        "\"You cannot take a road test in a passenger vehicle that is registered with a \"dealer\" plate unless you can prove, to the satisfaction of the examiner, that you are the dealer, or spouse of the dealer, or a salesperson who works at the dealership.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 32
+        },
+        {
+          "year": 2026,
+          "page": 32
+        }
+      ]
+    },
+    {
+      "id": "specialized-features",
+      "title": "Specialized Vehicle Features During Road Test",
+      "change_type": "new",
+      "description": "New guidance addresses backup cameras, sensors, automatic parking, and GPS features during the road test and adds a mechanical/software aid restriction.",
+      "bullets": [
+        "\"These devices will not need to be disabled. However, your driving skills and abilities without relying only on these specialized features will be tested.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 33
+        }
+      ]
+    },
+    {
+      "id": "donut-tire-prohibition",
+      "title": "Donut Spare Tire Prohibition",
+      "change_type": "new",
+      "description": "A new rule prohibits using a vehicle for a road test if a tire has been replaced by a limited-use spare ('donut') tire.",
+      "bullets": [
+        "\"A vehicle cannot be used for a road test if one of its tires has been replaced by a \"donut\" (limited use spare) tire.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 32
+        }
+      ]
+    },
+    {
+      "id": "no-ssn-affidavit",
+      "title": "No Social Security Number Affidavit",
+      "change_type": "new",
+      "description": "A new option allows applicants without an SSN who cannot apply for one to present a No Social Security Number Affidavit for a Standard Driver's License.",
+      "bullets": [
+        "\"If you do not have an SSN and cannot apply for one, you can present a No Social Security Number Affidavit and apply for a Standard Driver's License\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 22
+        }
+      ]
+    },
+    {
+      "id": "rejected-road-tests-impairment",
+      "title": "Road Test Rejection for Impairment or Animals",
+      "change_type": "new",
+      "description": "New explicit grounds for rejecting a road test were added, including signs of alcohol/cannabis impairment and presence of unsupervised children or animals.",
+      "bullets": [
+        "\"An odor of alcohol or cannabis is coming from you or your sponsor, including from clothing or inside the vehicle\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 29
+        }
+      ]
+    },
+    {
+      "id": "sponsor-three-applicant-limit",
+      "title": "Sponsor Limit Per Year",
+      "change_type": "new",
+      "description": "A new restriction limits operators from sponsoring more than three different applicants within one year without RMV approval.",
+      "bullets": [
+        "\"Operators are not allowed to sponsor more than three different applicants within a one year period without approval from the RMV Road Test Program.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 31
+        }
+      ]
+    },
+    {
+      "id": "under-18-class-m-road-test",
+      "title": "Class M Eligibility for Under-18 Applicants",
+      "change_type": "new",
+      "description": "Applicants under 18 are no longer eligible for an RMV Class M road test and must complete the MREP basic rider course.",
+      "bullets": [
+        "\"If you are under 18 years old, you are not eligible for an RMV Class M road test and must complete the MREP basic rider course to get a Class M license.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 30
+        }
+      ]
+    },
+    {
+      "id": "service-animals-road-test",
+      "title": "Service Animals During Road Test",
+      "change_type": "new",
+      "description": "The 2026 manual adds a rule about service animals versus emotional support animals in the test vehicle.",
+      "bullets": [
+        "\"Trained service animals are allowed in the vehicle, but emotional support animals are not.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 29
+        }
+      ]
+    },
+    {
+      "id": "child-restraint-standard",
+      "title": "Child Passenger Restraint Requirements",
+      "change_type": "updated",
+      "description": "The age and height thresholds for child passenger restraints were changed and expanded.",
+      "bullets": [
+        "\"Infants and small children must sit in federally approved child passenger restraints until they... 1. Are at least eight years old or 2. At least fifty-seven inches tall\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 44
+        }
+      ]
+    },
+    {
+      "id": "booster-seat-weight",
+      "title": "Booster Seat Weight Range",
+      "change_type": "updated",
+      "description": "The booster seat weight range was expanded from 40-60 pounds to 40-80 pounds.",
+      "bullets": [
+        "\"Booster seat 40–80 pounds\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 44
+        }
+      ]
+    },
+    {
+      "id": "road-test-cancellation-notice",
+      "title": "Road Test Cancellation Notice and Fee",
+      "change_type": "updated",
+      "description": "The cancellation notice window changed from 24 hours to 72 hours and the road test fee increased.",
+      "bullets": [
+        "\"If you fail the road test, do not appear for the road test, are rejected by the examiner, or cancel your appointment with less than 72 hours notice, you will still be charged the $35 fee, which must be paid prior to a new test being booked.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 40
+        }
+      ]
+    },
+    {
+      "id": "license-issue-fee",
+      "title": "License Issue/Renew Fee",
+      "change_type": "updated",
+      "description": "The driver's license fee increased from $33.75 to $50.00.",
+      "bullets": [
+        "\"License issue/renew fee - Class D - $50.00\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 40
+        }
+      ]
+    },
+    {
+      "id": "jol-conversion-supervised-hours",
+      "title": "Junior Operator License Conversion Supervised Driving Hours",
+      "change_type": "updated",
+      "description": "The supervised driving hours required for JOL conversion increased from 12 hours to 40 hours (30 with a driver skills development program).",
+      "bullets": [
+        "\"you must log an additional 40 hours of supervised driving (30 hours if you completed a driver skills development program) as shown by a certified statement provided by a parent or guardian\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        null
+      ]
+    },
+    {
+      "id": "permit-conversion-window",
+      "title": "Permit Conversion Issue Window",
+      "change_type": "updated",
+      "description": "The permit conversion eligibility window changed to permits issued less than two years ago and converted permits now expire two years from the adjusted issue date.",
+      "bullets": [
+        "\"To be eligible for conversion, you must present the current out-of-state permit issued less than two years ago.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 36
+        }
+      ]
+    },
+    {
+      "id": "veterans-indicator",
+      "title": "Veteran's Indicator on License",
+      "change_type": "new",
+      "description": "The 2026 manual adds the option to print 'Veteran' on a license or ID card.",
+      "bullets": [
+        "\"If you are a veteran of the U.S. Armed Forces and were honorably discharged, you can choose to have the word \\\"Veteran\\\" printed on your license or ID card.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 37
+        }
+      ]
+    },
+    {
+      "id": "organ-donor-registry",
+      "title": "Massachusetts Donor Registry",
+      "change_type": "expanded",
+      "description": "The organ donation process was changed from a paper donor card with sticker to an electronic Massachusetts Donor Registry with a heart symbol and a $2 fund contribution.",
+      "bullets": [
+        "\"By registering as an organ and tissue donor with the RMV, you will be entered into the Massachusetts Donor Registry, which is legal consent for donation.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 38
+        }
+      ]
+    },
+    {
+      "id": "headphone-earplug-exception",
+      "title": "Headphone/Earplug Use",
+      "change_type": "expanded",
+      "description": "The headphone prohibition was expanded to include wireless devices and added an exception allowing one earplug for cell phone use for those 18 or older.",
+      "bullets": [
+        "\"It is illegal to wear a radio headset, headphones, or any other wired or wireless device that restricts your attention to the environment while driving. If you are 18 or older, you can use one earplug for use with a cell phone.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 47
+        }
+      ]
+    },
+    {
+      "id": "emergency-lights-permit",
+      "title": "Emergency Lights Permit Requirement",
+      "change_type": "new",
+      "description": "The 2026 manual adds a rule prohibiting emergency lights on a vehicle without an RMV permit.",
+      "bullets": [
+        "\"Emergency lights (flashing, rotating, oscillating, or strobe lights) are not allowed on a vehicle unless you get a permit from the RMV.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 42
+        }
+      ]
+    },
+    {
+      "id": "car-safety-kits",
+      "title": "Car Safety Kits",
+      "change_type": "new",
+      "description": "The 2026 manual adds a recommended list of safety items to carry in your vehicle.",
+      "bullets": [
+        "\"It is recommended to carry the following items in your vehicle: • Reflective Safety Vest • Reflective Warning Triangles or LED Flares • First Aid Kit • Glass Breaker Tool • White and red cloths to tie to your vehicle during a breakdown\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 43
+        }
+      ]
+    },
+    {
+      "id": "deaf-hard-of-hearing-road-test",
+      "title": "Deaf and Hard of Hearing Road Tests",
+      "change_type": "new",
+      "description": "The 2026 manual adds a process for scheduling road tests with interpreters for deaf or hard of hearing applicants.",
+      "bullets": [
+        "\"If you are deaf or hard of hearing, you can schedule a road test by calling 1-877-RMV-TTDD (1-877-768-8833).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 34
+        }
+      ]
+    },
+    {
+      "id": "zero-tolerance-conduct",
+      "title": "Zero Tolerance for Abusive Conduct",
+      "change_type": "new",
+      "description": "The 2026 manual adds a zero tolerance policy for violent or abusive conduct during road tests.",
+      "bullets": [
+        "\"The RMV has a zero tolerance policy for violent or abusive conduct by road test applicants and sponsors.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 34
+        }
+      ]
+    },
+    {
+      "id": "temporary-license-validity",
+      "title": "Temporary License Validity Period",
+      "change_type": "updated",
+      "description": "The temporary license issued after passing the road test is now valid up to 60 days rather than the 1999 process of issuing an immediate temporary license with permanent license mailed.",
+      "bullets": [
+        "\"the examiner will validate your learner's permit and it will become a temporary license, valid up to 60 days (unless the permit expires before that)\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 35
+        }
+      ]
+    },
+    {
+      "id": "duplicate-amended-license-fee",
+      "title": "Duplicate or Amended License Fee",
+      "change_type": "updated",
+      "description": "The replacement/duplicate license fee increased from $15 to $25.",
+      "bullets": [
+        "\"Duplicate or amended license - $25.00\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Obtaining Your License",
+      "chapter_num": 1,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 40
+        }
+      ]
+    },
+    {
+      "id": "hands-free-device-law",
+      "title": "Hands-Free Mobile Electronic Device Law",
+      "change_type": "new",
+      "description": "The 2026 manual prohibits use of hand-held mobile electronic devices while driving, reversing the 1999 rule that permitted cellular phone use with one hand on the wheel.",
+      "bullets": [
+        "\"The use of hand-held mobile electronic devices (including cell phones) while driving is prohibited in Massachusetts (Chapter 90, Section 13B and Chapter 122 of the Acts of 2019).\" (2026 Massachusetts Driver's Manual)",
+        "\"Drivers 18 and older can only use mobile electronic devices in “hands­free” mode while driving.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 47
+        },
+        {
+          "year": 2026,
+          "page": 47
+        }
+      ]
+    },
+    {
+      "id": "device-law-under-18",
+      "title": "Mobile Device Prohibition for Drivers Under 18",
+      "change_type": "new",
+      "description": "The 2026 manual completely prohibits drivers under 18 from using any mobile electronic device while driving.",
+      "bullets": [
+        "\"Drivers under 18 cannot use any mobile electronic device for any reason while driving. The only exception is for reporting an emergency.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 48
+        }
+      ]
+    },
+    {
+      "id": "device-law-penalties",
+      "title": "Penalties for Hand-Held Device Use",
+      "change_type": "new",
+      "description": "The 2026 manual establishes a graduated fine schedule for using a hand-held mobile electronic device while driving.",
+      "bullets": [
+        "\"1st offense - $100 fine\" (2026 Massachusetts Driver's Manual)",
+        "\"2nd offense - $250 fine, plus mandatory completion of a distracted driving educational program\" (2026 Massachusetts Driver's Manual)",
+        "\"3rd and subsequent offenses - $500 fine, plus insurance surcharge and mandatory completion of a distracted driving program\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 48
+        },
+        {
+          "year": 2026,
+          "page": 48
+        },
+        {
+          "year": 2026,
+          "page": 48
+        }
+      ]
+    },
+    {
+      "id": "vulnerable-road-users-law",
+      "title": "Vulnerable Road Users Law",
+      "change_type": "new",
+      "description": "The 2026 manual introduces a Vulnerable Road Users Law requiring a minimum four-foot passing distance, which did not exist in the 1999 manual.",
+      "bullets": [
+        "\"When you pass a vulnerable road user, you must leave a safe passing distance of at least four feet between your vehicle and the road user.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 57
+        }
+      ]
+    },
+    {
+      "id": "drowsy-driving",
+      "title": "Drowsy Driving",
+      "change_type": "new",
+      "description": "The 2026 manual adds a dedicated section on drowsy driving and its dangers, not present in the 1999 manual.",
+      "bullets": [
+        "\"Driving while tired or drowsy can be deadly. 633 people died in 2020 from drowsy driving related crashes\" (2026 Massachusetts Driver's Manual)",
+        "\"The ONLY true way to protect yourself from drowsy driving is to get enough sleep and to not drive when you feel tired.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 54
+        },
+        {
+          "year": 2026,
+          "page": 55
+        }
+      ]
+    },
+    {
+      "id": "advanced-driver-assistance-systems",
+      "title": "Advanced Driver Assistance Systems",
+      "change_type": "new",
+      "description": "The 2026 manual adds a section on Advanced Driver Assistance Systems (ADAS), a topic absent from the 1999 manual.",
+      "bullets": [
+        "\"Many cars and trucks now come with Advanced Driver Assistance Systems (ADAS). These can make driving safer, but only if used correctly.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 54
+        }
+      ]
+    },
+    {
+      "id": "following-distance-rule",
+      "title": "Three-Second Following Distance Rule",
+      "change_type": "updated",
+      "description": "The 2026 manual specifies a three-second following rule and increased spacing for motorcycles (four seconds) and heavy equipment (ten seconds), whereas the 1999 manual used a two-second rule.",
+      "bullets": [
+        "\"Use the \"three-second\" rule to keep a safe distance from the vehicle in front of you.\" (2026 Massachusetts Driver's Manual)",
+        "\"Keep more space (at least ten seconds) between your vehicle and heavy equipment (for example, dump trucks, tractors).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 51
+        },
+        {
+          "year": 2026,
+          "page": 51
+        }
+      ]
+    },
+    {
+      "id": "tailgating-fine",
+      "title": "Tailgating Fine",
+      "change_type": "updated",
+      "description": "The 2026 manual specifies a fine of up to $100 for tailgating, which was not stated in the 1999 manual.",
+      "bullets": [
+        "\"Tailgating is illegal and the main cause of rear-end crashes. The fine for tailgating can be as high as $100.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 51
+        }
+      ]
+    },
+    {
+      "id": "license-plate-visibility",
+      "title": "License Plate Visibility Requirement",
+      "change_type": "new",
+      "description": "The 2026 manual adds a specific requirement that license plates be visible from 60 feet at night, not present in the 1999 manual's safety section.",
+      "bullets": [
+        "\"You must keep your license plates clean and they cannot be blocked by anything. Your plate number must be visible from 60 feet at night.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 51
+        }
+      ]
+    },
+    {
+      "id": "headlights-tunnel-requirement",
+      "title": "Headlight Use in Tunnels and Reduced Visibility",
+      "change_type": "expanded",
+      "description": "The 2026 manual expands headlight requirements to include driving through tunnels and when unable to see 500 feet ahead, which were not specified in the 1999 manual.",
+      "bullets": [
+        "\"When you cannot clearly see people or vehicles 500 feet ahead due to insufficient light or weather conditions\" (2026 Massachusetts Driver's Manual)",
+        "\"While driving through a tunnel\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 53
+        },
+        {
+          "year": 2026,
+          "page": 53
+        }
+      ]
+    },
+    {
+      "id": "stopping-distance-figures",
+      "title": "Updated Stopping Distance Figures",
+      "change_type": "updated",
+      "description": "The 2026 manual updates braking and stopping distance examples using 60 mph and 30 mph figures, differing from the 1999 manual's 55 mph and 35 mph examples.",
+      "bullets": [
+        "\"At 60 mph, it takes about 292 feet (almost a whole football field) to react to a hazard, step on the brake, and safely stop.\" (2026 Massachusetts Driver's Manual)",
+        "\"At just 30 mph, your total stopping distance will be about 104 feet.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p051_img000.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 52
+        },
+        {
+          "year": 2026,
+          "page": 52
+        }
+      ]
+    },
+    {
+      "id": "motorized-scooter-safety",
+      "title": "Motorized Scooter Safety",
+      "change_type": "new",
+      "description": "The 2026 manual introduces rules and penalties for motorized scooters, a category not addressed in the 1999 manual.",
+      "bullets": [
+        "\"A motorized scooter is any two or three-wheeled vehicle with handlebars and an electric or gas motor that can move the vehicle with or without human propulsion.\" (2026 Massachusetts Driver's Manual)",
+        "\"You can be fined up to $25 (1st Offense); $25-$50 (2nd Offense); $50-$100 (3rd + Offense).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 61
+        },
+        {
+          "year": 2026,
+          "page": 61
+        }
+      ]
+    },
+    {
+      "id": "limited-use-vehicle-safety",
+      "title": "Limited Use Vehicle Safety",
+      "change_type": "new",
+      "description": "The 2026 manual introduces the limited use vehicle category, which did not exist in the 1999 manual.",
+      "bullets": [
+        "\"A limited use vehicle can have two or more wheels. It can go faster than 30 mph, but not more than 40 mph.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 61
+        }
+      ]
+    },
+    {
+      "id": "low-speed-vehicle-safety",
+      "title": "Low Speed Vehicle Safety",
+      "change_type": "new",
+      "description": "The 2026 manual introduces the Low Speed Vehicle category, which did not exist in the 1999 manual.",
+      "bullets": [
+        "\"A Low Speed Vehicle (LSV) has four wheels and can only go between 20 and 25 mph. It must have a gross weight rating lower than 3,000 lbs.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 62
+        }
+      ]
+    },
+    {
+      "id": "speeding-fine-increase",
+      "title": "Speeding Violation Fine",
+      "change_type": "updated",
+      "description": "The minimum speeding fine increased from $50 in 1999 to $100 plus surcharge in 2026.",
+      "bullets": [
+        "\"The lowest penalty for driving above the speed limit is a $100 fine, plus an additional $5 public safety surcharge which is added to all speeding violations.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 65
+        }
+      ]
+    },
+    {
+      "id": "public-safety-surcharge",
+      "title": "Public Safety Surcharge on CMVI",
+      "change_type": "new",
+      "description": "The 2026 manual adds a $5 public safety surcharge to civil motor vehicle infraction fines, not present in 1999.",
+      "bullets": [
+        "\"Every fine for a CMVI that comes from Chapter 89 or 90 of the Massachusetts General Laws will have an added $5 public safety surcharge.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 64
+        }
+      ]
+    },
+    {
+      "id": "hearing-filing-fee",
+      "title": "Hearing Filing Fee",
+      "change_type": "new",
+      "description": "The 2026 manual requires a $25 filing fee to request a hearing to dispute a citation, not mentioned in 1999.",
+      "bullets": [
+        "\"If you request a hearing, you must pay a $25 filing fee to the RMV.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 64
+        }
+      ]
+    },
+    {
+      "id": "driver-retraining-threshold",
+      "title": "Driver Retraining Course Threshold",
+      "change_type": "updated",
+      "description": "The threshold for mandatory driver retraining dropped from five surchargeable events to three within a two-year period.",
+      "bullets": [
+        "\"If you get three or more surchargeable events on your driving record within a two-year period, you must complete the Massachusetts Driver Retraining Course.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 67
+        }
+      ]
+    },
+    {
+      "id": "at-fault-crash-threshold",
+      "title": "At-Fault Crash Claim Threshold",
+      "change_type": "updated",
+      "description": "The claim payment threshold for being considered more than 50 percent at fault increased from $500 in 1999 to $1000 in 2026.",
+      "bullets": [
+        "\"Has paid more than $1000 for collision, limited collision, or damage to someone else’s property or has paid more than $1000 for bodily injury\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 67
+        }
+      ]
+    },
+    {
+      "id": "mobile-electronic-device-penalty",
+      "title": "Mobile Electronic Device Use Penalty",
+      "change_type": "new",
+      "description": "The 2026 manual adds penalties for use of a mobile electronic device while driving, which did not exist in the 1999 manual.",
+      "bullets": [
+        "\"Conviction for the Use of a Mobile Electronic Device (text or phone) (c. 90, §8M) 60 days— first offense 180 days— second offense One year— subsequent offenses\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 71
+        }
+      ]
+    },
+    {
+      "id": "seven-event-suspension",
+      "title": "Seven Surchargeable Event Suspension",
+      "change_type": "updated",
+      "description": "The suspension for seven surchargeable events reduced from 90 days within a 3-year period plus retraining (1999) to 60 days (2026), and the reinstatement fee increased from $50 to $100.",
+      "bullets": [
+        "\"Any combination of moving violations and surchargeable crashes that total seven sur­ chargeable events within a three-year period. 60 days $100\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 70
+        }
+      ]
+    },
+    {
+      "id": "out-of-state-reinstatement-fee",
+      "title": "Out-of-State Violation Reinstatement Fee",
+      "change_type": "new",
+      "description": "The 2026 manual specifies a minimum $100 reinstatement fee for out-of-state violations, a detail not present in 1999.",
+      "bullets": [
+        "\"you must present proof to the RMV that you resolved your out-of-state obligations, and pay a reinstatement fee (minimum of $100) to Massachusetts before your Massachusetts license can be reinstated.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 66
+        }
+      ]
+    },
+    {
+      "id": "driving-record-fee-increase",
+      "title": "Driving Record Fee",
+      "change_type": "updated",
+      "description": "The cost of an attested driving record increased from $10 in 1999 to $20 in 2026, with a new unattested option for $8.",
+      "bullets": [
+        "\"The cost of an attested driving record is $20.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 69
+        }
+      ]
+    },
+    {
+      "id": "negligent-operation-mobile-phone",
+      "title": "Negligent Operation and Injury from Mobile Phone Use",
+      "change_type": "new",
+      "description": "A new criminal offense and suspension for negligent operation causing injury from mobile phone use.",
+      "bullets": [
+        "\"Negligent Operation and Injury from Mobile Phone Use 60 days–One year $500\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 74
+        }
+      ]
+    },
+    {
+      "id": "ignition-interlock-devices",
+      "title": "Ignition Interlock Devices",
+      "change_type": "new",
+      "description": "A new requirement that drivers with two or more OUI offenses install an Ignition Interlock Device for hardship licenses and reinstatement.",
+      "bullets": [
+        "\"If you had two or more operating under the influence offenses and are eligible for a hardship license or for license reinstatement, you must have an Ignition Interlock Device. It must be attached to your motor vehicle at your expense.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 81
+        }
+      ]
+    },
+    {
+      "id": "sex-offender-drug-tax-suspension",
+      "title": "Other Reasons for License Suspensions",
+      "change_type": "new",
+      "description": "New non-driving reasons for license suspension including failure to register as a sex offender, drug trafficking convictions, and failure to pay Massachusetts income tax.",
+      "bullets": [
+        "\"Have failed to register as a sex offender\" (2026 Massachusetts Driver's Manual)",
+        "\"Have failed to pay Massachusetts income tax\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 73
+        },
+        {
+          "year": 2026,
+          "page": 73
+        }
+      ]
+    },
+    {
+      "id": "new-nonrenewal-reasons",
+      "title": "Reasons for License Nonrenewal",
+      "change_type": "expanded",
+      "description": "New reasons for license nonrenewal added, including unpaid E-ZPass/Fast Lane toll violations and Tobin Bridge violations.",
+      "bullets": [
+        "\"Unpaid Massachusetts, Maine, or New Hampshire E-ZPass/Fast Lane toll violations\" (2026 Massachusetts Driver's Manual)",
+        "\"Unpaid Tobin Bridge violations\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 84
+        },
+        {
+          "year": 2026,
+          "page": 84
+        }
+      ]
+    },
+    {
+      "id": "oui-penalty-fines-updated",
+      "title": "OUI Penalties and Fines",
+      "change_type": "updated",
+      "description": "OUI fine amounts and minimum jail terms have been updated and increased compared to the 1999 edition.",
+      "bullets": [
+        "\"Second Offense $600–$10,000 Minimum 30 days Maximum 2 1/2 years Two years\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Safety First",
+      "chapter_num": 2,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 76
+        }
+      ]
+    },
+    {
+      "id": "oui-reinstatement-fees-updated",
+      "title": "OUI Reinstatement Fees",
+      "change_type": "updated",
+      "description": "Reinstatement fees for OUI convictions have been increased from the 1999 amounts.",
+      "bullets": [
+        "\"$500 (first) $700 (second) $1200 (third) $1200 (fourth)\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 74
+        }
+      ]
+    },
+    {
+      "id": "chemical-test-suspension-periods",
+      "title": "License Suspension Periods for Failed and Refused Chemical Tests",
+      "change_type": "updated",
+      "description": "The chemical test refusal and failure suspension periods have been restructured with new lifetime and multi-year periods based on prior offenses.",
+      "bullets": [
+        "\"Drivers over age 21 No Prior OUI Offenses 180 days One Prior OUI Offense Three years Two Prior OUI Offenses Five years Three or More Prior OUI Offenses Lifetime\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 78
+        }
+      ]
+    },
+    {
+      "id": "vehicular-manslaughter-suspension",
+      "title": "Vehicular Manslaughter Suspension",
+      "change_type": "new",
+      "description": "A new criminal offense category for vehicular manslaughter with a 15-year to lifetime suspension.",
+      "bullets": [
+        "\"Vehicular manslaughter 15 years–Lifetime $500\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 74
+        }
+      ]
+    },
+    {
+      "id": "graffiti-suspension",
+      "title": "Defacing Property/Graffiti Suspension",
+      "change_type": "new",
+      "description": "A new suspension penalty for defacing property or applying graffiti, with no operation of a vehicle required.",
+      "bullets": [
+        "\"Defacing real or personal property, spraying paint or applying stickers or other graffiti (Operation of a ve­ hicle is not required) One year (or delay of one year in obtaining a License) $100\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 74
+        }
+      ]
+    },
+    {
+      "id": "scarr-course",
+      "title": "State Courts Against Road Rage (SCARR) Course",
+      "change_type": "new",
+      "description": "A new SCARR course requirement may be imposed for speeding and drag racing convictions for junior operators.",
+      "bullets": [
+        "\"In addition, you may be re quired to take a State Courts Against Road Rage (SCARR) course.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 72
+        }
+      ]
+    },
+    {
+      "id": "alcohol-marijuana-crash-risk",
+      "title": "Alcohol and Marijuana Combined Crash Risk",
+      "change_type": "new",
+      "description": "New statistical information on the increased crash risk from combining alcohol and marijuana use.",
+      "bullets": [
+        "\"Alcohol use combined with marijuana use makes the risk of a crash twelve times more likely.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Keeping Your License",
+      "chapter_num": 3,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 79
+        }
+      ]
+    },
+    {
+      "id": "speeding-pedestrian-injury-stats",
+      "title": "Speed and Pedestrian Injury Statistics",
+      "change_type": "new",
+      "description": "New statistics on how vehicle speed affects pedestrian injury and fatality rates in crashes.",
+      "bullets": [
+        "\"At a speed of 20 mph, 13% of pedestrians are seriously injured or killed in a crash. At 30 mph, that increases to 40% and at 40 mph it increases to 73%.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 86
+        }
+      ]
+    },
+    {
+      "id": "minimum-speed-tunnels",
+      "title": "Minimum Speed Limits",
+      "change_type": "updated",
+      "description": "The minimum speed information has been expanded to include the Boston Harbor tunnels in addition to the Turnpike.",
+      "bullets": [
+        "\"There is a minimum speed of 20 mph in the Boston Harbor tunnels (Callahan, Sumner, and Ted Williams).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 87
+        }
+      ]
+    },
+    {
+      "id": "thickly-settled-25mph",
+      "title": "Thickly Settled District Speed Limit",
+      "change_type": "expanded",
+      "description": "New provision for a 25 mph thickly settled speed limit option that cities and towns may adopt.",
+      "bullets": [
+        "\"Some communities have a thickly settled speed limit of 25 mph unless posted otherwise (per M.G.L. c90, Section 17c).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 88
+        }
+      ]
+    },
+    {
+      "id": "flashing-yellow-arrow",
+      "title": "Flashing Yellow Arrow",
+      "change_type": "new",
+      "description": "The 2026 manual adds a new signal type allowing turns when oncoming traffic has a green light but there is a break in traffic.",
+      "bullets": [
+        "\"A flashing yellow arrow allows you to turn left or right in the direction of the arrow when oncoming traffic has a green light but there is a break in traffic. You must carefully determine that there is an adequate gap in the oncoming traffic and ensure that there are no pedestrians in your path before making your turn.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p088_img011.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p088_img012.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 89
+        }
+      ]
+    },
+    {
+      "id": "rectangular-rapid-flashing-beacon",
+      "title": "Rectangular Rapid Flashing Beacon",
+      "change_type": "new",
+      "description": "The 2026 manual adds a new pedestrian-activated beacon device not present in 1999.",
+      "bullets": [
+        "\"Rectangular Rapid Flashing Beacons are activated by pedestrians manually by a push button or by a pedestrian detection system. They are often located in intersections without traffic signals or at mid-block crosswalks. When activated, amber lights flash in an irregular pattern. You must stop for pedestrians when the beacon is flashing.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 90
+        }
+      ]
+    },
+    {
+      "id": "pedestrian-hybrid-beacon",
+      "title": "Pedestrian Hybrid Beacon",
+      "change_type": "new",
+      "description": "The 2026 manual adds a new Pedestrian Hybrid Beacon device with specific operating signals.",
+      "bullets": [
+        "\"A Pedestrian Hybrid Beacon (PHB) allows pedestrians to safely cross a roadway. A PHB only operates when activated by a pedestrian. When all lights are dark, you can proceed with caution. When the bottom yellow light is flashing, you must slow down.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 90
+        }
+      ]
+    },
+    {
+      "id": "bicycle-signals",
+      "title": "Bicycle Signals",
+      "change_type": "new",
+      "description": "The 2026 manual adds dedicated bicycle traffic signals not present in 1999.",
+      "bullets": [
+        "\"Bicycle signals are lights specifically meant for bicyclists. They display as steady red, yellow, and green bicycle symbols. When the signal is green, bicyclists can go through busy intersections while motor vehicles are stopped, protecting them from turning vehicles.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 90
+        }
+      ]
+    },
+    {
+      "id": "yield-pedestrian-driveway",
+      "title": "Yielding to Pedestrians When Turning into Driveways",
+      "change_type": "new",
+      "description": "The 2026 manual adds a new explicit law requiring drivers to yield to pedestrians when turning into a driveway or parking lot.",
+      "bullets": [
+        "\"You must yield to pedestrians when turning into a driveway or parking lot.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 91
+        }
+      ]
+    },
+    {
+      "id": "shared-lane-markings-sharrows",
+      "title": "Shared Lane Markings (Sharrows)",
+      "change_type": "new",
+      "description": "The 2026 manual adds Shared Lane Markings (Sharrows) as a new pavement marking type.",
+      "bullets": [
+        "\"Shared Lane Markings (also known as Sharrows) help bicyclists position themselves in the right location and in the right direction in a lane that is shared with motor vehicles.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
+    },
+    {
+      "id": "bicycle-lanes-markings",
+      "title": "Bicycle Lanes",
+      "change_type": "new",
+      "description": "The 2026 manual adds detailed rules for marked bicycle lanes as part of pavement markings.",
+      "bullets": [
+        "\"Bicycle lanes are portions of the roadway that are intended for use by bicyclists and are typically marked by solid white lines, along with pavement markings and signs. They are five feet wide. Motor vehicles may only drive in these lanes when turning on or off the road.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
+    },
+    {
+      "id": "advisory-bicycle-lanes",
+      "title": "Advisory Bicycle Lanes",
+      "change_type": "new",
+      "description": "The 2026 manual introduces advisory bicycle lanes on narrow streets.",
+      "bullets": [
+        "\"Advisory bicycle lanes are becoming common on streets that are too narrow for a full bicycle lane, but still have a lot of bicycle traffic. They are dashed on one or both sides to indicate that motor vehicles may use the lane space when necessary, but they must always yield to bicyclists first.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
+    },
+    {
+      "id": "green-pavement",
+      "title": "Green Pavement",
+      "change_type": "new",
+      "description": "The 2026 manual adds green pavement markings for road sharing conflict areas.",
+      "bullets": [
+        "\"Green pavement is used in areas where there could be road sharing conflicts between motor vehicles and bicycles. You should pay close attention and look for bicyclists before crossing green pavement. At a red light, you should not stop on green pavement.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
+    },
+    {
+      "id": "bus-lanes-red-pavement",
+      "title": "Bus Lanes (Red Pavement)",
+      "change_type": "new",
+      "description": "The 2026 manual adds red pavement markings for public transit lanes.",
+      "bullets": [
+        "\"Red pavement is used for travel lanes or station stops used by public transit systems. This includes buses, streetcars, trolleys, light-rail trains, and rapid transit fleets.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p098_img105.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
+    },
+    {
+      "id": "yield-lines",
+      "title": "Yield Lines",
+      "change_type": "new",
+      "description": "The 2026 manual adds yield lines as a pavement marking, which were not described in 1999.",
+      "bullets": [
+        "\"An intersection with a yield sign may have a YIELD line painted across it. A YIELD line looks like a series of triangles painted next to each other.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 99
+        }
+      ]
+    },
+    {
+      "id": "channelizing-islands",
+      "title": "Channelizing Islands",
+      "change_type": "new",
+      "description": "The 2026 manual adds rules about channelizing islands not present in 1999.",
+      "bullets": [
+        "\"A channelizing island is a traffic island or pavement marking that guides traffic along certain paths and prevents operation on areas of the roadway. You cannot drive over or park a motor vehicle upon any channelizing island, unless directed to do so by a police officer.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p099_img106.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p099_img107.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 100
+        }
+      ]
+    },
+    {
+      "id": "crossing-guards",
+      "title": "Crossing Guards",
+      "change_type": "new",
+      "description": "The 2026 manual adds a dedicated section about crossing guard safety not present in 1999.",
+      "bullets": [
+        "\"As a driver, you should look for warning signs that crossing guards and children may be in the road and be prepared to stop. Crossing guards depend on drivers to be aware and obey their signals.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 100
+        }
+      ]
+    },
+    {
+      "id": "move-over-law",
+      "title": "Move-Over Law",
+      "change_type": "new",
+      "description": "A new law requires drivers to slow down and change lanes when approaching a stationary emergency vehicle with flashing lights.",
+      "bullets": [
+        "\"The “move-over law” (Chapter 418 of the Acts of 2008) requires that if you are approaching a stationary emergency vehicle and it is displaying its flashing lights, you must proceed with caution and reduce your speed to that of a reasonable and safe speed for the road conditions.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 112
+        }
+      ]
+    },
+    {
+      "id": "roundabouts",
+      "title": "Roundabouts",
+      "change_type": "new",
+      "description": "The 2026 manual adds a section on roundabouts, which were not described in the 1999 manual.",
+      "bullets": [
+        "\"Roundabouts are similar to rotaries. They are generally much smaller than rotaries and have a smaller central barrier. Most roundabouts have yield lines on the pavement and crosswalks for pedestrians.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 110
+        }
+      ]
+    },
+    {
+      "id": "three-point-turns",
+      "title": "Three-Point Turns",
+      "change_type": "new",
+      "description": "The 2026 manual adds a detailed procedure for performing a three-point turn.",
+      "bullets": [
+        "\"When there is not enough room for a U-turn, you may consider a three- point turn. This will put you in the opposite direction.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 106
+        }
+      ]
+    },
+    {
+      "id": "backing-up",
+      "title": "Backing Up",
+      "change_type": "new",
+      "description": "The 2026 manual adds a step-by-step procedure for backing up.",
+      "bullets": [
+        "\"Shift into reverse and start backing up, while looking over your right shoulder. Ensure a safe and smooth speed while maintaning your lane.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 107
+        }
+      ]
+    },
+    {
+      "id": "courtesy-crashes",
+      "title": "Courtesy Crashes",
+      "change_type": "new",
+      "description": "The 2026 manual adds a section warning about crashes caused by waving people through traffic.",
+      "bullets": [
+        "\"Sometimes, drivers trying to be nice can cause confusion resulting in \"courtesy crashes\". Waving people in through stopped traffic, or driving through traffic when someone waves you in, creates a dangerous situation and can easily result in a crash.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 110
+        }
+      ]
+    },
+    {
+      "id": "passing-stopped-vehicles",
+      "title": "Passing Stopped Vehicles",
+      "change_type": "new",
+      "description": "The 2026 manual adds a rule about not passing stopped or turning vehicles because of hidden hazards.",
+      "bullets": [
+        "\"Do not pass vehicles that are stopped or are turning (both at intersections and at non-intersections). They may be stopped for another vehicle, a person, or an animal that you cannot see.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 112
+        }
+      ]
+    },
+    {
+      "id": "school-bus-fine",
+      "title": "School Bus Violation Penalty",
+      "change_type": "updated",
+      "description": "The penalty for a first school bus stopping violation changed from up to $200 to a $250 fine.",
+      "bullets": [
+        "\"A first violation of this law can cause a license suspension and a $250 fine.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 113
+        }
+      ]
+    },
+    {
+      "id": "white-cane-law",
+      "title": "White Cane Law for Blind Pedestrians",
+      "change_type": "expanded",
+      "description": "The 2026 manual adds the named White Cane Law and explicit prohibitions against honking or waving on a blind pedestrian.",
+      "bullets": [
+        "\"The White Cane Law states that a driver must come to a complete stop when a blind pedestrian is crossing a street.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 108
+        }
+      ]
+    },
+    {
+      "id": "aggressive-driver-reporting",
+      "title": "Reporting Aggressive Drivers",
+      "change_type": "updated",
+      "description": "The number to report dangerous/aggressive drivers changed from State Police at *77 to 911.",
+      "bullets": [
+        "\"If you have a cell phone, call the State Policeat 911 to report an emergency situation.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 113
+        }
+      ]
+    },
+    {
+      "id": "funeral-procession-rules",
+      "title": "Funeral Processions",
+      "change_type": "expanded",
+      "description": "The 2026 manual adds a legal definition and specific right-of-way rules for funeral processions, including that following vehicles may proceed through intersections behind the lead vehicle.",
+      "bullets": [
+        "\"Funeral processions have the right-of-way at intersections, with the EXCEPTION that they must yield to emergency vehicles with flashing lights or sirens or when directed by law enforcement.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 115
+        }
+      ]
+    },
+    {
+      "id": "funeral-procession-driving-rules",
+      "title": "Driving in a Funeral Procession",
+      "change_type": "new",
+      "description": "The 2026 manual adds detailed rules for operating a vehicle that is part of a funeral procession.",
+      "bullets": [
+        "\"Not drive faster than 55 MPH on a highway with a speed limit of 55 MPH or higher. You must also not go more than 5 MPH slower than the speed limit on any other public way.\" (2026 Massachusetts Driver's Manual)",
+        "\"Have your hazard lights on, if you are the first or last vehicle in the procession.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 116
+        },
+        {
+          "year": 2026,
+          "page": 116
+        }
+      ]
+    },
+    {
+      "id": "non-procession-funeral-rules",
+      "title": "Vehicles Not Part of a Funeral Procession",
+      "change_type": "expanded",
+      "description": "The 2026 manual adds specific prohibitions for vehicles that are not part of a funeral procession, whereas the 1999 manual only stated you must yield until the procession passed.",
+      "bullets": [
+        "\"You may not drive between procession vehicles unless directed by law enforcement or you are operating an emergency vehicle with siren and flashing lights turned on.\" (2026 Massachusetts Driver's Manual)",
+        "\"You may not pass a procession on a multiple lane highway on the procession’s right, unless the procession is in the far left lane.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 116
+        },
+        {
+          "year": 2026,
+          "page": 116
+        }
+      ]
+    },
+    {
+      "id": "work-zone-speeding-fine-doubled",
+      "title": "Doubled Fine for Speeding in Work Areas",
+      "change_type": "new",
+      "description": "The 2026 manual adds a doubled fine for speeding in a work area.",
+      "bullets": [
+        "\"If you are cited for speeding in a “work area”, the fine will be doubled .\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 116
+        }
+      ]
+    },
+    {
+      "id": "bus-stop-parking-fine",
+      "title": "Parking Fine for Bus Stops",
+      "change_type": "updated",
+      "description": "The 2026 manual specifies a $100 penalty for parking in a posted bus stop, which was not stated in 1999.",
+      "bullets": [
+        "\"In a bus stop (the penalty for parking in a posted bus stop is $100)\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p117_img132.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 118
+        }
+      ]
+    },
+    {
+      "id": "bicycle-lane-parking-prohibition",
+      "title": "No Parking in Bicycle Lane",
+      "change_type": "new",
+      "description": "The 2026 manual adds a prohibition on parking in a bicycle lane.",
+      "bullets": [
+        "\"In a bicycle lane\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p117_img132.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 118
+        }
+      ]
+    },
+    {
+      "id": "hp-dv-parking-fine",
+      "title": "HP-DV Parking Fine Amount",
+      "change_type": "updated",
+      "description": "The 2026 manual specifies the fines for HP-DV parking violations and misuse of disabled plates, while the 1999 manual only referred to a \"heavy fine.\"",
+      "bullets": [
+        "\"The fine for a first offense is $300. The fine for wrongful use of a disabled person or veteran plate or placard is a minimum of $500.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p117_img132.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 118
+        }
+      ]
+    },
+    {
+      "id": "crosshatch-area-parking",
+      "title": "No Parking in Crosshatch Area Next to HP-DV Space",
+      "change_type": "new",
+      "description": "The 2026 manual adds a prohibition on parking in striped crosshatch areas next to disabled parking spaces.",
+      "bullets": [
+        "\"In a striped crosshatch area next to an HP-DV space, even if you have disability plates or a placard\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 119
+        }
+      ]
+    },
+    {
+      "id": "mass-pike-parking-fine",
+      "title": "Parking Fine on Massachusetts Turnpike",
+      "change_type": "new",
+      "description": "The 2026 manual adds a specific fine range for parking on the Massachusetts Turnpike.",
+      "bullets": [
+        "\"On the Massachusetts Turnpike (fines range from $15 - $100)\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 119
+        }
+      ]
+    },
+    {
+      "id": "bicyclist-full-lane-use",
+      "title": "Bicyclist Right to Use Full Lane",
+      "change_type": "new",
+      "description": "The 2026 manual adds the bicyclist's right to use the full lane anywhere and anytime per the 2008 amendments, which was not in the 1999 manual.",
+      "bullets": [
+        "\"You can use the full lane anywhere, anytime, and on any street (except limited access or express state highways where signs specifically prohibiting bicycles have been posted), even if there is a bike lane.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p119_img139.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p119_img140.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p119_img141.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 120
+        }
+      ]
+    },
+    {
+      "id": "bicycle-helmet-under-16",
+      "title": "Bicycle Helmet Requirement for Under 16",
+      "change_type": "new",
+      "description": "The 2026 manual adds a mandatory helmet requirement for bicycle operators and passengers under 16.",
+      "bullets": [
+        "\"A bicycle helmet approved by the U.S. Consumer Product Safety Commission must be worn by a bicycle operator or passenger under 16 years old.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 121
+        }
+      ]
+    },
+    {
+      "id": "bicycle-child-passenger-rules",
+      "title": "Bicycle Child Passenger Restrictions",
+      "change_type": "new",
+      "description": "The 2026 manual adds detailed rules for carrying young children as bicycle passengers.",
+      "bullets": [
+        "\"You cannot transport a person who is between one and four years old or who weighs 40 lbs. or less except in a “baby seat” attached to the bicycle.\" (2026 Massachusetts Driver's Manual)",
+        "\"You cannot transport a child under the age of one year on a bicycle.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 121
+        },
+        {
+          "year": 2026,
+          "page": 121
+        }
+      ]
+    },
+    {
+      "id": "bicyclist-brake-and-light-requirements",
+      "title": "Bicycle Brake and Lighting Requirements",
+      "change_type": "new",
+      "description": "The 2026 manual adds specific bicycle equipment requirements for braking and lighting.",
+      "bullets": [
+        "\"You must have a proper working brake system to stop from 15 MPH within 30 feet.\" (2026 Massachusetts Driver's Manual)",
+        "\"From a half hour after sunset to a half hour before sunrise, you must have a white lamp in front visible from up to 500 feet and a rear facing red light or reflector visible up to 600 feet.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 122
+        },
+        {
+          "year": 2026,
+          "page": 122
+        }
+      ]
+    },
+    {
+      "id": "bicyclist-crash-reporting",
+      "title": "Bicyclist Crash Reporting Requirement",
+      "change_type": "new",
+      "description": "The 2026 manual adds a requirement for bicyclists to report certain crashes.",
+      "bullets": [
+        "\"You must report any crash involving personal injury and any crash involving property damage in excess of $100 to the police in the municipality where it occurred.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 122
+        }
+      ]
+    },
+    {
+      "id": "motorist-passing-bicycle-rules",
+      "title": "Motorist Rules for Passing Bicycles",
+      "change_type": "new",
+      "description": "The 2026 manual adds detailed motorist obligations regarding bicycles, including the four-foot passing distance.",
+      "bullets": [
+        "\"If a lane is too narrow to pass a bicycle at a safe distance, be PATIENT until you can safely use an adjacent lane or WAIT until it is safe to pass in the lane you share. (Chap. 89, Sec. 2) You must stay at least four feet away when passing.\" (2026 Massachusetts Driver's Manual)",
+        "\"Drivers and passengers can be fined up to $100 for opening a vehicle door into an oncoming bicycle. (Chap. 90, Sec 14)\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p122_img142.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p122_img143.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p122_img144.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p122_img145.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p122_img146.png",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "src": "images/2026/p122_img147.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 123
+        },
+        {
+          "year": 2026,
+          "page": 123
+        }
+      ]
+    },
+    {
+      "id": "dutch-reach",
+      "title": "Dutch Reach Method",
+      "change_type": "new",
+      "description": "The 2026 manual adds the Dutch Reach method for opening vehicle doors safely to protect bicyclists.",
+      "bullets": [
+        "\"Open the door with your far hand (the hand farther from the door). This is called the \\\"Dutch Reach\\\" method because it originated in the Netherlands.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 124
+        }
+      ]
+    },
+    {
+      "id": "bicycle-boxes",
+      "title": "Bicycle Boxes",
+      "change_type": "new",
+      "description": "The 2026 manual adds rules for bicycle boxes at intersections.",
+      "bullets": [
+        "\"Drivers must stop behind the bicycle box (even when it's empty) and wait for a green light.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p123_img148.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 124
+        }
+      ]
+    },
+    {
+      "id": "separated-bicycle-lanes",
+      "title": "Separated Bicycle Lanes",
+      "change_type": "new",
+      "description": "The 2026 manual adds rules for separated bicycle lanes (cycle tracks and protected bike lanes).",
+      "bullets": [
+        "\"Drivers must always check for oncoming bicyclists when turning across a bike lane. This may require looking to the side and behind the vehicle.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 125
+        }
+      ]
+    },
+    {
+      "id": "move-over-law",
+      "title": "Move-Over Law for Stationary Emergency Vehicles",
+      "change_type": "new",
+      "description": "The 2026 manual adds the move-over law (Chapter 418 of the Acts of 2008) requiring drivers to change lanes or slow down for stationary emergency vehicles.",
+      "bullets": [
+        "\"The “move-over law” (Chapter 418 of the Acts of 2008) requires you to be cautious and reduce your speed to a speed that is reasonable and safe for the road conditions when you approach a stationary emergency vehicle with flashing lights.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Rules of the Road",
+      "chapter_num": 4,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 128
+        }
+      ]
+    },
+    {
+      "id": "follow-distance-emergency-vehicle",
+      "title": "Following Distance Behind Emergency Vehicles",
+      "change_type": "new",
+      "description": "The 2026 manual adds a prohibition on following closely behind an emergency vehicle responding to an alarm, not present in 1999.",
+      "bullets": [
+        "\"It is illegal to follow closer than 300 feet behind an emergency vehicle responding to an alarm.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 128
+        }
+      ]
+    },
+    {
+      "id": "driving-near-fire-hose",
+      "title": "Driving Near a Fire",
+      "change_type": "new",
+      "description": "The 2026 manual adds a prohibition on driving by or parking near a fire and driving over fire hoses.",
+      "bullets": [
+        "\"It is illegal to drive by or park within 800 feet of a fire. Do not drive over an unprotected fire hose unless directed to by a firefighter or public safety official.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 129
+        }
+      ]
+    },
+    {
+      "id": "police-officer-stop-procedures",
+      "title": "Being Stopped by a Police Officer",
+      "change_type": "new",
+      "description": "The 2026 manual adds an extensive new section on how to conduct yourself during a traffic stop by a police officer.",
+      "bullets": [
+        "\"State law requires you to pull over to the side of the road and stop when signaled by a police officer. You must pull over whether the officer is in a police car or on foot.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 129
+        }
+      ]
+    },
+    {
+      "id": "failure-to-produce-documents-fine",
+      "title": "Fine for Failure to Produce License/Registration",
+      "change_type": "new",
+      "description": "The 2026 manual specifies a fine for failing to produce license and registration that was not in the 1999 edition.",
+      "bullets": [
+        "\"There is a $35 fine for a first offense for the failure to produce either document.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 130
+        }
+      ]
+    },
+    {
+      "id": "false-name-address-penalty",
+      "title": "Penalty for Providing False Name or Address",
+      "change_type": "new",
+      "description": "The 2026 manual adds a specific fine for failing to provide or providing a false name and address to an officer.",
+      "bullets": [
+        "\"If you fail to comply, or provide a false name or address, you can be fined $100 (Chapter 90, Section 25).\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 130
+        }
+      ]
+    },
+    {
+      "id": "report-improper-stop",
+      "title": "Reporting an Improper or Discriminatory Stop",
+      "change_type": "new",
+      "description": "The 2026 manual adds guidance on reporting stops believed to be based on race, gender, or inappropriate conduct.",
+      "bullets": [
+        "\"If you believe that you were stopped by a police officer because of your race or your gender, or if you believe the officer's conduct during the stop was otherwise inappropriate, you may report this by contacting the police department or law enforcement agency of the officer who stopped you.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 131
+        }
+      ]
+    },
+    {
+      "id": "railroad-ens-procedure",
+      "title": "Railroad Track Stall Emergency Procedure",
+      "change_type": "updated",
+      "description": "The 2026 manual updates the railroad stall procedure to direct drivers to use the Emergency Notification System (ENS) number rather than simply calling the police, and changes escape direction instructions.",
+      "bullets": [
+        "\"If you cannot move your vehicle from the tracks, call the toll free Emergency Notification System (ENS) number that is located in the middle of the crossbuck or on the metal box near the grade crossing.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 133
+        }
+      ]
+    },
+    {
+      "id": "breakdown-safety-equipment",
+      "title": "Breakdown Safety Equipment Setup",
+      "change_type": "expanded",
+      "description": "The 2026 manual adds detailed procedures for using safety vests, warning triangles, and LED flares with specific placement distances during breakdowns.",
+      "bullets": [
+        "\"If you stop on a two-lane road carrying traffic in both directions or on an undivided highway, place your warning triangles or LED flares: 10 feet behind your vehicle, 100 feet behind your vehicle, 100 feet in front of your vehicle\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p133_img155.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 134
+        }
+      ]
+    },
+    {
+      "id": "driving-through-tunnels",
+      "title": "Driving Through Tunnels",
+      "change_type": "new",
+      "description": "The 2026 manual adds an entirely new section on tunnel safety procedures not present in the 1999 edition.",
+      "bullets": [
+        "\"Hazardous Materials are prohibited, including propane.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 136
+        }
+      ]
+    },
+    {
+      "id": "leaving-scene-penalties",
+      "title": "Leaving the Scene Penalties",
+      "change_type": "new",
+      "description": "The 2026 manual adds specific criminal penalties for leaving the scene of a crash without identifying yourself.",
+      "bullets": [
+        "\"Up to $5000 and imprisonment of up to 2 ½ years in jail or up to 10 years in state prison for leaving the scene after a crash causing personal injury to any person that resulted in death (Section 2 (a ½) (2))\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 138
+        }
+      ]
+    },
+    {
+      "id": "driver-removal-law",
+      "title": "Driver Removal Law",
+      "change_type": "new",
+      "description": "The 2026 manual references the Driver Removal Law requiring vehicles to be moved out of travel lanes when there are no injuries.",
+      "bullets": [
+        "\"If there are no injuries, the Driver Removal Law requires that vehicles be moved out of travel lanes to a safe location.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 137
+        }
+      ]
+    },
+    {
+      "id": "green-driving-tips",
+      "title": "Drive Smart and Save - Green Driving Tips",
+      "change_type": "new",
+      "description": "The 2026 manual adds a section on fuel-saving green driving tips and references an anti-idling law not in the 1999 edition.",
+      "bullets": [
+        "\"Idling gets you zero miles per gallon. So when you’re stopped, switch off the engine. It saves you fuel, and it’s the law – Massachusetts state law prohibits idling for more than five minutes.\" (2026 Massachusetts Driver's Manual)"
+      ],
+      "images": [
+        {
+          "src": "images/2026/p139_img157.png",
+          "alt": "",
+          "caption": ""
+        }
+      ],
+      "chapter": "Special Driving Situations",
+      "chapter_num": 5,
+      "citations": [
+        {
+          "year": 2026,
+          "page": 140
+        }
+      ]
+    },
+    {
+      "id": "special-design-plates",
+      "title": "Special Design Plates",
+      "change_type": "removed",
+      "description": "The 2026 manual shown does not include any content about specialty/environmental fundraising license plates or their special fees.",
+      "bullets": [
+        "\"In addition to the initial registration fee of $30, specialty license plates require a special fee each renewal period.\" (1999 Massachusetts Driver's Manual)",
+        "\"The special fee for these plates, which is $40 every 2 years, is contributed to the Massachusetts Environmental Trust, which provides grants to educate and preserve the Massachusetts environment.\" (1999 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "No Longer Included",
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 1999,
+          "page": 140
+        },
+        {
+          "year": 1999,
+          "page": 140
+        }
+      ]
+    },
+    {
+      "id": "salvage-repairable-title",
+      "title": "Salvage Repairable Title",
+      "change_type": "removed",
+      "description": "The 2026 manual shown does not include content about salvage or total loss vehicle titles.",
+      "bullets": [
+        "\"If your vehicle becomes inoperable due to fire, vandalism, collision, theft, flood, or another event to such an extent that you or, if insured, your insurer considers it uneconomical to repair the vehicle, the vehicle will be declared a total loss.\" (1999 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "No Longer Included",
+      "chapter_num": 99,
+      "citations": [
+        null
+      ]
+    },
+    {
+      "id": "automotive-traffic-convention",
+      "title": "Automotive Traffic Convention",
+      "change_type": "removed",
+      "description": "The 2026 manual references foreign license rules but does not include the list of Automotive Traffic Convention countries/territories.",
+      "bullets": [
+        "\"A foreign visitor from one of the countries or territories listed here may legally drive on the roads of the Commonwealth on his or her own license.\" (1999 Massachusetts Driver's Manual)"
+      ],
+      "images": [],
+      "chapter": "No Longer Included",
+      "chapter_num": 99,
+      "citations": [
+        {
+          "year": 1999,
+          "page": 165
+        }
+      ]
+    }
+  ]
+}

@@ -18,6 +18,17 @@ import io
 # Matches English "CHAPTER 1" and Spanish "CAPÍTULO 1" — including the OCR/typo
 # variant "CAPÍTILO" found in the 2023 Spanish manual.
 CHAPTER_RE = re.compile(r"^(CHAPTER|CAP[IÍ]T[UI]LO)\s+\d+", re.IGNORECASE)
+# Some editions (e.g. 2002/2003) typeset the chapter label with a discretionary
+# soft hyphen inside the word, e.g. "CHAP\xadTER 2", which breaks a naive match.
+# Fold these invisible format characters out before testing CHAPTER_RE.
+_INVISIBLE_RE = re.compile("[­​‌‍﻿]")
+
+
+def _norm_heading(text: str) -> str:
+    """Strip soft-hyphens / zero-width chars so chapter labels match reliably."""
+    return _INVISIBLE_RE.sub("", text)
+
+
 # Real chapter labels are display-sized (English >= 47.9pt, Spanish 47.9pt). The
 # size floor rejects inline body references like Spanish "capítulo 525 de las
 # Leyes de 2008)" (~13pt) that the broadened regex would otherwise match.
@@ -104,6 +115,38 @@ def _save_image_from_pixmap(page: fitz.Page, bbox: fitz.Rect, dest_path: Path) -
     pix.save(str(dest_path))
 
 
+# Minimum font size for the display title on a chapter-start page when there is no
+# "CHAPTER N" label to anchor on (the 2004 edition titles render at ~30pt).
+DISPLAY_TITLE_MIN_SIZE = 26.0
+
+
+def _detect_chapters_by_title(doc: fitz.Document) -> list[tuple[int, int, str]]:
+    """
+    Locate chapter starts in editions that omit the "CHAPTER N" label. A chapter
+    start is a page that carries large display-size title text (e.g. 30pt bold)
+    standing on its own — body pages have nothing that large. Titles are joined in
+    reading order and chapters are numbered sequentially.
+
+    Returns [(chapter_num, page_idx, title), ...].
+    """
+    chapter_pages: list[tuple[int, int, str]] = []
+    for page_idx in range(len(doc)):
+        blocks = doc[page_idx].get_text("dict", flags=fitz.TEXT_PRESERVE_WHITESPACE)["blocks"]
+        title_parts: list[str] = []
+        for block in blocks:
+            if block["type"] != 0:
+                continue
+            for line in block["lines"]:
+                for span in line["spans"]:
+                    span_text = span["text"].strip()
+                    if span_text and span["size"] >= DISPLAY_TITLE_MIN_SIZE:
+                        title_parts.append(span_text)
+        title = _clean_text(" ".join(title_parts))
+        if len(title) >= 4:
+            chapter_pages.append((len(chapter_pages) + 1, page_idx, title))
+    return chapter_pages
+
+
 def extract_manual(
     pdf_path: Path, images_dir: Path, year: int, url_prefix: str = "images"
 ) -> list[ExtractedSection]:
@@ -139,7 +182,7 @@ def extract_manual(
                 continue
             for line in block["lines"]:
                 for span in line["spans"]:
-                    span_text = span["text"].strip()
+                    span_text = _norm_heading(span["text"].strip())
                     if span_text and CHAPTER_RE.match(span_text) and span["size"] >= CHAPTER_LABEL_MIN_SIZE:
                         m = re.search(r"\d+", span_text)
                         num = int(m.group()) if m else len(chapter_pages) + 1
@@ -163,13 +206,22 @@ def extract_manual(
                         if (
                             span_text
                             and 24 <= span["size"] < chapter_label_size
-                            and not CHAPTER_RE.match(span_text)
+                            and not CHAPTER_RE.match(_norm_heading(span_text))
                         ):
                             title_parts.append(span_text)
 
         if chapter_num is not None:
             title = _clean_text(" ".join(title_parts)) if title_parts else f"Chapter {chapter_num}"
             chapter_pages.append((chapter_num, page_idx, title))
+
+    # Fallback for editions that omit the "CHAPTER N" label entirely (e.g. 2004):
+    # the only thing marking a chapter start is the large display title on its own
+    # page. Detect those pages by their display-size text and number them in order.
+    if not chapter_pages:
+        chapter_pages = _detect_chapters_by_title(doc)
+        if chapter_pages:
+            print(f"  No 'CHAPTER N' labels in {pdf_path.name}; "
+                  f"detected {len(chapter_pages)} chapters by display title.")
 
     if not chapter_pages:
         print(f"  WARNING: No chapter headings found in {pdf_path.name}. Treating whole doc as one chapter.")
@@ -274,7 +326,7 @@ def extract_manual(
 
                     # Skip chapter headings (display-sized only — an inline body
                     # reference like "capítulo 525 de las Leyes" must not be dropped)
-                    if CHAPTER_RE.match(line_text) and any(
+                    if CHAPTER_RE.match(_norm_heading(line_text)) and any(
                         s["size"] >= CHAPTER_LABEL_MIN_SIZE for s in line["spans"]
                     ):
                         continue
