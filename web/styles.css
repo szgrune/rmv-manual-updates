@@ -324,6 +324,24 @@ h4 {
   scroll-margin-top: var(--spacing-md);
 }
 
+/* ── Featured Changes (pinned, admin-curated highlights) ─── */
+.featured-changes {
+  background: var(--color-accent-light);
+  border: 2px solid var(--color-brand);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+}
+
+.featured-heading {
+  color: var(--color-brand);
+  border-bottom-color: var(--color-brand);
+}
+
+.featured-heading::before {
+  content: "★";
+  margin-right: 0.4em;
+}
+
 .group-flash {
   animation: group-flash-anim 1.4s ease;
 }

@@ -245,7 +245,8 @@
         "bus-lanes-red-pavement": {
           "action": "edit",
           "fields": {
-            "images": []
+            "images": [],
+            "highlight": true
           }
         },
         "seat-belt-fatality-stat": {
@@ -259,8 +260,44 @@
         },
         "work-zone-fatality-statistic": {
           "action": "delete"
+        },
+        "real-id-travel-in-effect": {
+          "action": "edit",
+          "fields": {
+            "highlight": true
+          }
+        },
+        "car-safety-kits": {
+          "action": "edit",
+          "fields": {
+            "highlight": true
+          }
+        },
+        "adas-systems": {
+          "action": "edit",
+          "fields": {
+            "highlight": true
+          }
         }
       }
+    },
+    "1999": {
+      "changes": {}
+    },
+    "2002": {
+      "changes": {}
+    },
+    "2003": {
+      "changes": {}
+    },
+    "2004": {
+      "changes": {}
+    },
+    "2005": {
+      "changes": {}
+    },
+    "2006": {
+      "changes": {}
     }
   }
 }

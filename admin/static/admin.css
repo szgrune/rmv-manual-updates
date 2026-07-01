@@ -1,0 +1,106 @@
+:root {
+  --brand: #14558F;
+  --brand-dark: #0f3f6b;
+  --border: #c8d8ea;
+  --accent: #e8f0f8;
+  --danger: #a11;
+  --ok: #1a6b2f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #111;
+  background: #f6f8fb;
+}
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--brand); color: #fff; padding: 0.7rem 1.2rem;
+}
+.brand { color: #fff; text-decoration: none; font-weight: 700; }
+.regen button {
+  background: #fff; color: var(--brand); border: 0; border-radius: 6px;
+  padding: 0.5rem 0.9rem; font-weight: 700; cursor: pointer;
+}
+.regen button:hover { background: var(--accent); }
+.wrap { max-width: 900px; margin: 1.4rem auto; padding: 0 1.2rem 4rem; }
+h1 { font-size: 1.5rem; }
+.muted { color: #567; }
+.small { font-size: 0.85rem; }
+a { color: var(--brand); }
+hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+.flashes { max-width: 900px; margin: 0.8rem auto 0; padding: 0 1.2rem; }
+.flash { padding: 0.6rem 0.9rem; border-radius: 6px; margin-bottom: 0.5rem; }
+.flash-ok { background: #e6f4ea; color: var(--ok); border: 1px solid #b7e0c2; }
+.flash-error { background: #fdeaea; color: var(--danger); border: 1px solid #f2c2c2; }
+
+.year-list { list-style: none; padding: 0; }
+.year-list li { margin: 0.3rem 0; }
+.year-list a {
+  display: block; padding: 0.7rem 1rem; background: #fff;
+  border: 1px solid var(--border); border-radius: 8px; text-decoration: none;
+}
+.year-list a:hover { background: var(--accent); }
+
+/* Chapters + change cards */
+details.chapter { margin-bottom: 1rem; }
+details.chapter > summary {
+  font-size: 1.15rem; font-weight: 700; cursor: pointer; padding: 0.5rem 0;
+  border-bottom: 2px solid var(--border);
+}
+details.change {
+  background: #fff; border: 1px solid var(--border); border-radius: 8px;
+  margin: 0.5rem 0; padding: 0.4rem 0.8rem;
+}
+details.change > summary { cursor: pointer; padding: 0.4rem 0; }
+.c-title { font-weight: 600; }
+.star { color: var(--brand); }
+
+.badge {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em;
+  padding: 0.1rem 0.45rem; border-radius: 999px; margin-left: 0.4rem;
+  background: var(--accent); color: var(--brand);
+}
+.badge-new { background: #e6f4ea; color: var(--ok); }
+.badge-removed { background: #fdeaea; color: var(--danger); }
+
+form.edit, form.add-new form, details.add-new form { margin-top: 0.6rem; }
+label { display: block; margin: 0.6rem 0; font-weight: 600; }
+label.small, label .small { font-weight: 400; }
+input[type=text], input[type=number], textarea, select {
+  width: 100%; padding: 0.45rem 0.55rem; border: 1px solid var(--border);
+  border-radius: 6px; font: inherit; font-weight: 400; margin-top: 0.2rem;
+}
+textarea { resize: vertical; }
+.row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.row label { flex: 1; min-width: 160px; }
+.row label.narrow { flex: 0 0 110px; }
+
+fieldset { border: 1px solid var(--border); border-radius: 8px; margin: 0.8rem 0; }
+legend { font-weight: 700; padding: 0 0.4rem; }
+.img-row { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.7rem; }
+.img-row img { width: 120px; height: auto; border: 1px solid var(--border); border-radius: 4px; }
+.img-fields { flex: 1; }
+.img-fields input { margin-bottom: 0.3rem; }
+label.remove { font-weight: 400; color: var(--danger); display: inline; }
+
+label.highlight, label.radio { font-weight: 400; }
+label.highlight input, label.radio input { width: auto; margin-right: 0.4rem; }
+
+.actions { margin-top: 0.8rem; }
+button {
+  background: var(--brand); color: #fff; border: 0; border-radius: 6px;
+  padding: 0.5rem 1rem; font-weight: 700; cursor: pointer; font: inherit;
+}
+button:hover { background: var(--brand-dark); }
+button.danger { background: #fff; color: var(--danger); border: 1px solid var(--danger); }
+form.delete { margin-top: 0.5rem; }
+
+.job-log {
+  background: #0b1622; color: #cfe3f5; padding: 1rem; border-radius: 8px;
+  white-space: pre-wrap; max-height: 60vh; overflow: auto;
+}
+.job-state { font-weight: 700; }
+.job-success { color: var(--ok); }
+.job-error { color: var(--danger); }

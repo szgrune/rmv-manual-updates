@@ -28,6 +28,7 @@ const STRINGS = {
     accordionLoading: (y) => `Loading ${y} updates…`,
     accordionError: (y) => `Could not load ${y} update data.`,
     changesHeading: (y) => `Changes Since ${y}`,
+    featuredHeading: (y) => `Featured Changes Since ${y}`,
     searchPlaceholder: "Search the updates…",
     searchAria: "Search the updates",
     share: "Share",
@@ -71,6 +72,7 @@ const STRINGS = {
     accordionLoading: (y) => `Cargando actualizaciones de ${y}…`,
     accordionError: (y) => `No se pudieron cargar los datos de actualización de ${y}.`,
     changesHeading: (y) => `Cambios Desde ${y}`,
+    featuredHeading: (y) => `Cambios Destacados Desde ${y}`,
     searchPlaceholder: "Buscar en las actualizaciones…",
     searchAria: "Buscar en las actualizaciones",
     share: "Compartir",
@@ -452,12 +454,47 @@ function renderChanges(data, fromYear, toYear) {
   // Table of contents inside the blue box (chapter pills)
   overviewBlock.appendChild(buildTableOfContents(groups, idPrefix));
 
+  // Featured Changes — curated shortcut pinned above the chapter groups. Only
+  // renders when one or more results are flagged `highlight` (set via the admin).
+  const highlighted = data.sections.filter(sec => sec.highlight === true);
+  if (highlighted.length > 0) {
+    sectionsList.appendChild(buildFeaturedSection(highlighted, fromYear, idPrefix));
+  }
+
   // Grouped change cards with anchored chapter headings
   groups.forEach(group => {
     sectionsList.appendChild(buildChapterGroup(group, idPrefix));
   });
 
   changesSection.hidden = false;
+}
+
+/**
+ * The "Featured Changes Since YEAR" block: every result flagged `highlight`,
+ * shown in chapter order, with no per-chapter cap. Reuses the standard section
+ * card so featured entries look and behave like the rest. Carries the
+ * `change-group` class so the existing search/filter logic hides the whole block
+ * when none of its cards match (its heading is intentionally absent from the TOC).
+ */
+function buildFeaturedSection(highlighted, fromYear, idPrefix) {
+  const wrap = document.createElement('section');
+  wrap.className = 'change-group featured-changes';
+
+  const heading = document.createElement('h3');
+  heading.className = 'group-heading featured-heading';
+  heading.id = `${idPrefix}-featured`;
+  heading.textContent = t('featuredHeading', fromYear);
+  wrap.appendChild(heading);
+
+  const section = document.createElement('div');
+  section.className = 'results-featured';
+  // Preserve chapter order (matches the main list) without applying the cap.
+  groupByChapter(highlighted).forEach(group => {
+    group.items.forEach(sec => section.appendChild(buildSectionCard(sec)));
+  });
+  wrap.appendChild(section);
+
+  return wrap;
 }
 
 function renderAccordion(data) {

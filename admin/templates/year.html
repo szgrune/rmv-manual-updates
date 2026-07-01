@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Changes Since {{ from_year }} — Admin{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('index') }}">← All years</a></p>
+<h1>Changes Since {{ from_year }} <span class="muted">({{ from_year }} → {{ latest }})</span></h1>
+<p class="muted">{{ n_featured }} result(s) marked as Featured. Edits are saved to
+  overrides and survive re-analysis. Click <strong>Regenerate site data</strong>
+  (top right) to publish to the live site.</p>
+
+{% for group in groups %}
+<details class="chapter" open>
+  <summary>{{ group.chapter }} <span class="muted">({{ group['changes']|length }})</span></summary>
+
+  {% for c in group['changes'] %}
+  <details class="change" id="c-{{ c.id }}">
+    <summary>
+      {% if c.highlight %}<span class="star" title="Featured">★</span>{% endif %}
+      <span class="c-title">{{ c.title or c.id }}</span>
+      {% if c.change_type %}<span class="badge badge-{{ c.change_type }}">{{ c.change_type }}</span>{% endif %}
+    </summary>
+
+    <form class="edit" method="post"
+          action="{{ url_for('save_change', from_year=from_year, change_id=c.id) }}"
+          enctype="multipart/form-data">
+
+      <label>Title
+        <input type="text" name="title" value="{{ c.title or '' }}">
+      </label>
+
+      <div class="row">
+        <label>Change type
+          <select name="change_type">
+            {% for ct in change_types %}
+            <option value="{{ ct }}" {{ 'selected' if c.change_type == ct }}>{{ ct }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>Chapter
+          <select name="chapter" onchange="this.form.chapter_num.value = this.selectedOptions[0].dataset.num || ''">
+            {% for name, num in chapters %}
+            <option value="{{ name }}" data-num="{{ num }}" {{ 'selected' if c.chapter == name }}>{{ name }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label class="narrow">Chapter #
+          <input type="number" name="chapter_num" value="{{ c.chapter_num if c.chapter_num is not none else '' }}">
+        </label>
+      </div>
+
+      <label>Description
+        <textarea name="description" rows="2">{{ c.description or '' }}</textarea>
+      </label>
+
+      <label>Bullets <span class="muted small">(one quote per line)</span>
+        <textarea name="bullets" rows="4">{{ (c.bullets or [])|join('\n') }}</textarea>
+      </label>
+
+      <fieldset class="images">
+        <legend>Images</legend>
+        {% for img in c['images'] or [] %}
+        <div class="img-row">
+          <img src="{{ url_for('web_asset', relpath=img.src) }}" alt="">
+          <input type="hidden" name="img_src_{{ loop.index0 }}" value="{{ img.src }}">
+          <div class="img-fields">
+            <input type="text" name="img_alt_{{ loop.index0 }}" value="{{ img.alt or '' }}" placeholder="alt text">
+            <input type="text" name="img_caption_{{ loop.index0 }}" value="{{ img.caption or '' }}" placeholder="caption">
+            <label class="remove"><input type="checkbox" name="img_remove_{{ loop.index0 }}"> remove</label>
+          </div>
+        </div>
+        {% endfor %}
+        <label>Add image(s)
+          <input type="file" name="new_images" accept="image/*" multiple>
+        </label>
+      </fieldset>
+
+      <label class="highlight">
+        <input type="checkbox" name="highlight" {{ 'checked' if c.highlight }}>
+        <strong>Highlight</strong> — feature this in “Featured Changes Since {{ from_year }}”
+      </label>
+
+      <div class="actions">
+        <button type="submit">Save</button>
+      </div>
+    </form>
+
+    <form class="delete" method="post"
+          action="{{ url_for('delete_change', from_year=from_year, change_id=c.id) }}"
+          onsubmit="return confirm('Delete this result?')">
+      <button type="submit" class="danger">Delete result</button>
+    </form>
+  </details>
+  {% endfor %}
+</details>
+{% endfor %}
+
+<hr>
+<details class="add-new">
+  <summary>+ Add a new result</summary>
+  <form method="post" action="{{ url_for('add_change', from_year=from_year) }}">
+    <label>Title <input type="text" name="title" required></label>
+    <div class="row">
+      <label>Change type
+        <select name="change_type">
+          {% for ct in change_types %}<option value="{{ ct }}">{{ ct }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Chapter
+        <select name="chapter" onchange="this.form.chapter_num.value = this.selectedOptions[0].dataset.num || ''">
+          {% for name, num in chapters %}<option value="{{ name }}" data-num="{{ num }}">{{ name }}</option>{% endfor %}
+        </select>
+      </label>
+      <label class="narrow">Chapter # <input type="number" name="chapter_num"></label>
+    </div>
+    <label>Description <textarea name="description" rows="2"></textarea></label>
+    <label>Bullets <span class="muted small">(one quote per line)</span>
+      <textarea name="bullets" rows="3"></textarea></label>
+    <label class="highlight"><input type="checkbox" name="highlight"> <strong>Highlight</strong></label>
+    <div class="actions"><button type="submit">Add result</button></div>
+    <p class="muted small">Add images by editing the result after it’s created.</p>
+  </form>
+</details>
+{% endblock %}
