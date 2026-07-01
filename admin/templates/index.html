@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Changes pages</h1>
+<p class="muted">Latest manual: <strong>{{ latest }}</strong>. Pick a “Changes Since YEAR”
+page to edit its results, mark highlights, or add/remove entries.</p>
+
+<ul class="year-list">
+  {% for y in from_years %}
+    <li><a href="{{ url_for('year', from_year=y) }}">Changes Since {{ y }}
+        <span class="muted">({{ y }} → {{ latest }})</span></a></li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<h2>Upload a new manual</h2>
+<form class="upload" method="post" action="{{ url_for('upload_manual') }}"
+      enctype="multipart/form-data">
+  <p class="muted">{{ naming_help }}</p>
+
+  <label>PDF file
+    <input type="file" name="pdf" accept="application/pdf" required>
+  </label>
+
+  <fieldset>
+    <legend>This manual is the…</legend>
+    <label class="radio"><input type="radio" name="mode" value="newest" required>
+      <strong>Newest Manual</strong> — becomes the latest edition; re-analyzes every
+      prior year against it.</label>
+    <label class="radio"><input type="radio" name="mode" value="old">
+      <strong>Old Manual</strong> — an older edition; runs the single comparison
+      against the current latest.</label>
+  </fieldset>
+
+  <button type="submit">Upload &amp; analyze</button>
+  <p class="muted small">Analysis runs in the background and can take several minutes.
+    Requires an analyzer API key in the environment (e.g. <code>ANTHROPIC_API_KEY</code>).</p>
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Manual upload — Admin{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('index') }}">← Home</a></p>
+<h1>Processing {{ job.year }} manual <span class="muted">({{ job.mode }})</span></h1>
+<p id="state" class="job-state">Status: {{ job.status }}</p>
+<pre id="log" class="job-log">{{ job.log|join('\n') }}</pre>
+
+<script>
+const jobId = {{ job_id|tojson }};
+async function poll() {
+  const r = await fetch(`/job/${jobId}/status`);
+  const j = await r.json();
+  document.getElementById('log').textContent = (j.log || []).join('\n');
+  const state = document.getElementById('state');
+  state.textContent = 'Status: ' + j.status;
+  state.className = 'job-state job-' + j.status;
+  if (j.status === 'running') { setTimeout(poll, 2000); }
+  else if (j.status === 'success') {
+    state.textContent = `Status: success — ${j.result.year} added (${j.result.sections} sections). `
+      + 'Click “Regenerate site data” only if you also edited results; the upload already exported.';
+  }
+}
+poll();
+</script>
+{% endblock %}

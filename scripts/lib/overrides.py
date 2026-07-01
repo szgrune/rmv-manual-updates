@@ -198,3 +198,67 @@ def apply(from_year: int, fresh: dict, overrides: dict) -> dict:
         "overview": overview,
         "sections": out_changes,
     }
+
+
+# ── Programmatic edits (used by the admin backend) ───────────────────────────────
+#
+# These helpers let a UI record overrides directly, instead of relying on the
+# disk-diff capture() path. They load overrides.json, mutate the entry for a
+# single change, and save. After calling one of these, run export_json.export_all()
+# to regenerate web/data/*.json with the override applied.
+
+def _pair_changes(overrides: dict, from_year: int) -> dict:
+    pair = overrides["pairs"].setdefault(str(from_year), {})
+    return pair.setdefault("changes", {})
+
+
+def set_change_override(from_year: int, change_id: str, fields: dict,
+                        path: Path | None = None) -> None:
+    """Merge `fields` into an edit/add override for a change. Preserves an
+    existing 'add' action (a hand-added change stays an add); otherwise records
+    an 'edit'."""
+    overrides = load_overrides(path)
+    ov_changes = _pair_changes(overrides, from_year)
+    entry = ov_changes.get(change_id)
+    if entry and entry.get("action") == "add":
+        entry.setdefault("fields", {}).update(fields)
+    else:
+        entry = ov_changes.setdefault(change_id, {"action": "edit", "fields": {}})
+        entry["action"] = "edit"
+        entry.setdefault("fields", {}).update(fields)
+    save_overrides(overrides, path)
+
+
+def add_change_override(from_year: int, change_id: str, fields: dict,
+                        path: Path | None = None) -> None:
+    """Record a brand-new change (one the AI does not produce) as an 'add'."""
+    overrides = load_overrides(path)
+    ov_changes = _pair_changes(overrides, from_year)
+    ov_changes[change_id] = {"action": "add", "fields": dict(fields)}
+    save_overrides(overrides, path)
+
+
+def delete_change_override(from_year: int, change_id: str,
+                           path: Path | None = None) -> None:
+    """Mark a change for deletion so it is dropped from the exported JSON."""
+    overrides = load_overrides(path)
+    ov_changes = _pair_changes(overrides, from_year)
+    ov_changes[change_id] = {"action": "delete"}
+    save_overrides(overrides, path)
+
+
+def remove_change_field_override(from_year: int, change_id: str, field: str,
+                                 path: Path | None = None) -> None:
+    """Remove a single overridden `field` from a change's edit/add entry (e.g.
+    clearing `highlight`). If an 'edit' entry ends up with no fields, drop it
+    entirely so the change reverts to raw AI output."""
+    overrides = load_overrides(path)
+    ov_changes = _pair_changes(overrides, from_year)
+    entry = ov_changes.get(change_id)
+    if not entry:
+        return
+    fields = entry.get("fields", {})
+    fields.pop(field, None)
+    if entry.get("action") == "edit" and not fields:
+        del ov_changes[change_id]
+    save_overrides(overrides, path)

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}RMV Manual Updates — Admin{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('index') }}">RMV Manual Updates · Admin</a>
+    <div class="topbar-actions">
+      <span class="branch {{ 'branch-live' if git_branch == publish_branch else 'branch-other' }}"
+            title="Current git branch">branch: {{ git_branch }}</span>
+      <form class="regen" method="post" action="{{ url_for('regenerate') }}">
+        <button type="submit" class="btn-secondary"
+                title="Rebuild web/data locally (no push) so you can preview">
+          Regenerate (local)
+        </button>
+      </form>
+      <form class="regen" method="post" action="{{ url_for('publish') }}"
+            onsubmit="return confirm('Publish to origin/{{ publish_branch }} and update the LIVE site?');">
+        <button type="submit" title="Regenerate, commit, and push to the live site">
+          Publish to GitHub
+        </button>
+      </form>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flashes">
+        {% for category, msg in messages %}
+          <div class="flash flash-{{ category }}">{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
