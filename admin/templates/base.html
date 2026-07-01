@@ -9,11 +9,22 @@
 <body>
   <header class="topbar">
     <a class="brand" href="{{ url_for('index') }}">RMV Manual Updates · Admin</a>
-    <form class="regen" method="post" action="{{ url_for('regenerate') }}">
-      <button type="submit" title="Apply all edits to the live site data">
-        Regenerate site data
-      </button>
-    </form>
+    <div class="topbar-actions">
+      <span class="branch {{ 'branch-live' if git_branch == publish_branch else 'branch-other' }}"
+            title="Current git branch">branch: {{ git_branch }}</span>
+      <form class="regen" method="post" action="{{ url_for('regenerate') }}">
+        <button type="submit" class="btn-secondary"
+                title="Rebuild web/data locally (no push) so you can preview">
+          Regenerate (local)
+        </button>
+      </form>
+      <form class="regen" method="post" action="{{ url_for('publish') }}"
+            onsubmit="return confirm('Publish to origin/{{ publish_branch }} and update the LIVE site?');">
+        <button type="submit" title="Regenerate, commit, and push to the live site">
+          Publish to GitHub
+        </button>
+      </form>
+    </div>
   </header>
 
   {% with messages = get_flashed_messages(with_categories=true) %}

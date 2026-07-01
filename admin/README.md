@@ -33,12 +33,30 @@ Then open <http://localhost:5000>.
 
 ## Publishing edits
 
-- **Text / image / highlight edits:** after saving, click **"Regenerate site data"**
-  (top-right) to write the changes into `web/data/*.json`.
-- **Manual uploads:** the upload job already regenerates the site data when it
-  finishes; no extra step needed.
-- Commit the regenerated `web/data/*.json` (and any new `web/images/custom/*`,
-  `Manuals/*.pdf`, and `data/overrides.json`) and deploy the static site as usual.
+The site is served by **GitHub Pages** off the `main` branch, so a push to `main`
+auto-redeploys it. Two top-right buttons drive this:
+
+- **Regenerate (local):** rebuilds `web/data/*.json` from your overrides *without*
+  pushing. Use it to preview changes locally (`cd web && python3 -m http.server 8080`)
+  before going live.
+- **Publish to GitHub:** regenerates, then `git commit` + `git push` the content
+  files to the live branch so Pages redeploys (usually within a minute or two).
+
+Publish details:
+
+- It commits **only content/data** — `web/data/`, `data/overrides.json`, and
+  `web/images/custom/` — never the admin or pipeline source code.
+- It uses your existing local git credentials (the same ones `git push` already
+  uses); no token setup required.
+- It only publishes when you're **on the `main` branch**. On any other branch it
+  refuses and tells you to `git checkout main` first — this stops an unmerged
+  feature branch from being pushed to the live site. (Override the target branch
+  with the `PUBLISH_BRANCH` env var if Pages ever serves a different branch.)
+- **Manual uploads** already regenerate `web/data/`; click **Publish to GitHub**
+  afterward to push the newly added year (and its `Manuals/*.pdf` + images) live.
+  Note: uploaded PDFs and `web/images/<year>/` are not in the Publish path, so a
+  manual upload is best committed with a normal `git add`/`git push` (or extend
+  `PUBLISH_PATHS` in `app.py`).
 
 ## Notes / limits (v1)
 

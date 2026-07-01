@@ -18,11 +18,23 @@ body {
   background: var(--brand); color: #fff; padding: 0.7rem 1.2rem;
 }
 .brand { color: #fff; text-decoration: none; font-weight: 700; }
+.topbar-actions { display: flex; align-items: center; gap: 0.6rem; }
+.branch {
+  font-size: 0.78rem; padding: 0.2rem 0.55rem; border-radius: 999px;
+  color: #fff; border: 1px solid rgba(255,255,255,0.4);
+}
+.branch-live { background: rgba(255,255,255,0.18); }
+.branch-other { background: #a4630f; border-color: #a4630f; }
+.regen { margin: 0; }
 .regen button {
   background: #fff; color: var(--brand); border: 0; border-radius: 6px;
   padding: 0.5rem 0.9rem; font-weight: 700; cursor: pointer;
 }
 .regen button:hover { background: var(--accent); }
+.regen button.btn-secondary {
+  background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6);
+}
+.regen button.btn-secondary:hover { background: rgba(255,255,255,0.15); }
 .wrap { max-width: 900px; margin: 1.4rem auto; padding: 0 1.2rem 4rem; }
 h1 { font-size: 1.5rem; }
 .muted { color: #567; }

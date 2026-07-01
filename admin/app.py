@@ -18,7 +18,9 @@ Run:
 """
 
 import json
+import os
 import re
+import subprocess
 import sys
 import threading
 import uuid
@@ -43,8 +45,29 @@ MANUALS_DIR = PROJECT_ROOT / "Manuals"
 
 CHANGE_TYPES = ["new", "updated", "expanded", "removed"]
 
+# Branch GitHub Pages serves. Publishing pushes here; overridable for testing.
+PUBLISH_BRANCH = os.environ.get("PUBLISH_BRANCH", "main")
+# Only content/data is committed on publish — never admin/pipeline source code.
+PUBLISH_PATHS = ["web/data", "data/overrides.json", "web/images/custom"]
+
 app = Flask(__name__)
 app.secret_key = "rmv-admin-local"  # local-only; only used for flash messages
+
+
+# ── Git helpers (for one-click publish) ─────────────────────────────────────
+
+def _git(*args):
+    return subprocess.run(["git", *args], cwd=PROJECT_ROOT,
+                          capture_output=True, text=True)
+
+
+def current_branch() -> str:
+    return _git("rev-parse", "--abbrev-ref", "HEAD").stdout.strip() or "?"
+
+
+@app.context_processor
+def inject_git():
+    return {"git_branch": current_branch(), "publish_branch": PUBLISH_BRANCH}
 
 
 # ── Data helpers ────────────────────────────────────────────────────────────
@@ -271,6 +294,59 @@ def regenerate():
     except Exception as e:  # noqa: BLE001
         flash(f"Regeneration failed: {e}", "error")
     return redirect(request.referrer or url_for("index"))
+
+
+# ── Publish: regenerate + commit + push so GitHub Pages redeploys ───────────
+
+@app.route("/publish", methods=["POST"])
+def publish():
+    back = request.referrer or url_for("index")
+
+    # Guard: only publish from the branch Pages serves, so an unmerged feature
+    # branch can never be pushed to the live site by accident.
+    branch = current_branch()
+    if branch != PUBLISH_BRANCH:
+        flash(f"You're on branch “{branch}”. Publishing to the live site "
+              f"(“{PUBLISH_BRANCH}”) must be done from that branch — run "
+              f"`git checkout {PUBLISH_BRANCH}` first. Use “Regenerate (local)” "
+              f"to preview changes without publishing.", "error")
+        return redirect(back)
+
+    # 1. Regenerate the static data from overrides.
+    try:
+        ej.export_all()
+    except Exception as e:  # noqa: BLE001
+        flash(f"Publish aborted — regeneration failed: {e}", "error")
+        return redirect(back)
+
+    # 2. Stage only content/data paths.
+    add = _git("add", "--", *PUBLISH_PATHS)
+    if add.returncode != 0:
+        flash(f"Publish failed at `git add`: {add.stderr.strip()}", "error")
+        return redirect(back)
+
+    # 3. Anything actually changed?
+    if not _git("status", "--porcelain", "--", *PUBLISH_PATHS).stdout.strip():
+        flash("Nothing to publish — no content changes since the last publish.", "ok")
+        return redirect(back)
+
+    # 4. Commit just those paths (ignores anything else that may be staged).
+    commit = _git("commit", "-m", "Update override content via admin", "--", *PUBLISH_PATHS)
+    if commit.returncode != 0:
+        flash(f"Publish failed at `git commit`: "
+              f"{(commit.stderr or commit.stdout).strip()}", "error")
+        return redirect(back)
+
+    # 5. Push to the live branch (uses your existing local git credentials).
+    push = _git("push", "origin", f"HEAD:{PUBLISH_BRANCH}")
+    if push.returncode != 0:
+        flash(f"Committed locally, but push failed: {push.stderr.strip()}. "
+              f"Resolve it and run `git push` manually.", "error")
+        return redirect(back)
+
+    flash(f"Published to origin/{PUBLISH_BRANCH}. GitHub Pages will redeploy in "
+          f"a minute or two.", "ok")
+    return redirect(back)
 
 
 # ── Upload a new manual PDF (background job) ────────────────────────────────
