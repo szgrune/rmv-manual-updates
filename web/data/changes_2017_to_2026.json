@@ -15,6 +15,7 @@
       "images": [],
       "chapter": "Obtaining Your License",
       "chapter_num": 1,
+      "highlight": true,
       "citations": [
         {
           "year": 2026,
@@ -654,6 +655,7 @@
       "images": [],
       "chapter": "Safety First",
       "chapter_num": 2,
+      "highlight": true,
       "citations": [
         {
           "year": 2026,
@@ -696,6 +698,7 @@
       ],
       "chapter": "Safety First",
       "chapter_num": 2,
+      "highlight": true,
       "citations": [
         {
           "year": 2026,
@@ -1105,6 +1108,7 @@
       "images": [],
       "chapter": "Rules of the Road",
       "chapter_num": 4,
+      "highlight": true,
       "citations": [
         {
           "year": 2026,
@@ -1142,6 +1146,7 @@
       "images": [],
       "chapter": "Rules of the Road",
       "chapter_num": 4,
+      "highlight": true,
       "citations": [
         {
           "year": 2026,
@@ -1272,6 +1277,7 @@
       "images": [],
       "chapter": "Rules of the Road",
       "chapter_num": 4,
+      "highlight": true,
       "citations": [
         {
           "year": 2026,

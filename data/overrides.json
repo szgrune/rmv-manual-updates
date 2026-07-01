@@ -179,13 +179,15 @@
                 "alt": "",
                 "caption": ""
               }
-            ]
+            ],
+            "highlight": true
           }
         },
         "bus-lanes": {
           "action": "edit",
           "fields": {
-            "images": []
+            "images": [],
+            "highlight": true
           }
         },
         "bicycle-passing-distance": {
@@ -226,7 +228,8 @@
             "bullets": [
               "\"In Massachusetts, you may not park your vehicle in a bicycle lane\" (2026 Massachusetts Driver's Manual)"
             ],
-            "images": []
+            "images": [],
+            "highlight": true
           }
         },
         "alcohol-highway-deaths-stat": {
@@ -237,6 +240,24 @@
         },
         "dangers-of-speeding-pedestrians": {
           "action": "delete"
+        },
+        "real-id-standard-card-choice": {
+          "action": "edit",
+          "fields": {
+            "highlight": true
+          }
+        },
+        "advanced-driver-assistance": {
+          "action": "edit",
+          "fields": {
+            "highlight": true
+          }
+        },
+        "courtesy-crashes": {
+          "action": "edit",
+          "fields": {
+            "highlight": true
+          }
         }
       }
     },
