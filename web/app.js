@@ -58,6 +58,10 @@ const STRINGS = {
     emailSubjectPrefix: "MA Driver's Manual — ",
     emailDefaultHeading: "Driver's Manual Updates",
     emailViewFull: "View the full results here:",
+    abToggleAria: "Switch featured section design",
+    carouselNext: "Scroll featured updates right",
+    carouselPrev: "Scroll featured updates left",
+    modalClose: "Close",
     // Change-type badge text — English keeps the raw lowercase value (unchanged).
     badge: { new: "new", updated: "updated", expanded: "expanded", removed: "removed" },
   },
@@ -102,6 +106,10 @@ const STRINGS = {
     emailSubjectPrefix: "Manual del Conductor de MA — ",
     emailDefaultHeading: "Actualizaciones del Manual del Conductor",
     emailViewFull: "Vea los resultados completos aquí:",
+    abToggleAria: "Cambiar el diseño de la sección destacada",
+    carouselNext: "Desplazar las actualizaciones destacadas a la derecha",
+    carouselPrev: "Desplazar las actualizaciones destacadas a la izquierda",
+    modalClose: "Cerrar",
     badge: { new: "Nuevo", updated: "Actualizado", expanded: "Ampliado", removed: "Eliminado" },
   },
 };
@@ -125,6 +133,29 @@ const LANG_CONFIG = {
     priorityChapter: 'Reglas de la carretera',
   },
 };
+
+// ── Featured section A/B test ─────────────────────────────────────────────────
+//
+// Years whose "Featured Changes Since YEAR" block shows the A/B design toggle
+// (top right of the section). Variant A is the original stacked list; variant B
+// is a horizontal carousel of square cards that open a modal. Add years to the
+// list — or set it to the string 'all' — to roll the test out to every page
+// that has a Featured Changes section.
+const FEATURED_AB_YEARS = [2017];
+
+function featuredAbEnabled(fromYear) {
+  return FEATURED_AB_YEARS === 'all' || FEATURED_AB_YEARS.includes(fromYear);
+}
+
+// The visitor's variant choice persists across pages/visits ('A' | 'B').
+function getFeaturedVariant() {
+  try { return localStorage.getItem('rmv_featured_variant') === 'B' ? 'B' : 'A'; }
+  catch { return 'A'; }
+}
+
+function setFeaturedVariant(v) {
+  try { localStorage.setItem('rmv_featured_variant', v); } catch { /* ignore */ }
+}
 
 // Active language. Resolved at startup from ?lang= / localStorage (default 'en').
 let lang = 'en';
@@ -480,21 +511,243 @@ function buildFeaturedSection(highlighted, fromYear, idPrefix) {
   const wrap = document.createElement('section');
   wrap.className = 'change-group featured-changes';
 
+  const header = document.createElement('div');
+  header.className = 'featured-header';
+
   const heading = document.createElement('h3');
   heading.className = 'group-heading featured-heading';
   heading.id = `${idPrefix}-featured`;
   heading.textContent = t('featuredHeading', fromYear);
-  wrap.appendChild(heading);
+  header.appendChild(heading);
+  wrap.appendChild(header);
 
+  // Preserve chapter order (matches the main list) without applying the cap.
+  const ordered = [];
+  groupByChapter(highlighted).forEach(group => ordered.push(...group.items));
+
+  // Variant A — the original design: standard stacked result pills.
   const section = document.createElement('div');
   section.className = 'results-featured';
-  // Preserve chapter order (matches the main list) without applying the cap.
-  groupByChapter(highlighted).forEach(group => {
-    group.items.forEach(sec => section.appendChild(buildSectionCard(sec)));
-  });
+  ordered.forEach(sec => section.appendChild(buildSectionCard(sec)));
   wrap.appendChild(section);
 
+  // A/B test: on enrolled years, render variant B (carousel) alongside A and a
+  // toggle in the header; `data-variant` on the wrapper decides which one shows.
+  if (featuredAbEnabled(fromYear)) {
+    wrap.dataset.variant = getFeaturedVariant();
+    header.appendChild(buildAbToggle(wrap));
+    wrap.appendChild(buildFeaturedCarousel(ordered));
+  }
+
   return wrap;
+}
+
+/**
+ * The small A/B pill toggle in the featured header. Switching updates the
+ * wrapper's `data-variant` (CSS shows/hides the matching design) and persists
+ * the choice so it sticks across years, languages, and visits.
+ */
+function buildAbToggle(wrap) {
+  const toggle = document.createElement('div');
+  toggle.className = 'ab-toggle';
+  toggle.setAttribute('role', 'group');
+  toggle.setAttribute('aria-label', t('abToggleAria'));
+
+  const reflect = () => {
+    [...toggle.children].forEach(btn => {
+      const active = btn.dataset.variant === wrap.dataset.variant;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+  };
+
+  ['A', 'B'].forEach(v => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ab-option';
+    btn.dataset.variant = v;
+    btn.textContent = v;
+    btn.addEventListener('click', () => {
+      wrap.dataset.variant = v;
+      setFeaturedVariant(v);
+      reflect();
+      // The carousel was display:none until now — its arrows need a real layout
+      // pass before overflow can be measured.
+      const track = wrap.querySelector('.carousel-track');
+      if (track) requestAnimationFrame(() => track.dispatchEvent(new Event('scroll')));
+    });
+    toggle.appendChild(btn);
+  });
+
+  reflect();
+  return toggle;
+}
+
+/**
+ * Variant B: a horizontal carousel of square cards sized so 3.5 fit in the row —
+ * the half-card plus the right arrow signal that there are 4+ highlights to
+ * scroll through. Clicking a card opens a modal with the full result.
+ */
+function buildFeaturedCarousel(items) {
+  const carousel = document.createElement('div');
+  carousel.className = 'featured-carousel';
+
+  const track = document.createElement('div');
+  track.className = 'carousel-track';
+  items.forEach(sec => track.appendChild(buildCarouselCard(sec)));
+  carousel.appendChild(track);
+
+  const makeArrow = (dir) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `carousel-arrow carousel-arrow-${dir}`;
+    btn.setAttribute('aria-label', t(dir === 'right' ? 'carouselNext' : 'carouselPrev'));
+    btn.hidden = true;
+
+    const chevron = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    chevron.setAttribute('viewBox', '0 0 24 24');
+    chevron.setAttribute('aria-hidden', 'true');
+    const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    poly.setAttribute('points', dir === 'right' ? '9 6 15 12 9 18' : '15 6 9 12 15 18');
+    chevron.appendChild(poly);
+    btn.appendChild(chevron);
+
+    btn.addEventListener('click', () => {
+      const card = track.querySelector('.carousel-card');
+      const gap = parseFloat(getComputedStyle(track).gap) || 12;
+      const step = card ? card.offsetWidth + gap : track.clientWidth;
+      track.scrollBy({ left: dir === 'right' ? step : -step, behavior: 'smooth' });
+    });
+    return btn;
+  };
+
+  const prev = makeArrow('left');
+  const next = makeArrow('right');
+  carousel.appendChild(prev);
+  carousel.appendChild(next);
+
+  // Arrows only show where there's somewhere to go: right appears whenever
+  // content overflows (4+ cards), left once the user has scrolled.
+  const updateArrows = () => {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    prev.hidden = track.scrollLeft <= 4;
+    next.hidden = maxScroll <= 4 || track.scrollLeft >= maxScroll - 4;
+  };
+  track.addEventListener('scroll', updateArrows, { passive: true });
+  window.addEventListener('resize', updateArrows);
+  // Defer the first measurement until the node is in the DOM.
+  requestAnimationFrame(updateArrows);
+
+  return carousel;
+}
+
+// One square carousel card: title + change-type badge + clamped description.
+function buildCarouselCard(sec) {
+  const card = document.createElement('button');
+  card.type = 'button';
+  card.className = 'carousel-card';
+
+  const title = document.createElement('span');
+  title.className = 'carousel-card-title';
+  title.textContent = sec.title || 'Update';
+  card.appendChild(title);
+
+  if (sec.change_type) {
+    const badge = document.createElement('span');
+    badge.className = `badge badge-${sec.change_type}`;
+    badge.textContent = badgeLabel(sec.change_type);
+    card.appendChild(badge);
+  }
+
+  if (sec.description) {
+    const desc = document.createElement('span');
+    desc.className = 'carousel-card-desc';
+    desc.textContent = sec.description;
+    card.appendChild(desc);
+  }
+
+  card.addEventListener('click', () => openFeaturedModal(sec, card));
+  return card;
+}
+
+/**
+ * Modal with the full text of a carousel card's result: title, badge,
+ * description, every quote with its PDF citation, and any images. Closes via
+ * the X button, the backdrop, or Escape; focus returns to the opening card.
+ */
+function openFeaturedModal(sec, opener) {
+  const overlay = document.createElement('div');
+  overlay.className = 'featured-modal-overlay';
+
+  const modal = document.createElement('div');
+  modal.className = 'featured-modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'featured-modal-title');
+
+  const header = document.createElement('div');
+  header.className = 'featured-modal-header';
+
+  const headMain = document.createElement('div');
+  headMain.className = 'featured-modal-headline';
+
+  const title = document.createElement('h3');
+  title.id = 'featured-modal-title';
+  title.className = 'featured-modal-title';
+  title.textContent = sec.title || 'Update';
+  headMain.appendChild(title);
+
+  if (sec.change_type) {
+    const badge = document.createElement('span');
+    badge.className = `badge badge-${sec.change_type}`;
+    badge.textContent = badgeLabel(sec.change_type);
+    headMain.appendChild(badge);
+  }
+  header.appendChild(headMain);
+
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'featured-modal-close';
+  close.setAttribute('aria-label', t('modalClose'));
+  close.textContent = '×';
+  header.appendChild(close);
+
+  modal.appendChild(header);
+
+  const body = document.createElement('div');
+  body.className = 'featured-modal-body';
+
+  if (sec.description) {
+    const desc = document.createElement('p');
+    desc.className = 'featured-modal-desc';
+    desc.textContent = sec.description;
+    body.appendChild(desc);
+  }
+
+  const bullets = buildBulletsList(sec);
+  if (bullets) body.appendChild(bullets);
+
+  const gallery = buildFigureGallery(sec, /* eager */ true);
+  if (gallery) body.appendChild(gallery);
+
+  modal.appendChild(body);
+  overlay.appendChild(modal);
+
+  const closeModal = () => {
+    overlay.remove();
+    document.removeEventListener('keydown', onKey);
+    document.body.classList.remove('modal-open');
+    if (opener) opener.focus();
+  };
+  const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+
+  close.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', onKey);
+
+  document.body.appendChild(overlay);
+  document.body.classList.add('modal-open');
+  close.focus();
 }
 
 function renderAccordion(data) {
@@ -785,6 +1038,55 @@ function buildCitationLink({ year, page }) {
 // Unique id source for card-toggle ↔ card-body wiring (aria-controls).
 let cardSeq = 0;
 
+// Bullets — each is a direct quote; append a page-level PDF citation when one
+// was matched during the build (see scripts/lib/citations.py). Null when empty.
+function buildBulletsList(sec) {
+  if (!sec.bullets || sec.bullets.length === 0) return null;
+  const ul = document.createElement('ul');
+  ul.className = 'section-bullets';
+  sec.bullets.forEach((bullet, i) => {
+    const li = document.createElement('li');
+    li.textContent = bullet;
+    const citation = sec.citations && sec.citations[i];
+    if (citation) {
+      li.appendChild(document.createTextNode(' '));
+      li.appendChild(buildCitationLink(citation));
+    }
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+// Images — laid out in a wrapping flex row so multiple fit per line. Null when
+// the result has none. `eager` skips lazy-loading (used inside the modal, where
+// lazy images would pop in mid-view).
+function buildFigureGallery(sec, eager = false) {
+  if (!sec.images || sec.images.length === 0) return null;
+  const gallery = document.createElement('div');
+  gallery.className = 'section-figures';
+
+  sec.images.forEach(img => {
+    const figure = document.createElement('figure');
+    figure.className = 'section-figure';
+
+    const image = document.createElement('img');
+    image.src = img.src;
+    image.alt = img.alt || sec.title || '';
+    if (!eager) image.loading = 'lazy';
+    figure.appendChild(image);
+
+    if (img.caption) {
+      const caption = document.createElement('figcaption');
+      caption.textContent = img.caption;
+      figure.appendChild(caption);
+    }
+
+    gallery.appendChild(figure);
+  });
+
+  return gallery;
+}
+
 /**
  * A single change result rendered as a collapsible pill. Collapsed by default it
  * shows only the title, change-type badge, and subtitle (the description). Clicking
@@ -856,50 +1158,11 @@ function buildSectionCard(sec) {
   body.className = 'card-body';
   body.id = bodyId;
 
-  // Bullets — each is a direct quote; append a page-level PDF citation when one
-  // was matched during the build (see scripts/lib/citations.py).
-  if (sec.bullets && sec.bullets.length > 0) {
-    const ul = document.createElement('ul');
-    ul.className = 'section-bullets';
-    sec.bullets.forEach((bullet, i) => {
-      const li = document.createElement('li');
-      li.textContent = bullet;
-      const citation = sec.citations && sec.citations[i];
-      if (citation) {
-        li.appendChild(document.createTextNode(' '));
-        li.appendChild(buildCitationLink(citation));
-      }
-      ul.appendChild(li);
-    });
-    body.appendChild(ul);
-  }
+  const bullets = buildBulletsList(sec);
+  if (bullets) body.appendChild(bullets);
 
-  // Images — laid out in a wrapping flex row so multiple fit per line
-  if (sec.images && sec.images.length > 0) {
-    const gallery = document.createElement('div');
-    gallery.className = 'section-figures';
-
-    sec.images.forEach(img => {
-      const figure = document.createElement('figure');
-      figure.className = 'section-figure';
-
-      const image = document.createElement('img');
-      image.src = img.src;
-      image.alt = img.alt || sec.title || '';
-      image.loading = 'lazy';
-      figure.appendChild(image);
-
-      if (img.caption) {
-        const caption = document.createElement('figcaption');
-        caption.textContent = img.caption;
-        figure.appendChild(caption);
-      }
-
-      gallery.appendChild(figure);
-    });
-
-    body.appendChild(gallery);
-  }
+  const gallery = buildFigureGallery(sec);
+  if (gallery) body.appendChild(gallery);
 
   card.appendChild(body);
 
