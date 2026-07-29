@@ -488,7 +488,7 @@ function renderChanges(data, fromYear, toYear) {
   // Featured Changes — curated shortcut pinned above the chapter groups. Only
   // renders when one or more results are flagged `highlight` (set via the admin).
   const highlighted = data.sections.filter(sec => sec.highlight === true);
-  if (highlighted.length > 0) {
+  if (highlighted.some(sec => !sec.hidden)) {
     sectionsList.appendChild(buildFeaturedSection(highlighted, fromYear, idPrefix));
   }
 
@@ -646,6 +646,7 @@ function buildCarouselCard(sec) {
   const card = document.createElement('button');
   card.type = 'button';
   card.className = 'carousel-card';
+  if (sec.hidden) card.classList.add('result-hidden');
 
   const title = document.createElement('span');
   title.className = 'carousel-card-title';
@@ -1097,6 +1098,7 @@ function buildFigureGallery(sec, eager = false) {
 function buildSectionCard(sec) {
   const card = document.createElement('div');
   card.className = 'section-card';
+  if (sec.hidden) card.classList.add('result-hidden');
 
   // Filterable metadata (used by applyFilters): change type + searchable text.
   card.dataset.type = sec.change_type || '';

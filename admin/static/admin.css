@@ -63,8 +63,18 @@ details.chapter > summary {
 }
 details.change {
   background: #fff; border: 1px solid var(--border); border-radius: 8px;
-  margin: 0.5rem 0; padding: 0.4rem 0.8rem;
+  margin: 0.5rem 0; padding: 0.4rem 0.8rem; position: relative;
 }
+.vis {
+  position: absolute; top: 0.75rem; right: 0.9rem;
+  font-size: 0.78rem; font-weight: 700;
+}
+.vis::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; margin-right: 0.35rem; background: currentColor;
+}
+.vis-on { color: var(--ok); }
+.vis-off { color: #b26a00; }
 details.change > summary { cursor: pointer; padding: 0.4rem 0; }
 .c-title { font-weight: 600; }
 .star { color: var(--brand); }
@@ -100,14 +110,13 @@ label.remove { font-weight: 400; color: var(--danger); display: inline; }
 label.highlight, label.radio { font-weight: 400; }
 label.highlight input, label.radio input { width: auto; margin-right: 0.4rem; }
 
-.actions { margin-top: 0.8rem; }
+.actions { margin-top: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
 button {
   background: var(--brand); color: #fff; border: 0; border-radius: 6px;
   padding: 0.5rem 1rem; font-weight: 700; cursor: pointer; font: inherit;
 }
 button:hover { background: var(--brand-dark); }
 button.danger { background: #fff; color: var(--danger); border: 1px solid var(--danger); }
-form.delete { margin-top: 0.5rem; }
 
 .job-log {
   background: #0b1622; color: #cfe3f5; padding: 1rem; border-radius: 8px;

@@ -17,6 +17,7 @@
       {% if c.highlight %}<span class="star" title="Featured">★</span>{% endif %}
       <span class="c-title">{{ c.title or c.id }}</span>
       {% if c.change_type %}<span class="badge badge-{{ c.change_type }}">{{ c.change_type }}</span>{% endif %}
+      <span class="vis {{ 'vis-off' if c.hidden else 'vis-on' }}">{{ 'Hidden' if c.hidden else 'Visible' }}</span>
     </summary>
 
     <form class="edit" method="post"
@@ -78,16 +79,20 @@
         <strong>Highlight</strong> — feature this in “Featured Changes Since {{ from_year }}”
       </label>
 
+      <label class="highlight">
+        <input type="checkbox" name="hidden" {{ 'checked' if c.hidden }}>
+        <strong>Hide</strong> — hide this result on the live site (all its content is kept)
+      </label>
+
       <div class="actions">
         <button type="submit">Save</button>
+        <button type="submit" class="danger" form="del-{{ c.id }}">Delete result</button>
       </div>
     </form>
 
-    <form class="delete" method="post"
+    <form id="del-{{ c.id }}" method="post"
           action="{{ url_for('delete_change', from_year=from_year, change_id=c.id) }}"
-          onsubmit="return confirm('Delete this result?')">
-      <button type="submit" class="danger">Delete result</button>
-    </form>
+          onsubmit="return confirm('Delete this result?')"></form>
   </details>
   {% endfor %}
 </details>

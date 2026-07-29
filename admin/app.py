@@ -184,6 +184,7 @@ def save_change(from_year, change_id):
         submitted["chapter_num"] = int(chapter_num)
 
     highlight = request.form.get("highlight") == "on"
+    hidden = request.form.get("hidden") == "on"
 
     overrides = ov.load_overrides()
     changes = overrides["pairs"].setdefault(str(from_year), {}).setdefault("changes", {})
@@ -192,6 +193,8 @@ def save_change(from_year, change_id):
         fields = {k: v for k, v in submitted.items() if v not in ("", [], None)}
         if highlight:
             fields["highlight"] = True
+        if hidden:
+            fields["hidden"] = True
         changes[change_id] = {"action": "add", "fields": fields}
     else:
         # Only fields that differ from the AI output become overrides, so
@@ -199,6 +202,8 @@ def save_change(from_year, change_id):
         fields = {k: v for k, v in submitted.items() if v != base.get(k)}
         if highlight:
             fields["highlight"] = True  # never in AI output, so always an override
+        if hidden:
+            fields["hidden"] = True     # same: only ever set via the admin
         if fields:
             changes[change_id] = {"action": "edit", "fields": fields}
         else:

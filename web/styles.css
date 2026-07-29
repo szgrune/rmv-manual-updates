@@ -1087,6 +1087,8 @@ body.modal-open { overflow: hidden; }
 
 /* ── Filter visibility + a11y helpers ────────────────────── */
 .is-hidden { display: none !important; }
+/* Results hidden via the admin's Hide checkbox: content kept, never shown. */
+.result-hidden { display: none !important; }
 
 .sr-only {
   position: absolute;
